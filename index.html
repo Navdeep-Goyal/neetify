@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Practice Test &mdash; NEET PG Format</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ LANDING SCREEN ============ -->
+<div id="screen-landing" class="screen-root screen">
+  <h1>Weekly Practice Test Portal</h1>
+  <p>NEET PG-format mock tests, generated from your weekly study schedule. Same timing, sectioning, and marking scheme as the real NEET PG computer-based test.</p>
+
+  <div id="landing-history-preview" style="margin:16px 0;"></div>
+
+  <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;">
+    <button id="btn-start-exam" class="btn btn-submit" style="margin-left:0;">Start Week 1 Exam</button>
+    <button id="btn-resume-exam" class="btn btn-mark hidden">Resume In-Progress Exam</button>
+    <button id="btn-view-history" class="btn btn-clear">View Past Results</button>
+  </div>
+</div>
+
+<!-- ============ INSTRUCTIONS SCREEN ============ -->
+<div id="screen-instructions" class="screen-root screen hidden">
+  <h1>General Instructions</h1>
+  <ol>
+    <li>The total duration of this exam is displayed per section. The clock will be set at the server and the countdown timer at the top right corner will display the remaining time for the <b>current section only</b>.</li>
+    <li>When the timer reaches zero, the current section will be submitted automatically and you will be moved to the next section. You cannot go back to a submitted section.</li>
+    <li>The Question Palette on the right displays the status of each question using the color codes shown below.</li>
+    <li>Click on a question number in the palette to go directly to that question.</li>
+    <li>Click <b>Save & Next</b> to save your answer and move to the next question.</li>
+    <li>Click <b>Mark for Review & Next</b> to flag a question for later review (also saves any selected answer).</li>
+    <li>Click <b>Clear Response</b> to deselect a chosen answer.</li>
+    <li>Each question has four options with a single correct answer. Correct answer: <b>+4 marks</b>. Incorrect answer: <b>&minus;1 mark</b>. Unattempted: <b>0 marks</b>.</li>
+    <li>You may submit a section early using <b>Submit Section</b>, or submit the entire exam using <b>Submit Exam</b> in the palette panel.</li>
+  </ol>
+
+  <h2>Question Palette Legend</h2>
+  <div class="instructions-legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#e9e9e9;border:1px solid #b9b9b9;"></span> Not Visited</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#e2434b;"></span> Not Answered</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#3aa655;"></span> Answered</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#8e5fc9;"></span> Marked for Review</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#8e5fc9;position:relative;"></span> Answered &amp; Marked for Review</div>
+  </div>
+
+  <div class="declaration-box">
+    <input type="checkbox" id="declaration-checkbox">
+    <label for="declaration-checkbox">I have read and understood the instructions above. I agree that I am attempting this test under simulated exam conditions and will not pause the timer artificially.</label>
+  </div>
+
+  <div class="start-btn-row">
+    <button id="btn-begin-from-instructions" class="btn btn-submit">I am ready to begin</button>
+  </div>
+</div>
+
+<!-- ============ EXAM SCREEN ============ -->
+<div id="screen-exam" class="screen-root hidden">
+  <div class="top-header">
+    <div class="exam-name">Weekly Practice Test &mdash; NEET PG Format</div>
+    <div class="candidate-block">
+      <span>Candidate: Navdeep</span>
+      <span class="timer" id="exam-timer">00:00</span>
+    </div>
+  </div>
+  <div class="section-tabs" id="section-tabs"></div>
+
+  <div class="exam-body">
+    <div class="question-pane">
+      <div class="question-meta">
+        <span class="qnum" id="q-number">Question No. 1</span>
+        <span id="q-section-progress"></span>
+        <span class="marks-info">Correct: <span class="correct">+4</span> &nbsp; Wrong: <span class="wrong">-1</span></span>
+      </div>
+      <div class="question-text" id="q-text"></div>
+      <div class="options-list" id="options-list"></div>
+
+      <div class="question-footer">
+        <button id="btn-prev-question" class="btn btn-prev">&larr; Previous</button>
+        <button id="btn-clear-response" class="btn btn-clear">Clear Response</button>
+        <button id="btn-mark-next" class="btn btn-mark">Mark for Review & Next</button>
+        <button id="btn-save-next" class="btn btn-save">Save & Next</button>
+        <button id="btn-submit-section" class="btn btn-submit">Submit Section</button>
+      </div>
+    </div>
+
+    <div class="palette-pane">
+      <div class="candidate-card">
+        <div class="candidate-avatar">N</div>
+        <div>
+          <div class="candidate-name">Navdeep</div>
+          <div class="candidate-sub">Weekly Practice Test</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch" style="background:#e9e9e9;border:1px solid #b9b9b9;"></span> Not Visited</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#e2434b;"></span> Not Answered</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#3aa655;"></span> Answered</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#8e5fc9;"></span> Marked</div>
+      </div>
+
+      <div class="palette-section-title">Question Palette</div>
+      <div class="palette-grid" id="palette-grid"></div>
+
+      <div class="palette-summary">
+        <div><span>Answered</span><b id="summary-answered">0</b></div>
+        <div><span>Not Answered</span><b id="summary-not-answered">0</b></div>
+        <div><span>Not Visited</span><b id="summary-not-visited">0</b></div>
+        <div><span>Marked for Review</span><b id="summary-marked">0</b></div>
+      </div>
+
+      <button id="btn-submit-exam" class="btn btn-submit-exam">Submit Exam</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RESULT SCREEN ============ -->
+<div id="screen-result" class="screen-root screen hidden">
+  <h1>Result &mdash; Weekly Practice Test</h1>
+
+  <div class="result-summary-grid">
+    <div class="result-card"><div class="value" id="result-score">0/180</div><div class="label">Score</div></div>
+    <div class="result-card"><div class="value" id="result-percentage">0%</div><div class="label">Percentage</div></div>
+    <div class="result-card correct"><div class="value" id="result-correct">0</div><div class="label">Correct</div></div>
+    <div class="result-card wrong"><div class="value" id="result-wrong">0</div><div class="label">Wrong</div></div>
+  </div>
+  <p style="font-size:13px;color:#777;">Unattempted: <b id="result-unattempted">0</b></p>
+
+  <h2>Section-wise Breakdown</h2>
+  <table class="section-breakdown">
+    <thead><tr><th>Section</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Unattempted</th><th>Total Qs</th></tr></thead>
+    <tbody id="section-breakdown-body"></tbody>
+  </table>
+
+  <h2>Full Review</h2>
+  <div id="review-list"></div>
+
+  <div class="nav-row">
+    <button id="btn-back-to-landing-from-result" class="btn btn-clear">Back to Home</button>
+  </div>
+</div>
+
+<!-- ============ HISTORY SCREEN ============ -->
+<div id="screen-history" class="screen-root screen hidden">
+  <h1>Past Results</h1>
+  <div id="history-content"></div>
+  <div class="nav-row">
+    <button id="btn-export-history" class="btn btn-clear">Export Results (JSON)</button>
+    <button id="btn-import-history" class="btn btn-clear">Import Results (JSON)</button>
+    <input type="file" id="import-file-input" accept=".json" class="hidden">
+    <button id="btn-back-to-landing-from-history" class="btn btn-submit">Back to Home</button>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

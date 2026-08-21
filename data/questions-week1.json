@@ -1,0 +1,428 @@
+{
+  "examTitle": "Weekly Practice Test \u2014 Week 1",
+  "examSubtitle": "Surgery (Hepatobiliary/Pancreas/Transplant) \u00b7 OBG (Anatomy\u2013Contraception) \u00b7 PSM (Epidemiology\u2013Nutrition)",
+  "totalMarks": 180,
+  "marksPerCorrect": 4,
+  "marksPerWrong": -1,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "durationSeconds": 1610,
+      "questionIds": ["S1","S2","S3","S4","S5","S6","S7","S8","O1","O2","O3","O4","O5","O6","O7","O8","O9","O10","O11","O12","O13","O14","O15"]
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "durationSeconds": 1540,
+      "questionIds": ["O16","O17","O18","O19","O20","P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","P11","P12","P13","P14","P15","P16","P17"]
+    }
+  ],
+  "questions": [
+    {
+      "id": "S1",
+      "subject": "Surgery",
+      "topic": "Hepatobiliary Surgery",
+      "question": "A 62-year-old man presents with progressive painless jaundice for 3 weeks, pruritus, and clay-colored stools. On examination, a smooth, non-tender, cystic mass is palpable in the right hypochondrium. Serum bilirubin is markedly elevated with conjugated predominance. Which of the following best explains this clinical presentation?",
+      "options": {"A": "Choledocholithiasis with acute cholecystitis", "B": "Carcinoma of the head of pancreas", "C": "Acute viral hepatitis", "D": "Mirizzi syndrome"},
+      "correct": "B",
+      "explanation": "Courvoisier's law: in painless jaundice with a palpable, non-tender gallbladder, the cause is unlikely to be gallstones (chronic stone disease causes a fibrotic, non-distensible gallbladder) and is more likely a malignant obstruction such as carcinoma of the head of pancreas or periampullary carcinoma."
+    },
+    {
+      "id": "S2",
+      "subject": "Surgery",
+      "topic": "Hepatobiliary Surgery",
+      "question": "A 55-year-old woman presents with high-grade fever with chills, right upper quadrant pain, and jaundice for 2 days. She has a history of recurrent gallstone disease. What is the most likely diagnosis?",
+      "options": {"A": "Acute cholecystitis", "B": "Acute pancreatitis", "C": "Ascending cholangitis", "D": "Liver abscess"},
+      "correct": "C",
+      "explanation": "Charcot's triad (fever with rigors, jaundice, RUQ pain) is classic for ascending cholangitis, usually secondary to choledocholithiasis. Reynold's pentad (triad + hypotension + altered mentation) indicates suppurative cholangitis, a surgical emergency."
+    },
+    {
+      "id": "S3",
+      "subject": "Surgery",
+      "topic": "Hepatobiliary Surgery",
+      "question": "A 30-year-old shepherd presents with dull right upper quadrant pain and hepatomegaly. Ultrasound shows a well-defined cystic lesion with multiple daughter cysts within it (\"cyst within a cyst\"). Which of the following is contraindicated in initial management?",
+      "options": {"A": "Albendazole therapy", "B": "Percutaneous aspiration without pre-treatment", "C": "PAIR (puncture, aspiration, injection, re-aspiration) technique", "D": "Surgical excision with pericystectomy"},
+      "correct": "B",
+      "explanation": "This is hepatic hydatid cyst (Echinococcus granulosus). Blind percutaneous aspiration without scolicidal precautions/albendazole cover is contraindicated due to anaphylaxis risk and peritoneal seeding from spillage. PAIR under albendazole cover is an accepted option."
+    },
+    {
+      "id": "S4",
+      "subject": "Surgery",
+      "topic": "Pancreas & Hernia",
+      "question": "A 45-year-old man with alcohol use disorder presents with severe epigastric pain radiating to the back and a serum lipase 5 times the upper limit of normal. Which of the following at admission is a component of Ranson's criteria for severity assessment?",
+      "options": {"A": "Serum lipase level", "B": "Age > 55 years", "C": "Serum amylase level", "D": "Presence of gallstones on ultrasound"},
+      "correct": "B",
+      "explanation": "Ranson's criteria at admission include age >55 years, WBC >16,000, glucose >200 mg/dL, LDH >350 IU/L, and AST >250 IU/L. Amylase/lipase levels do not correlate with severity and are not part of Ranson's criteria."
+    },
+    {
+      "id": "S5",
+      "subject": "Surgery",
+      "topic": "Pancreas & Hernia",
+      "question": "During inguinal hernia repair, the surgeon identifies the inferior epigastric vessels. An indirect inguinal hernia sac would be found in which position relative to these vessels?",
+      "options": {"A": "Medial to the inferior epigastric vessels", "B": "Lateral to the inferior epigastric vessels", "C": "Passing directly through the vessels", "D": "Position is variable"},
+      "correct": "B",
+      "explanation": "The deep inguinal ring lies lateral to the inferior epigastric vessels. An indirect hernia protrudes through the deep ring (lateral to the vessels) and follows the spermatic cord. Direct hernias occur medial to the vessels, through Hesselbach's triangle."
+    },
+    {
+      "id": "S6",
+      "subject": "Surgery",
+      "topic": "Pancreas & Hernia",
+      "question": "A 68-year-old woman presents with a tender, irreducible lump below and lateral to the pubic tubercle. Which of the following best explains the higher strangulation risk of this hernia compared to an inguinal hernia?",
+      "options": {"A": "Wide, distensible neck of the femoral canal", "B": "Narrow, rigid boundaries of the femoral ring", "C": "Presence of the inguinal ligament superiorly", "D": "Passage through Hesselbach's triangle"},
+      "correct": "B",
+      "explanation": "This describes a femoral hernia (below and lateral to the pubic tubercle, vs. inguinal hernia which is above and medial). The femoral ring's rigid boundaries (inguinal, lacunar, and pectineal ligaments, femoral vein) give it a narrow, non-distensible neck, predisposing to strangulation."
+    },
+    {
+      "id": "S7",
+      "subject": "Surgery",
+      "topic": "Transplant Surgery",
+      "question": "A patient develops graft dysfunction within minutes of vascular anastomosis during renal transplant, with the kidney turning mottled and cyanotic on the table. What is the underlying mechanism?",
+      "options": {"A": "T-cell mediated cellular rejection", "B": "Pre-formed recipient antibodies against donor antigens", "C": "Chronic vascular changes from immunosuppression", "D": "Ischemia-reperfusion injury alone"},
+      "correct": "B",
+      "explanation": "This describes hyperacute rejection, occurring within minutes to hours due to pre-formed recipient antibodies (e.g., ABO incompatibility or prior sensitization) against donor endothelial antigens, causing immediate thrombosis. Now rare due to pre-transplant crossmatching."
+    },
+    {
+      "id": "S8",
+      "subject": "Surgery",
+      "topic": "Transplant Surgery",
+      "question": "Which immunosuppressive agent primarily acts by inhibiting calcineurin, thereby blocking IL-2 gene transcription in T-lymphocytes?",
+      "options": {"A": "Mycophenolate mofetil", "B": "Cyclosporine", "C": "Azathioprine", "D": "Prednisolone"},
+      "correct": "B",
+      "explanation": "Cyclosporine (and tacrolimus) are calcineurin inhibitors that block IL-2 transcription, preventing T-cell activation/proliferation, forming the backbone of most post-transplant immunosuppressive regimens."
+    },
+    {
+      "id": "O1",
+      "subject": "OBG",
+      "topic": "Anatomy and Prolapse",
+      "question": "Which structure provides the main lateral support to the uterus and cervix, preventing uterine prolapse, and contains the uterine artery within its base?",
+      "options": {"A": "Round ligament", "B": "Broad ligament", "C": "Cardinal ligament (Mackenrodt's ligament)", "D": "Uterosacral ligament"},
+      "correct": "C",
+      "explanation": "The cardinal ligament (transverse cervical/Mackenrodt's ligament) extends from the cervix and lateral vaginal fornix to the pelvic side wall and is the main support preventing uterine prolapse; it contains the uterine artery at its base, crossing above the ureter (\"water under the bridge\")."
+    },
+    {
+      "id": "O2",
+      "subject": "OBG",
+      "topic": "Menstrual Physiology",
+      "question": "In a woman with a regular 28-day menstrual cycle, the LH surge that triggers ovulation typically occurs at which point in the cycle?",
+      "options": {"A": "Day 1-3", "B": "Day 7-9", "C": "Day 13-14", "D": "Day 21-23"},
+      "correct": "C",
+      "explanation": "The LH surge occurs approximately 24-36 hours before ovulation, typically around day 13-14 of a 28-day cycle, triggering final oocyte maturation and follicular rupture."
+    },
+    {
+      "id": "O3",
+      "subject": "OBG",
+      "topic": "Anatomy and Prolapse",
+      "question": "A 60-year-old multiparous woman complains of a vaginal bulge and difficulty in complete bladder emptying, requiring digital reduction of the bulge to void. Which pelvic organ prolapse is most likely?",
+      "options": {"A": "Rectocele", "B": "Cystocele", "C": "Enterocele", "D": "Uterine procidentia"},
+      "correct": "B",
+      "explanation": "Cystocele (anterior vaginal wall prolapse due to bladder herniation) classically presents with a vaginal bulge and incomplete bladder emptying, sometimes requiring manual reduction (splinting) to void, due to urethral kinking."
+    },
+    {
+      "id": "O4",
+      "subject": "OBG",
+      "topic": "Anatomy and Prolapse",
+      "question": "During a hysterectomy, the surgeon must be cautious while clamping the uterine artery due to its close relationship with which structure?",
+      "options": {"A": "Ovarian vessels", "B": "Ureter", "C": "Obturator nerve", "D": "Internal iliac vein"},
+      "correct": "B",
+      "explanation": "The ureter passes beneath the uterine artery approximately 1-2 cm lateral to the cervix (\"water under the bridge\"), making it vulnerable to injury during clamping of the uterine artery in hysterectomy."
+    },
+    {
+      "id": "O5",
+      "subject": "OBG",
+      "topic": "Mullerian Anomalies",
+      "question": "A 16-year-old girl presents with primary amenorrhea, normal breast and pubic/axillary hair development, a blind-ending vaginal pouch, and absent uterus on imaging. Karyotype is 46,XX. What is the most likely diagnosis?",
+      "options": {"A": "Androgen insensitivity syndrome", "B": "Mayer-Rokitansky-Kuster-Hauser (MRKH) syndrome", "C": "Turner syndrome", "D": "Congenital adrenal hyperplasia"},
+      "correct": "B",
+      "explanation": "MRKH syndrome presents with normal secondary sexual characteristics (normal ovarian function) but congenital absence of the uterus and upper vagina due to M\u00fcllerian agenesis, with a normal 46,XX karyotype. Androgen insensitivity would show 46,XY karyotype with scanty pubic/axillary hair."
+    },
+    {
+      "id": "O6",
+      "subject": "OBG",
+      "topic": "Mullerian Anomalies",
+      "question": "A woman with recurrent first-trimester pregnancy losses undergoes MRI showing a single external uterine fundal contour with a fibrous septum dividing the endometrial cavity. Which anomaly is this, and what is the definitive management?",
+      "options": {"A": "Bicornuate uterus; abdominal metroplasty", "B": "Septate uterus; hysteroscopic septal resection", "C": "Unicornuate uterus; no surgical treatment needed", "D": "Didelphys uterus; no treatment needed"},
+      "correct": "B",
+      "explanation": "A septate uterus has a normal external fundal contour but a septum dividing the internal cavity (unlike bicornuate uterus, which has an external fundal cleft). It has the poorest reproductive outcomes among M\u00fcllerian anomalies and is treated with hysteroscopic septal resection."
+    },
+    {
+      "id": "O7",
+      "subject": "OBG",
+      "topic": "Mullerian Anomalies",
+      "question": "A newborn presents with ambiguous genitalia (clitoromegaly, partial labial fusion), and on day 7 develops vomiting, dehydration, hyponatremia and hyperkalemia. What is the most likely underlying enzyme deficiency?",
+      "options": {"A": "5-alpha reductase deficiency", "B": "21-hydroxylase deficiency", "C": "17-alpha hydroxylase deficiency", "D": "Aromatase deficiency"},
+      "correct": "B",
+      "explanation": "21-hydroxylase deficiency is the most common cause of congenital adrenal hyperplasia, virilizing a genetically female (46,XX) fetus, with a salt-wasting crisis (hyponatremia, hyperkalemia, dehydration) from impaired aldosterone and cortisol synthesis."
+    },
+    {
+      "id": "O8",
+      "subject": "OBG",
+      "topic": "Mullerian Anomalies",
+      "question": "A woman develops secondary amenorrhea following dilatation and curettage for postpartum hemorrhage. Hysteroscopy reveals intrauterine adhesions. What is the diagnosis and first-line treatment?",
+      "options": {"A": "Asherman syndrome; hysteroscopic adhesiolysis", "B": "Sheehan syndrome; hormone replacement", "C": "PCOS; combined oral contraceptives", "D": "Premature ovarian failure; oocyte donation"},
+      "correct": "A",
+      "explanation": "Asherman syndrome (intrauterine adhesions/synechiae) typically follows aggressive uterine curettage, especially postpartum, presenting with secondary amenorrhea or hypomenorrhea. First-line treatment is hysteroscopic adhesiolysis."
+    },
+    {
+      "id": "O9",
+      "subject": "OBG",
+      "topic": "AUB and Endometriosis-PCOD",
+      "question": "As per the Rotterdam criteria, which combination is sufficient to diagnose polycystic ovary syndrome?",
+      "options": {"A": "Oligo/anovulation + clinical/biochemical hyperandrogenism (other causes excluded)", "B": "Polycystic ovaries on ultrasound alone", "C": "Hirsutism alone", "D": "Insulin resistance alone"},
+      "correct": "A",
+      "explanation": "Rotterdam criteria require 2 of 3 features: oligo/anovulation, clinical or biochemical hyperandrogenism, and polycystic ovaries on ultrasound, after excluding other causes. Oligo/anovulation plus hyperandrogenism alone satisfies 2 of 3, without needing ultrasound."
+    },
+    {
+      "id": "O10",
+      "subject": "OBG",
+      "topic": "AUB and Endometriosis-PCOD",
+      "question": "A 28-year-old nulliparous woman presents with progressive dysmenorrhea, deep dyspareunia, and infertility. Examination reveals tender nodularity in the pouch of Douglas. What is the gold standard investigation for diagnosis?",
+      "options": {"A": "Transvaginal ultrasound", "B": "Diagnostic laparoscopy with visualization \u00b1 biopsy", "C": "Serum CA-125", "D": "MRI pelvis"},
+      "correct": "B",
+      "explanation": "The triad of dysmenorrhea, dyspareunia, and infertility with tender pouch of Douglas nodularity suggests endometriosis. Diagnostic laparoscopy with direct visualization (and biopsy) remains the gold standard, though imaging can suggest it non-invasively."
+    },
+    {
+      "id": "O11",
+      "subject": "OBG",
+      "topic": "AUB and Endometriosis-PCOD",
+      "question": "A 40-year-old woman presents with heavy menstrual bleeding and a bulky uterus. Ultrasound shows a well-defined intramural mass distorting the endometrial cavity. As per the PALM-COEIN classification, this is categorized as:",
+      "options": {"A": "AUB-A (adenomyosis)", "B": "AUB-L (leiomyoma)", "C": "AUB-M (malignancy)", "D": "AUB-C (coagulopathy)"},
+      "correct": "B",
+      "explanation": "PALM-COEIN classifies structural causes as Polyp, Adenomyosis, Leiomyoma, Malignancy/hyperplasia, and non-structural causes as Coagulopathy, Ovulatory dysfunction, Endometrial, Iatrogenic, Not otherwise classified. A discrete intramural mass is a leiomyoma (fibroid) = AUB-L."
+    },
+    {
+      "id": "O12",
+      "subject": "OBG",
+      "topic": "AUB and Endometriosis-PCOD",
+      "question": "A 45-year-old multiparous woman presents with progressively worsening dysmenorrhea and menorrhagia. The uterus is symmetrically enlarged, soft, and tender (\"boggy\"). What is the most likely diagnosis?",
+      "options": {"A": "Adenomyosis", "B": "Endometrial polyp", "C": "Subserous fibroid", "D": "Ovarian cyst"},
+      "correct": "A",
+      "explanation": "Adenomyosis (ectopic endometrial glands within the myometrium) classically presents in multiparous women in their 40s with a symmetrically enlarged, soft, tender (\"boggy\") uterus, distinguishing it from the typically firm, irregular uterus of fibroids."
+    },
+    {
+      "id": "O13",
+      "subject": "OBG",
+      "topic": "Uro-gynecology and Gyne-oncology",
+      "question": "A 50-year-old woman complains of involuntary urine leakage on coughing and sneezing but no leakage with urgency. What is the most likely diagnosis and first-line management?",
+      "options": {"A": "Urge incontinence; anticholinergics", "B": "Stress urinary incontinence; pelvic floor (Kegel) exercises", "C": "Overflow incontinence; catheterization", "D": "Vesicovaginal fistula; surgical repair"},
+      "correct": "B",
+      "explanation": "Stress urinary incontinence presents with leakage during activities that raise intra-abdominal pressure, without urgency, due to urethral sphincter weakness. First-line management is conservative pelvic floor (Kegel) exercises before considering surgery."
+    },
+    {
+      "id": "O14",
+      "subject": "OBG",
+      "topic": "Uro-gynecology and Gyne-oncology",
+      "question": "A patient with biopsy-proven cervical carcinoma has tumor extension to the pelvic wall on examination, with hydronephrosis on imaging. As per FIGO staging, this is classified as:",
+      "options": {"A": "Stage I", "B": "Stage II", "C": "Stage III", "D": "Stage IV"},
+      "correct": "C",
+      "explanation": "FIGO Stage III cervical cancer involves extension to the pelvic wall and/or lower third of the vagina, and/or causes hydronephrosis or a non-functioning kidney from ureteric involvement. Stage IV involves bladder/rectal mucosa or spread beyond the true pelvis."
+    },
+    {
+      "id": "O15",
+      "subject": "OBG",
+      "topic": "Uro-gynecology and Gyne-oncology",
+      "question": "A 19-year-old girl presents with a rapidly growing ovarian mass. Serum AFP and beta-hCG are both markedly elevated. Which ovarian tumor is most likely?",
+      "options": {"A": "Serous cystadenocarcinoma", "B": "Dysgerminoma", "C": "Mixed germ cell tumor / yolk sac tumor", "D": "Granulosa cell tumor"},
+      "correct": "C",
+      "explanation": "Elevated AFP is characteristic of yolk sac (endodermal sinus) tumors, while elevated beta-hCG suggests choriocarcinomatous elements; marked elevation of both in a young patient suggests a mixed germ cell tumor. Dysgerminoma classically elevates LDH, not typically AFP."
+    },
+    {
+      "id": "O16",
+      "subject": "OBG",
+      "topic": "Uro-gynecology and Gyne-oncology",
+      "question": "A woman from a rural area with a history of prolonged obstructed labor presents 10 days postpartum with continuous, painless leakage of urine per vaginum. What is the most likely diagnosis?",
+      "options": {"A": "Stress urinary incontinence", "B": "Vesicovaginal fistula", "C": "Urge incontinence", "D": "Ureterovaginal fistula"},
+      "correct": "B",
+      "explanation": "Continuous, painless urinary leakage following prolonged obstructed labor (causing pressure necrosis of the anterior vaginal wall/bladder base) is classic for obstetric vesicovaginal fistula, a major cause of maternal morbidity where emergency obstetric care is limited."
+    },
+    {
+      "id": "O17",
+      "subject": "OBG",
+      "topic": "Contraception",
+      "question": "What is the primary mechanism of action of the copper intrauterine device (Cu-IUD)?",
+      "options": {"A": "Inhibition of ovulation", "B": "Thickening of cervical mucus preventing sperm entry", "C": "Local sterile inflammatory/spermicidal reaction preventing fertilization", "D": "Thinning of endometrium preventing implantation only"},
+      "correct": "C",
+      "explanation": "The copper IUD's primary mechanism is a copper-ion-induced local sterile inflammatory reaction in the endometrium that is toxic to sperm and ova, primarily preventing fertilization, rather than mainly inhibiting ovulation."
+    },
+    {
+      "id": "O18",
+      "subject": "OBG",
+      "topic": "Contraception",
+      "question": "A 38-year-old woman who smokes 15 cigarettes/day requests combined oral contraceptive pills. Which of the following is an absolute contraindication to prescribing COCPs in her case?",
+      "options": {"A": "Age above 35 years alone", "B": "Age >35 years combined with heavy smoking", "C": "Nulliparity", "D": "Mild acne"},
+      "correct": "B",
+      "explanation": "Combined oral contraceptives are an absolute contraindication (WHO MEC Category 4) in women over 35 who are heavy smokers, due to significantly increased cardiovascular risk (MI, stroke, VTE) from the synergistic effect of estrogen and smoking on thrombosis."
+    },
+    {
+      "id": "O19",
+      "subject": "OBG",
+      "topic": "Contraception",
+      "question": "A woman presents 60 hours after unprotected intercourse requesting emergency contraception. Which of the following is the most effective option at this time point?",
+      "options": {"A": "Levonorgestrel pill alone", "B": "Combined estrogen-progestin (Yuzpe) regimen", "C": "Copper IUD insertion", "D": "Ulipristal acetate is contraindicated beyond 72 hours"},
+      "correct": "C",
+      "explanation": "The copper IUD is the most effective emergency contraception method (failure rate <1%) and can be inserted up to 5 days (120 hours) after unprotected intercourse, making it the best option at 60 hours while also providing ongoing contraception."
+    },
+    {
+      "id": "O20",
+      "subject": "OBG",
+      "topic": "Contraception",
+      "question": "The Pearl Index is used to express contraceptive method effectiveness as:",
+      "options": {"A": "Number of pregnancies per 100 woman-years of use", "B": "Number of pregnancies per 1000 women", "C": "Percentage of women who never conceive", "D": "Number of cycles required for one pregnancy"},
+      "correct": "A",
+      "explanation": "The Pearl Index expresses contraceptive failure rate as the number of unintended pregnancies per 100 woman-years of exposure/use, allowing comparison of effectiveness across different contraceptive methods."
+    },
+    {
+      "id": "P1",
+      "subject": "PSM",
+      "topic": "Epidemiology",
+      "question": "Researchers identify a group of patients with lung cancer and a matched group without lung cancer, then look back at their smoking history to compare exposure rates between the two groups. What type of study design is this?",
+      "options": {"A": "Cohort study", "B": "Case-control study", "C": "Randomized controlled trial", "D": "Cross-sectional study"},
+      "correct": "B",
+      "explanation": "Selecting groups based on outcome status (disease present vs. absent) and looking backward at exposure history is the defining feature of a case-control study, useful for rare diseases like cancer."
+    },
+    {
+      "id": "P2",
+      "subject": "PSM",
+      "topic": "Epidemiology",
+      "question": "A new screening test is applied to 100 diseased and 100 non-diseased individuals. It correctly identifies 90 of the diseased individuals as positive, and correctly identifies 80 of the non-diseased individuals as negative. What is the sensitivity of this test?",
+      "options": {"A": "80%", "B": "85%", "C": "90%", "D": "95%"},
+      "correct": "C",
+      "explanation": "Sensitivity = True Positives / (True Positives + False Negatives) = 90/100 = 90%. It measures the test's ability to correctly identify those WITH the disease."
+    },
+    {
+      "id": "P3",
+      "subject": "PSM",
+      "topic": "Epidemiology",
+      "question": "In a case-control study, 80 of 100 cases were exposed to a risk factor, while 40 of 100 controls were exposed. What is the odds ratio for this exposure-disease association?",
+      "options": {"A": "2.0", "B": "3.0", "C": "4.0", "D": "6.0"},
+      "correct": "D",
+      "explanation": "Odds ratio = (a\u00d7d)/(b\u00d7c), where a=exposed cases=80, b=exposed controls=40, c=unexposed cases=20, d=unexposed controls=60. OR = (80\u00d760)/(40\u00d720) = 4800/800 = 6.0."
+    },
+    {
+      "id": "P4",
+      "subject": "PSM",
+      "topic": "Epidemiology",
+      "question": "An outbreak investigation shows all affected individuals developed symptoms within a narrow 24-48 hour window following a common community event, with no secondary spread thereafter. What type of epidemic curve does this represent?",
+      "options": {"A": "Propagated (person-to-person) epidemic", "B": "Point source epidemic", "C": "Continuous common source epidemic", "D": "Mixed epidemic"},
+      "correct": "B",
+      "explanation": "A point source epidemic shows a sharp rise and fall in cases clustered within one incubation period, reflecting a single, brief common exposure, with no ongoing person-to-person transmission (which would show a propagated, multi-wave pattern)."
+    },
+    {
+      "id": "P5",
+      "subject": "PSM",
+      "topic": "Biostatistics",
+      "question": "In a positively (right) skewed distribution of household income data, which measure of central tendency is most affected by extreme high values?",
+      "options": {"A": "Median", "B": "Mode", "C": "Mean", "D": "Geometric mean"},
+      "correct": "C",
+      "explanation": "The mean is highly sensitive to extreme values, being pulled toward the tail in a skewed distribution. The median is more robust and better represents central tendency in skewed data, which is why median (not mean) income is typically reported."
+    },
+    {
+      "id": "P6",
+      "subject": "PSM",
+      "topic": "Biostatistics",
+      "question": "A study comparing two treatments reports a p-value of 0.03 for the difference in outcomes. What is the correct interpretation of this p-value?",
+      "options": {"A": "There is a 3% probability that the null hypothesis is true", "B": "There is a 3% probability of observing this result (or more extreme) if the null hypothesis were true", "C": "The treatment difference has a 97% chance of being clinically significant", "D": "The alternative hypothesis is proven with 97% confidence"},
+      "correct": "B",
+      "explanation": "A p-value represents the probability of obtaining the observed result (or a more extreme one) purely by chance, assuming the null hypothesis is true. It is NOT the probability that the null hypothesis itself is true, and does not indicate clinical significance."
+    },
+    {
+      "id": "P7",
+      "subject": "PSM",
+      "topic": "Biostatistics",
+      "question": "Which Bradford Hill criterion refers to the concept that a stronger association between exposure and outcome is less likely to be explained by confounding alone?",
+      "options": {"A": "Temporality", "B": "Biological gradient", "C": "Strength of association", "D": "Consistency"},
+      "correct": "C",
+      "explanation": "Strength of association (a strong relative risk/odds ratio) is less likely to be entirely due to bias or confounding, supporting causality. Temporality (cause precedes effect) is considered the only absolutely essential criterion among Bradford Hill's criteria."
+    },
+    {
+      "id": "P8",
+      "subject": "PSM",
+      "topic": "Biostatistics",
+      "question": "A study concludes that a new drug is effective when, in reality, it has no effect (the null hypothesis is actually true). This is an example of:",
+      "options": {"A": "Type I error", "B": "Type II error", "C": "Confounding bias", "D": "Selection bias"},
+      "correct": "A",
+      "explanation": "Type I error (alpha error) occurs when a true null hypothesis is incorrectly rejected (false positive). Type II error (beta error) is failing to reject a false null hypothesis (false negative - missing a true effect)."
+    },
+    {
+      "id": "P9",
+      "subject": "PSM",
+      "topic": "Vaccines",
+      "question": "As per the Universal Immunization Program of India, which vaccine(s) are administered at birth (within 24 hours)?",
+      "options": {"A": "DPT", "B": "BCG, OPV-0, Hepatitis B birth dose", "C": "Measles", "D": "Pentavalent vaccine"},
+      "correct": "B",
+      "explanation": "At birth, the UIP schedule includes BCG, OPV-0 (zero dose), and Hepatitis B birth dose, ideally within 24 hours, to provide early protection especially against tuberculosis and perinatal Hepatitis B transmission."
+    },
+    {
+      "id": "P10",
+      "subject": "PSM",
+      "topic": "Vaccines",
+      "question": "Which of the following is a live attenuated vaccine?",
+      "options": {"A": "Inactivated polio vaccine (IPV)", "B": "MMR (Measles, Mumps, Rubella) vaccine", "C": "Hepatitis B vaccine", "D": "DPT vaccine"},
+      "correct": "B",
+      "explanation": "MMR is a live attenuated vaccine. IPV, Hepatitis B (recombinant subunit), and DPT (toxoid/killed components) are not live vaccines. Live vaccines are generally contraindicated in pregnancy and severe immunodeficiency."
+    },
+    {
+      "id": "P11",
+      "subject": "PSM",
+      "topic": "Vaccines",
+      "question": "A 9-month-old child with confirmed severe combined immunodeficiency (SCID) is due for the measles vaccine. What is the most appropriate action?",
+      "options": {"A": "Administer as per schedule since measles is life-threatening", "B": "Withhold live vaccines; consult immunologist for alternative approach", "C": "Give double dose of killed vaccine instead", "D": "Delay all vaccines until age 5 years"},
+      "correct": "B",
+      "explanation": "Live attenuated vaccines (including measles) are contraindicated in severe immunodeficiency (e.g., SCID) due to risk of disseminated vaccine-strain infection. Management should be individualized with immunology consultation."
+    },
+    {
+      "id": "P12",
+      "subject": "PSM",
+      "topic": "Vaccines",
+      "question": "At the primary health center level, vaccines are typically stored in the ice-lined refrigerator at what temperature range?",
+      "options": {"A": "-25\u00b0C to -15\u00b0C", "B": "0\u00b0C to 4\u00b0C", "C": "2\u00b0C to 8\u00b0C", "D": "8\u00b0C to 12\u00b0C"},
+      "correct": "C",
+      "explanation": "Vaccines are stored at 2\u00b0C to 8\u00b0C in ice-lined refrigerators at the periphery of the cold chain, maintaining potency without freezing damage to heat-stable but freeze-sensitive vaccines like DPT and Hepatitis B."
+    },
+    {
+      "id": "P13",
+      "subject": "PSM",
+      "topic": "Demography",
+      "question": "A country with high birth rate and high death rate, resulting in low or stagnant population growth, is said to be in which stage of the demographic cycle?",
+      "options": {"A": "First stage (high stationary)", "B": "Second stage (early expanding)", "C": "Third stage (late expanding)", "D": "Fourth stage (low stationary)"},
+      "correct": "A",
+      "explanation": "The first stage (high stationary) of the demographic cycle is characterized by both high birth rates and high death rates, resulting in a relatively stable/stagnant population size, typical of pre-industrial societies."
+    },
+    {
+      "id": "P14",
+      "subject": "PSM",
+      "topic": "Demography",
+      "question": "In a population of 50,000, there were 800 live births in a year. What is the crude birth rate per 1000 population?",
+      "options": {"A": "8", "B": "16", "C": "20", "D": "24"},
+      "correct": "B",
+      "explanation": "Crude Birth Rate = (Number of live births / Mid-year population) \u00d7 1000 = (800/50,000) \u00d7 1000 = 16 per 1000 population."
+    },
+    {
+      "id": "P15",
+      "subject": "PSM",
+      "topic": "Demography",
+      "question": "As per Census definitions in India, the sex ratio is expressed as:",
+      "options": {"A": "Number of males per 1000 females", "B": "Number of females per 1000 males", "C": "Number of females per 100 males", "D": "Percentage of females in total population"},
+      "correct": "B",
+      "explanation": "In India, the Census defines sex ratio as the number of females per 1000 males, unlike the international convention (males per 1000/100 females) used in many other countries."
+    },
+    {
+      "id": "P16",
+      "subject": "PSM",
+      "topic": "Nutrition",
+      "question": "A 3-year-old malnourished child presents with dryness and foamy white triangular spots on the conjunctiva (Bitot's spots) along with night blindness. Which vitamin deficiency is responsible?",
+      "options": {"A": "Vitamin B1 (Thiamine)", "B": "Vitamin A", "C": "Vitamin C", "D": "Vitamin D"},
+      "correct": "B",
+      "explanation": "Bitot's spots (foamy, triangular, gray-white conjunctival lesions) along with night blindness (nyctalopia) and conjunctival xerosis are classic features of Vitamin A deficiency (xerophthalmia), a major public health problem in malnourished children."
+    },
+    {
+      "id": "P17",
+      "subject": "PSM",
+      "topic": "Nutrition",
+      "question": "A malnourished child presents with bilateral pitting pedal edema, a distended abdomen, flaky-paint skin lesions, and hair depigmentation, but relatively preserved subcutaneous fat. This is most consistent with:",
+      "options": {"A": "Marasmus", "B": "Kwashiorkor", "C": "Marasmic-kwashiorkor", "D": "Simple starvation"},
+      "correct": "B",
+      "explanation": "Kwashiorkor results from predominant protein deficiency (with relatively adequate calories) and classically presents with edema, hepatomegaly, skin changes (flaky-paint dermatosis), hair changes, and relatively preserved subcutaneous fat compared to marasmus (severe wasting of both fat and muscle, no edema)."
+    }
+  ]
+}
