@@ -6,6 +6,12 @@
 const STORAGE_KEY_HISTORY = "neetpg_history";
 const WEEKS_FILE = "data/weeks.json";
 
+// Once an exam is in progress, leaving fullscreen or switching tabs/apps counts
+// as a violation. After this many violations the exam is force-submitted.
+// (No website can block OS-level app-switching like Alt+Tab/Cmd+Tab -- this
+// is the detect-and-consequence approach real proctored exam platforms use.)
+const MAX_VIOLATIONS = 3;
+
 // A week's exam unlocks at 1:00 PM IST on that week's weekEndDate (the Sunday
 // closing out the study week), regardless of what timezone the browser is in.
 const UNLOCK_HOUR_IST = 13; // 1 PM
@@ -105,6 +111,8 @@ function freshState() {
     currentQIdxInSection: 0,
     examStartedAt: nowTs(),
     submitted: false,
+    violations: 0,
+    breachLog: [],
   };
 }
 
@@ -256,6 +264,116 @@ function initInstructions() {
   };
 }
 
+// ---------------- Exam lockdown (fullscreen + tab/app-switch detection) ----------------
+// Honest limitation: no webpage can block OS-level app switching (Alt+Tab / Cmd+Tab) --
+// browsers deliberately don't expose that control to any site. What this DOES do,
+// matching how real browser-based proctored exams work: force fullscreen, detect every
+// exit from fullscreen or the tab/window (visibilitychange), log it as a violation with
+// a visible warning, and auto-submit the exam once MAX_VIOLATIONS is reached.
+let lockdownActive = false;
+
+function enterLockdown() {
+  if (lockdownActive) return;
+  lockdownActive = true;
+  document.body.classList.add("exam-lockdown");
+  requestExamFullscreen();
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  document.addEventListener("fullscreenchange", handleFullscreenChange);
+  document.addEventListener("contextmenu", blockContextMenu);
+  window.addEventListener("beforeunload", handleBeforeUnload);
+}
+
+function exitLockdown() {
+  if (!lockdownActive) return;
+  lockdownActive = false;
+  document.body.classList.remove("exam-lockdown");
+  document.removeEventListener("visibilitychange", handleVisibilityChange);
+  document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  document.removeEventListener("contextmenu", blockContextMenu);
+  window.removeEventListener("beforeunload", handleBeforeUnload);
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {}); // no-op if browser refuses; not critical
+  }
+  hideViolationOverlay();
+  const tip = $("#guided-access-tip");
+  if (tip) tip.classList.add("hidden");
+}
+
+function requestExamFullscreen() {
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    el.requestFullscreen().catch(() => {
+      // Fullscreen was rejected (e.g. Screen Time/MDM content restrictions) -- the
+      // tab/app-switch detection below still works without it.
+      showGuidedAccessTip();
+    });
+  } else {
+    // No Fullscreen API at all (e.g. iPhone Safari, some in-app browsers).
+    showGuidedAccessTip();
+  }
+}
+
+function showGuidedAccessTip() {
+  const tip = $("#guided-access-tip");
+  if (tip) tip.classList.remove("hidden");
+}
+
+function blockContextMenu(e) { e.preventDefault(); }
+
+function handleBeforeUnload(e) {
+  e.preventDefault();
+  e.returnValue = ""; // browsers show their own generic "leave site?" text; can't be customized
+}
+
+function handleVisibilityChange() {
+  if (!lockdownActive || state.submitted) return;
+  if (document.hidden) recordViolation("Left the exam tab/window (switched app or tab)");
+}
+
+function handleFullscreenChange() {
+  if (!lockdownActive || state.submitted) return;
+  if (!document.fullscreenElement) recordViolation("Exited fullscreen mode");
+}
+
+function recordViolation(reason) {
+  if (!state || state.submitted) return;
+  state.violations += 1;
+  state.breachLog.push({ reason, at: nowTs() });
+  saveProgress();
+
+  if (state.violations >= MAX_VIOLATIONS) {
+    showViolationOverlay(reason, true);
+    forceSubmitDueToViolations();
+  } else {
+    showViolationOverlay(reason, false);
+  }
+}
+
+function showViolationOverlay(reason, isFinal) {
+  const overlay = $("#lockdown-warning");
+  if (!overlay) return;
+  const remaining = Math.max(0, MAX_VIOLATIONS - state.violations);
+  $("#lockdown-warning-reason").textContent = reason;
+  $("#lockdown-warning-count").textContent = isFinal
+    ? `That was violation ${state.violations} of ${MAX_VIOLATIONS} -- the exam has been auto-submitted.`
+    : `Violation ${state.violations} of ${MAX_VIOLATIONS}. ${remaining} more and the exam auto-submits.`;
+  $("#btn-lockdown-return").classList.toggle("hidden", isFinal);
+  overlay.classList.remove("hidden");
+}
+
+function hideViolationOverlay() {
+  const overlay = $("#lockdown-warning");
+  if (overlay) overlay.classList.add("hidden");
+}
+
+function forceSubmitDueToViolations() {
+  for (let i = state.currentSectionIdx; i < examData.sections.length; i++) {
+    state.sectionState[i].submitted = true;
+  }
+  clearInterval(timerInterval);
+  finishExam();
+}
+
 // ---------------- Exam screen ----------------
 function enterExam(resuming) {
   show("#screen-exam");
@@ -265,6 +383,7 @@ function enterExam(resuming) {
   renderQuestion();
   renderPalette();
   saveProgress();
+  enterLockdown();
 }
 
 // Sets an absolute wall-clock deadline the first time a section is entered, so the
@@ -542,6 +661,7 @@ function computeResults() {
 
 function finishExam() {
   state.submitted = true;
+  exitLockdown();
   const results = computeResults();
   const entry = {
     date: nowTs(),
@@ -555,6 +675,8 @@ function finishExam() {
     unattemptedCount: results.unattemptedCount,
     sectionBreakdown: results.sectionBreakdown,
     perQuestion: results.perQuestion,
+    violations: state.violations,
+    autoSubmittedForViolations: state.violations >= MAX_VIOLATIONS,
   };
   saveHistoryEntry(entry);
   clearProgress();
@@ -569,6 +691,18 @@ function renderResult(entry) {
   $("#result-correct").textContent = entry.correctCount;
   $("#result-wrong").textContent = entry.wrongCount;
   $("#result-unattempted").textContent = entry.unattemptedCount;
+
+  const integrityNote = $("#result-integrity-note");
+  const violations = entry.violations || 0;
+  if (entry.autoSubmittedForViolations) {
+    integrityNote.textContent = `⚠️ This exam was auto-submitted after ${violations} exam-window violations (left the tab/app or exited fullscreen ${MAX_VIOLATIONS} times).`;
+    integrityNote.classList.remove("hidden");
+  } else if (violations > 0) {
+    integrityNote.textContent = `Note: ${violations} exam-window violation${violations > 1 ? "s" : ""} recorded during this attempt (left the tab/app or exited fullscreen).`;
+    integrityNote.classList.remove("hidden");
+  } else {
+    integrityNote.classList.add("hidden");
+  }
 
   const tbody = $("#section-breakdown-body");
   tbody.innerHTML = "";
@@ -641,6 +775,9 @@ function wireStaticButtons() {
   $("#btn-export-history").onclick = exportHistory;
   $("#btn-import-history").onclick = () => $("#import-file-input").click();
   $("#import-file-input").addEventListener("change", importHistory);
+  $("#btn-lockdown-return").onclick = () => { hideViolationOverlay(); requestExamFullscreen(); };
+  const dismissTip = $("#btn-dismiss-guided-access-tip");
+  if (dismissTip) dismissTip.onclick = () => $("#guided-access-tip").classList.add("hidden");
 }
 
 function exportHistory() {

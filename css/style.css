@@ -438,6 +438,79 @@ a:focus-visible {
   color: var(--text-mid);
 }
 
+/* ---------------- Exam lockdown (tab/app-switch warning) ---------------- */
+body.exam-lockdown {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lockdown-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 30, 0.85);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.lockdown-card {
+  background: white;
+  border-radius: 8px;
+  padding: 32px 36px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.lockdown-icon {
+  font-size: 40px;
+  color: var(--red-not-answered);
+  margin-bottom: 10px;
+}
+.lockdown-card h2 {
+  color: var(--red-not-answered);
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.lockdown-card p {
+  font-size: 14px;
+  color: var(--text-mid);
+  margin: 6px 0;
+}
+.lockdown-card .lockdown-count {
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+.integrity-note {
+  font-size: 13px;
+  background: #fff3f3;
+  border: 1px solid #f0c0c0;
+  color: #9a2b2b;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 10px 0;
+}
+.guided-access-tip {
+  background: #fff8e6;
+  border-bottom: 1px solid #e8d38c;
+  color: #6b5310;
+  font-size: 13px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.guided-access-tip button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b5310;
+  flex-shrink: 0;
+}
+
 /* ---------------- Result screen ---------------- */
 .result-summary-grid {
   display: grid;

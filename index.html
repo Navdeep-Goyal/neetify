@@ -58,6 +58,19 @@
 
 <!-- ============ EXAM SCREEN ============ -->
 <div id="screen-exam" class="screen-root hidden">
+  <div id="lockdown-warning" class="lockdown-overlay hidden">
+    <div class="lockdown-card">
+      <div class="lockdown-icon">&#9888;</div>
+      <h2>Exam Integrity Warning</h2>
+      <p id="lockdown-warning-reason">Left the exam tab/window</p>
+      <p class="lockdown-count" id="lockdown-warning-count">Violation 1 of 3.</p>
+      <button id="btn-lockdown-return" class="btn btn-submit">Return to Exam</button>
+    </div>
+  </div>
+  <div id="guided-access-tip" class="guided-access-tip hidden">
+    <span>Fullscreen lockdown isn't available in this browser. For a true iPad lockdown, enable <b>Guided Access</b> (Settings &rarr; Accessibility &rarr; Guided Access) before starting, then triple-click the top button once you're in the exam.</span>
+    <button id="btn-dismiss-guided-access-tip" aria-label="Dismiss">&times;</button>
+  </div>
   <div class="top-header">
     <div class="exam-name">Weekly Practice Test &mdash; NEET PG Format</div>
     <div class="candidate-block">
@@ -128,6 +141,7 @@
     <div class="result-card wrong"><div class="value" id="result-wrong">0</div><div class="label">Wrong</div></div>
   </div>
   <p style="font-size:13px;color:#777;">Unattempted: <b id="result-unattempted">0</b></p>
+  <p id="result-integrity-note" class="integrity-note hidden"></p>
 
   <h2>Section-wise Breakdown</h2>
   <table class="section-breakdown">

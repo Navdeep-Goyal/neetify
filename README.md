@@ -27,6 +27,21 @@ git push -u origin main
 
 Then enable Pages in the repo settings as above.
 
+## Exam lockdown (tab/app-switch detection)
+Once you begin a section, the site tries to enforce exam-like conditions:
+- **Fullscreen is requested automatically** when you start or resume an exam.
+- **Leaving the tab/app or exiting fullscreen is detected and logged as a violation**, with an on-screen warning ("Violation 1 of 3...").
+- **After 3 violations, the exam auto-submits** — same as a section timer running out — and the result screen shows a note that it was auto-submitted for repeated exits.
+- A generic browser "leave site?" confirmation appears if you try to close the tab or navigate away mid-exam (the exact wording is controlled by the browser, not this site).
+
+**Important honest limitation:** no website can block OS-level app-switching (Alt+Tab, Cmd+Tab, the Home button, etc.) — browsers deliberately don't give any site that power, for your own security. What this *does* do is detect every time you leave and hold you accountable for it via the violation count, the same mechanism real browser-based proctored exams use. If you want the threshold different from 3, it's the `MAX_VIOLATIONS` constant near the top of `js/app.js`.
+
+### iPad specifics
+- **Fullscreen works on iPad Safari** — unlike iPhone Safari, iPadOS Safari supports fullscreening an arbitrary element (not just video), so the exam should genuinely go fullscreen when you start it.
+- **Tab/app-switch detection (the core violation mechanism) is unaffected by device** — it uses the standard Page Visibility API, which is reliable across Safari, Chrome, and every other browser on iPad.
+- **The "leave site?" browser confirmation is unreliable on iOS/iPadOS Safari** — Apple's WebKit engine doesn't consistently show it, especially for app-switching. This isn't a gap in the core protection (that's the violation counter, which still fires), just a missing extra nudge when actually closing the tab.
+- **If fullscreen is ever denied** (e.g. by Screen Time or MDM content restrictions on a school-managed iPad), a small banner appears suggesting **Guided Access** (Settings → Accessibility → Guided Access, then triple-click the top button once in the exam) — this is the one thing that genuinely *can* lock an iPad to a single app at the OS level, since no website ever can.
+
 ## Weekly unlock rule
 Each week's exam is **locked until 1:00 PM IST on that week's Sunday** \u2014 the study window has to actually be over before you can attempt it. The landing page shows each week as a card:
 - **Locked** \u2014 disabled, shows the exact unlock date/time and a live "in Xd Xh Xm" countdown
