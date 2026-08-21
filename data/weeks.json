@@ -1,0 +1,36 @@
+{
+  "weeks": [
+    {
+      "id": "week1",
+      "label": "Week 1",
+      "dateRangeLabel": "Aug 18 – Aug 23, 2026",
+      "weekStartDate": "2026-08-18",
+      "weekEndDate": "2026-08-23",
+      "questionFile": "data/questions-week1.json"
+    },
+    {
+      "id": "week2",
+      "label": "Week 2",
+      "dateRangeLabel": "Aug 24 – Aug 30, 2026",
+      "weekStartDate": "2026-08-24",
+      "weekEndDate": "2026-08-30",
+      "questionFile": "data/questions-week2.json"
+    },
+    {
+      "id": "week3",
+      "label": "Week 3",
+      "dateRangeLabel": "Aug 31 – Sep 6, 2026",
+      "weekStartDate": "2026-08-31",
+      "weekEndDate": "2026-09-06",
+      "questionFile": "data/questions-week3.json"
+    },
+    {
+      "id": "week4",
+      "label": "Week 4",
+      "dateRangeLabel": "Sep 7 – Sep 13, 2026",
+      "weekStartDate": "2026-09-07",
+      "weekEndDate": "2026-09-13",
+      "questionFile": "data/questions-week4.json"
+    }
+  ]
+}

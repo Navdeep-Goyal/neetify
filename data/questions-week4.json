@@ -1,0 +1,700 @@
+{
+  "examTitle": "Weekly Practice Test — Week 4",
+  "examSubtitle": "Ophthalmology (complete) | ENT (complete) | Neurology (starting)",
+  "totalMarks": 180,
+  "marksPerCorrect": 4,
+  "marksPerWrong": -1,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "durationSeconds": 1610,
+      "questionIds": [
+        "OPHTH12",
+        "OPHTH13",
+        "OPHTH14",
+        "OPHTH15",
+        "OPHTH16",
+        "OPHTH17",
+        "OPHTH18",
+        "OPHTH19",
+        "OPHTH20",
+        "OPHTH21",
+        "ENT6",
+        "ENT7",
+        "ENT8",
+        "ENT9",
+        "ENT10",
+        "ENT11",
+        "ENT12",
+        "ENT13",
+        "ENT14",
+        "ENT15",
+        "ENT16",
+        "ENT17",
+        "ENT17b"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "durationSeconds": 1540,
+      "questionIds": [
+        "ENT18",
+        "ENT19",
+        "ENT20",
+        "ENT21",
+        "NEURO1",
+        "NEURO2",
+        "NEURO3",
+        "NEURO4",
+        "NEURO5",
+        "NEURO6",
+        "NEURO7",
+        "NEURO8",
+        "NEURO9",
+        "NEURO10",
+        "NEURO11",
+        "NEURO12",
+        "NEURO13",
+        "NEURO14",
+        "NEURO15",
+        "NEURO16",
+        "NEURO17",
+        "NEURO18"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "OPHTH12",
+      "subject": "Ophthalmology",
+      "topic": "Retina",
+      "question": "A patient with a 15-year history of poorly controlled type 2 diabetes undergoes fundus examination, which reveals neovascularization of the disc and preretinal hemorrhages. What stage of diabetic retinopathy is this, and what is the preferred initial treatment?",
+      "options": {
+        "A": "Proliferative diabetic retinopathy; panretinal (scatter) laser photocoagulation (with anti-VEGF often used adjunctively)",
+        "B": "Mild non-proliferative diabetic retinopathy; observation only",
+        "C": "Background retinopathy; no treatment needed",
+        "D": "Diabetic papillitis; systemic steroids only"
+      },
+      "correct": "A",
+      "explanation": "The presence of neovascularization (new abnormal vessel growth, here at the optic disc) defines proliferative diabetic retinopathy (PDR), the advanced, sight-threatening stage that carries high risk of vitreous hemorrhage and tractional retinal detachment. Panretinal (scatter) laser photocoagulation is the mainstay treatment, reducing the retina's oxygen demand and neovascularization drive; anti-VEGF injections are increasingly used alongside or as an alternative in select cases."
+    },
+    {
+      "id": "OPHTH13",
+      "subject": "Ophthalmology",
+      "topic": "Retina",
+      "question": "A 70-year-old presents with sudden, painless, complete loss of vision in one eye. Fundus examination shows a pale, edematous retina with a bright red spot at the fovea. What is the diagnosis, and what does the red spot represent?",
+      "options": {
+        "A": "Central retinal artery occlusion; the 'cherry-red spot' represents the thin fovea (with no ganglion cell layer) showing the normal choroidal circulation through it, surrounded by ischemic pale retina",
+        "B": "Central retinal vein occlusion; the red spot represents a hemorrhage at the fovea",
+        "C": "Retinal detachment; the red spot represents subretinal blood",
+        "D": "Age-related macular degeneration; the red spot represents a drusen deposit"
+      },
+      "correct": "A",
+      "explanation": "Central retinal artery occlusion (CRAO) is an ophthalmic and vascular emergency, presenting with sudden painless profound vision loss and a pale, edematous retina from ischemia — except at the fovea, which is thin (lacking the ganglion cell layer) and shows the normal red choroidal circulation beneath it, creating the classic 'cherry-red spot' against the surrounding pale, swollen retina."
+    },
+    {
+      "id": "OPHTH14",
+      "subject": "Ophthalmology",
+      "topic": "Retina",
+      "question": "A highly myopic patient suddenly reports flashes of light and floaters, followed by a curtain-like shadow progressing across their peripheral vision. What is the most likely diagnosis, and why does high myopia increase this risk?",
+      "options": {
+        "A": "Retinal detachment; myopic eyes have an elongated axial length, predisposing to peripheral retinal thinning/degeneration and vitreous traction",
+        "B": "Migraine with aura; no relation to myopia",
+        "C": "Central serous chorioretinopathy; unrelated to axial length",
+        "D": "Vitreous hemorrhage from proliferative diabetic retinopathy"
+      },
+      "correct": "A",
+      "explanation": "Retinal detachment classically presents with flashes (photopsia, from vitreous traction on the retina), floaters (from vitreous debris/hemorrhage), and a progressive curtain-like visual field defect corresponding to the detached area. High myopia is a major risk factor because the elongated axial length of the myopic eye causes peripheral retinal thinning and lattice degeneration, along with increased vitreous traction, both predisposing to retinal tears and detachment."
+    },
+    {
+      "id": "OPHTH15",
+      "subject": "Ophthalmology",
+      "topic": "Retina",
+      "question": "A child presents with night blindness (nyctalopia) progressing over years to constriction of peripheral visual fields ('tunnel vision'). Fundus exam shows bone-spicule shaped pigmentation in the mid-peripheral retina and attenuated retinal vessels. What is the diagnosis?",
+      "options": {
+        "A": "Retinitis pigmentosa",
+        "B": "Retinoblastoma",
+        "C": "Central serous chorioretinopathy",
+        "D": "Age-related macular degeneration"
+      },
+      "correct": "A",
+      "explanation": "Retinitis pigmentosa is a group of inherited retinal dystrophies primarily affecting rod photoreceptors first, causing early night blindness followed by progressive peripheral visual field constriction ('tunnel vision'). The classic fundus triad is bone-spicule pigmentation in the mid-periphery, attenuated (narrowed) retinal blood vessels, and waxy pallor of the optic disc."
+    },
+    {
+      "id": "OPHTH16",
+      "subject": "Ophthalmology",
+      "topic": "Conjunctiva and Orbit & Squint",
+      "question": "A patient presents with an acutely red eye, copious purulent discharge causing the eyelids to stick together, and mild discomfort but no significant photophobia or vision loss. What type of conjunctivitis is most likely, and how does it typically differ from viral conjunctivitis on discharge character?",
+      "options": {
+        "A": "Bacterial conjunctivitis; produces thick, purulent (mucopurulent) discharge, unlike the typically watery discharge of viral conjunctivitis",
+        "B": "Allergic conjunctivitis; produces purulent discharge with severe itching as the dominant symptom",
+        "C": "Viral conjunctivitis; always produces thick purulent discharge identical to bacterial",
+        "D": "There is no clinically useful way to distinguish bacterial from viral conjunctivitis"
+      },
+      "correct": "A",
+      "explanation": "Bacterial conjunctivitis classically produces thick, purulent/mucopurulent discharge causing lids to stick together (especially on waking), while viral conjunctivitis typically produces a watery discharge often with preauricular lymphadenopathy and may be associated with an upper respiratory infection. Allergic conjunctivitis is characterized predominantly by itching with a stringy/watery discharge, often bilateral and associated with other atopic symptoms."
+    },
+    {
+      "id": "OPHTH17",
+      "subject": "Ophthalmology",
+      "topic": "Conjunctiva and Orbit & Squint",
+      "question": "A child presents with eyelid swelling, redness, and mild proptosis with painful and restricted eye movements, along with fever. This is distinguished from a milder condition (with lid swelling/redness but normal eye movements and no proptosis) by the involvement of structures behind the orbital septum. What are these two conditions called?",
+      "options": {
+        "A": "Orbital cellulitis (post-septal, with proptosis/restricted movements) versus preseptal (periorbital) cellulitis (pre-septal, no proptosis/normal movements)",
+        "B": "Both conditions are simply called 'conjunctivitis' with varying severity",
+        "C": "Dacryocystitis versus dacryoadenitis",
+        "D": "Chalazion versus stye, differentiated only by size"
+      },
+      "correct": "A",
+      "explanation": "Orbital (post-septal) cellulitis involves infection posterior to the orbital septum, affecting orbital contents — causing proptosis, painful/restricted extraocular movements, and potential vision-threatening or intracranial complications, requiring urgent imaging and IV antibiotics. Preseptal (periorbital) cellulitis is confined anterior to the septum, causing eyelid swelling/redness without proptosis or limited eye movement, and is generally less severe, though vigilance for progression is still needed."
+    },
+    {
+      "id": "OPHTH18",
+      "subject": "Ophthalmology",
+      "topic": "Conjunctiva and Orbit & Squint",
+      "question": "On the cover-uncover test, when the child's normally fixating right eye is covered, the left eye is seen to drift outward and then re-fixate when uncovered. What type of squint (strabismus) does this indicate?",
+      "options": {
+        "A": "Left exotropia (outward deviation of the left eye)",
+        "B": "Left esotropia (inward deviation)",
+        "C": "Right hypertropia (upward deviation of the right eye)",
+        "D": "No squint; this is a normal finding"
+      },
+      "correct": "A",
+      "explanation": "In the cover-uncover test, covering the dominant/fixating eye forces the other eye to take up fixation if it was deviated; observing that eye drift and then re-fixate on uncovering reveals a manifest squint. Outward drift indicates exotropia (divergent squint) of that eye, while inward drift would indicate esotropia (convergent squint) — early detection and treatment of childhood squint is important to prevent amblyopia."
+    },
+    {
+      "id": "OPHTH19",
+      "subject": "Ophthalmology",
+      "topic": "Refractory Errors",
+      "question": "A patient can see near objects clearly but distant objects appear blurred; the eyeball is found to be axially elongated on biometry. What is the refractive error, and which type of corrective lens is used?",
+      "options": {
+        "A": "Myopia (near-sightedness); corrected with a concave (diverging, minus power) lens",
+        "B": "Hypermetropia (far-sightedness); corrected with a concave lens",
+        "C": "Myopia; corrected with a convex (converging) lens",
+        "D": "Presbyopia; corrected with a concave lens"
+      },
+      "correct": "A",
+      "explanation": "Myopia (near-sightedness) occurs when the eyeball is axially too long (or the refractive power too strong) for its focal length, causing light to focus in front of the retina; distant objects appear blurred while near vision remains clear. It is corrected with a concave (minus/diverging) lens, which diverges light rays before they enter the eye, shifting the focal point back onto the retina."
+    },
+    {
+      "id": "OPHTH20",
+      "subject": "Ophthalmology",
+      "topic": "Refractory Errors",
+      "question": "A patient's vision is blurred at both near and far distances, and retinoscopy reveals that the cornea has unequal curvature in different meridians (rather than a uniform spherical curvature). What refractive error is this, and how is it typically corrected?",
+      "options": {
+        "A": "Astigmatism; corrected with a cylindrical lens",
+        "B": "Myopia; corrected with a spherical concave lens",
+        "C": "Hypermetropia; corrected with a spherical convex lens",
+        "D": "Presbyopia; corrected with bifocal spherical lenses only"
+      },
+      "correct": "A",
+      "explanation": "Astigmatism results from an irregular (non-spherical) curvature of the cornea (or occasionally the lens), where different meridians have different refractive powers, causing light to focus at multiple points rather than a single point — blurring vision at all distances to varying degrees. It is corrected with a cylindrical lens (often combined with a spherical component for any co-existing myopia/hypermetropia), which specifically corrects the meridian-dependent refractive error."
+    },
+    {
+      "id": "OPHTH21",
+      "subject": "Ophthalmology",
+      "topic": "Refractory Errors",
+      "question": "A 45-year-old with previously normal vision begins to notice difficulty reading fine print up close, needing to hold reading material farther away, while distance vision remains unaffected. What is this age-related condition called, and what is its underlying mechanism?",
+      "options": {
+        "A": "Presbyopia; progressive loss of lens elasticity and accommodative power with age",
+        "B": "Myopia; axial elongation of the eyeball with age",
+        "C": "Hypermetropia developing suddenly in adulthood with no prior refractive error",
+        "D": "Cataract; opacification of the lens causing near-vision-specific blur only"
+      },
+      "correct": "A",
+      "explanation": "Presbyopia is the physiological, age-related decline in the eye's accommodative (near-focusing) power, due to progressive loss of lens elasticity and reduced ciliary muscle efficiency, typically becoming symptomatic from the fifth decade onward. It affects near vision specifically (distance vision is preserved unless another refractive error coexists) and is corrected with reading glasses, bifocals, or progressive lenses."
+    },
+    {
+      "id": "ENT6",
+      "subject": "ENT",
+      "topic": "Pathologies Of Ear",
+      "question": "A patient with long-standing chronic suppurative otitis media has a central tympanic membrane perforation with mucoid, non-foul-smelling discharge, and no cholesteatoma on examination. Is this the 'safe' or 'unsafe' type of CSOM, and why does that distinction matter?",
+      "options": {
+        "A": "Safe (tubotympanic) type; central perforation without cholesteatoma carries a lower risk of serious complications, unlike the unsafe (atticoantral) type with cholesteatoma, which can erode bone and cause intracranial spread",
+        "B": "Unsafe type; all CSOM with any discharge is automatically classified as unsafe",
+        "C": "Safe type only if there is a marginal perforation, not a central one",
+        "D": "The safe/unsafe distinction is no longer clinically relevant"
+      },
+      "correct": "A",
+      "explanation": "Chronic suppurative otitis media is classified as safe (tubotympanic), typically with a central perforation and mucoid discharge without cholesteatoma, generally responding to medical management with a lower complication risk; versus unsafe (atticoantral), typically with a marginal/attic perforation and cholesteatoma (a destructive keratinizing squamous epithelium) that can erode ossicles and bone, risking serious complications like labyrinthitis, facial palsy, or intracranial infection — usually requiring surgery."
+    },
+    {
+      "id": "ENT7",
+      "subject": "ENT",
+      "topic": "Pathologies Of Ear",
+      "question": "A 3-year-old presents with ear pain, fever, and irritability; otoscopy shows a bulging, erythematous tympanic membrane with loss of the light reflex. What is the most likely diagnosis, and which organism is most commonly implicated?",
+      "options": {
+        "A": "Acute otitis media; Streptococcus pneumoniae is the most common bacterial cause",
+        "B": "Otitis externa; Pseudomonas aeruginosa is most common",
+        "C": "Chronic otitis media; Staphylococcus aureus is most common",
+        "D": "Mastoiditis; Mycobacterium tuberculosis is most common"
+      },
+      "correct": "A",
+      "explanation": "Acute otitis media, common in young children partly due to their shorter, more horizontal Eustachian tubes, presents with ear pain, fever, irritability, and a bulging, erythematous, poorly mobile tympanic membrane with loss of the normal light reflex. Streptococcus pneumoniae is the most common bacterial pathogen, followed by non-typeable Haemophilus influenzae and Moraxella catarrhalis."
+    },
+    {
+      "id": "ENT8",
+      "subject": "ENT",
+      "topic": "Pathologies Of Ear",
+      "question": "A middle-aged woman presents with slowly progressive bilateral conductive hearing loss, tinnitus, and a family history of similar hearing loss; otoscopy is normal, but audiometry shows a dip at 2000 Hz on bone conduction. What is the diagnosis, and what is this audiometric dip called?",
+      "options": {
+        "A": "Otosclerosis; the dip is called Carhart's notch",
+        "B": "Presbycusis; the dip is called Carhart's notch",
+        "C": "Otosclerosis; the dip is called a Rinne notch",
+        "D": "Meniere's disease; the dip is called Carhart's notch"
+      },
+      "correct": "A",
+      "explanation": "Otosclerosis is an inherited condition causing abnormal bone remodeling around the stapes footplate, leading to progressive conductive (later mixed) hearing loss, often bilateral, with a family history and normal otoscopic examination. Carhart's notch — an artifactual dip in bone conduction thresholds around 2000 Hz on audiometry — is a characteristic finding, resulting from altered mechanical resonance of the ossicular chain rather than true sensorineural loss at that frequency."
+    },
+    {
+      "id": "ENT9",
+      "subject": "ENT",
+      "topic": "Pathologies Of Ear",
+      "question": "A child recovering inadequately from acute otitis media develops persistent fever, postauricular swelling with the pinna pushed forward and down, and tenderness over the mastoid process. What complication is this, and why is prompt treatment important?",
+      "options": {
+        "A": "Acute mastoiditis; if untreated, it can progress to intracranial complications (e.g., meningitis, brain abscess) or facial nerve palsy",
+        "B": "Otosclerosis; requires only observation",
+        "C": "Presbycusis; age-related, no urgent treatment needed",
+        "D": "Simple otitis externa; topical drops alone suffice"
+      },
+      "correct": "A",
+      "explanation": "Acute mastoiditis is a serious suppurative complication of inadequately treated acute otitis media, presenting with postauricular swelling, protrusion of the pinna (pushed forward and downward/outward), tenderness, and persistent fever. Prompt antibiotic treatment (and often surgical drainage/mastoidectomy) is essential, as it can otherwise progress to serious complications including subperiosteal abscess, facial nerve palsy, labyrinthitis, or intracranial spread (meningitis, sigmoid sinus thrombosis, brain abscess)."
+    },
+    {
+      "id": "ENT10",
+      "subject": "ENT",
+      "topic": "Pathologies Of Ear",
+      "question": "On tuning fork examination (512 Hz) of a patient with left ear hearing loss, the Rinne test is negative on the left (bone conduction greater than air conduction) and the Weber test lateralizes to the left ear. What type of hearing loss does this indicate in the left ear?",
+      "options": {
+        "A": "Conductive hearing loss in the left ear",
+        "B": "Sensorineural hearing loss in the left ear",
+        "C": "Normal hearing in the left ear",
+        "D": "Sensorineural hearing loss in the right ear"
+      },
+      "correct": "A",
+      "explanation": "A negative Rinne test (bone conduction better than air conduction, abnormal) in an ear, combined with Weber lateralizing TO that same (affected) ear, indicates conductive hearing loss in that ear — sound is better perceived via bone conduction (bypassing the conductive pathway) and lateralizes toward the 'worse' conductive ear because it isn't masked by ambient/room noise the way the normal ear is. In sensorineural loss, Weber instead lateralizes AWAY from the affected ear, with Rinne remaining positive (though reduced) bilaterally."
+    },
+    {
+      "id": "ENT11",
+      "subject": "ENT",
+      "topic": "Facial Nerve",
+      "question": "A previously healthy 35-year-old develops sudden onset of unilateral facial weakness involving the forehead (unable to wrinkle it) as well as the lower face, with drooping of the mouth and inability to close the eye on the same side. What is the most likely diagnosis, and how does the pattern of weakness help localize it as a lower motor neuron lesion?",
+      "options": {
+        "A": "Bell's palsy; LMN facial palsy affects the entire ipsilateral face including the forehead, unlike UMN lesions (e.g., stroke) which spare the forehead due to bilateral cortical innervation of the frontalis",
+        "B": "Stroke causing UMN facial palsy, which also spares the forehead in this pattern",
+        "C": "Bell's palsy; forehead sparing is expected and this presentation is inconsistent with it",
+        "D": "Myasthenia gravis, which never involves the face"
+      },
+      "correct": "A",
+      "explanation": "Bell's palsy is an acute, typically idiopathic (though often postulated to be viral-related, e.g., HSV reactivation) lower motor neuron facial nerve palsy, causing weakness of the entire ipsilateral side of the face, including the forehead (unable to wrinkle it) and inability to close the eye — because the LMN lesion affects all fibers to that side. This contrasts with an upper motor neuron lesion (e.g., stroke), which spares the forehead/upper face due to bilateral cortical innervation of the frontalis muscle, sparing forehead wrinkling."
+    },
+    {
+      "id": "ENT12",
+      "subject": "ENT",
+      "topic": "Facial Nerve",
+      "question": "A patient with facial nerve palsy is being followed to assess recovery and grade the severity of dysfunction. Which widely used clinical grading system, ranging from grade I (normal function) to grade VI (total paralysis), is used for this purpose?",
+      "options": {
+        "A": "House-Brackmann grading system",
+        "B": "Glasgow Coma Scale",
+        "C": "Sarnat staging",
+        "D": "New York Heart Association classification"
+      },
+      "correct": "A",
+      "explanation": "The House-Brackmann grading system is the most widely used clinical scale for assessing facial nerve function/recovery after palsy, ranging from Grade I (normal function) through Grade VI (total paralysis, no movement), based on observed symmetry, movement, and synkinesis — helping standardize assessment and track recovery over serial follow-up visits."
+    },
+    {
+      "id": "ENT13",
+      "subject": "ENT",
+      "topic": "Paranasal Sinus & Nose",
+      "question": "A patient presents with facial pain/pressure over the cheek, purulent nasal discharge, and tenderness over the maxillary region following an upper respiratory infection lasting more than 10 days. Which paranasal sinus is most commonly involved in acute sinusitis, and why?",
+      "options": {
+        "A": "Maxillary sinus; it is the largest paranasal sinus and its ostium drains high on its medial wall, making gravity-dependent drainage relatively inefficient",
+        "B": "Sphenoid sinus; due to its posterior location, it is always the first and most commonly affected",
+        "C": "Frontal sinus; due to its exposure to trauma",
+        "D": "Ethmoid sinus exclusively, with the maxillary sinus never being involved"
+      },
+      "correct": "A",
+      "explanation": "The maxillary sinus is the most commonly affected sinus in acute sinusitis — it is the largest paranasal sinus, and its natural ostium is located high on its medial wall, making gravity-dependent drainage inefficient and predisposing to mucus stasis and secondary bacterial infection, especially following a viral upper respiratory infection that causes mucosal edema and ostial obstruction."
+    },
+    {
+      "id": "ENT14",
+      "subject": "ENT",
+      "topic": "Paranasal Sinus & Nose",
+      "question": "A patient with chronic nasal obstruction, recurrent sinusitis, and a history of aspirin sensitivity and asthma is found to have bilateral nasal polyps on examination. What is this clinical triad called?",
+      "options": {
+        "A": "Samter's triad (aspirin-exacerbated respiratory disease): nasal polyps, asthma, and aspirin/NSAID sensitivity",
+        "B": "Charcot's triad",
+        "C": "Virchow's triad",
+        "D": "Whipple's triad"
+      },
+      "correct": "A",
+      "explanation": "Samter's triad (aspirin-exacerbated respiratory disease) consists of nasal polyps, asthma, and sensitivity to aspirin/NSAIDs (which can trigger bronchospasm and worsen polyps/sinusitis in these patients). Nasal polyps are also strongly associated with allergic rhinitis and chronic rhinosinusitis more broadly, but the specific triad with asthma and NSAID sensitivity is a distinct, clinically important recognized entity."
+    },
+    {
+      "id": "ENT15",
+      "subject": "ENT",
+      "topic": "Paranasal Sinus & Nose",
+      "question": "A child presents with recurrent anterior epistaxis, most often after nose-picking or minor trauma. Bleeding is most commonly from which vascular area of the nasal septum?",
+      "options": {
+        "A": "Little's area (Kiesselbach's plexus), an anastomotic network of vessels on the anterior nasal septum",
+        "B": "Woodruff's plexus, located posteriorly, which is the most common site in children",
+        "C": "The sphenopalatine artery directly, which is the most common site of epistaxis in children",
+        "D": "The nasal bone itself, which has no significant vascular supply relevant to epistaxis"
+      },
+      "correct": "A",
+      "explanation": "Little's area, on the anterior nasal septum, contains Kiesselbach's plexus — an anastomotic network formed by branches of the anterior ethmoidal, sphenopalatine, greater palatine, and superior labial arteries — and is the most common site of epistaxis, especially anterior bleeds in children (often from trauma/nose-picking). Posterior epistaxis (less common, often in older adults with hypertension/atherosclerosis) more often arises from Woodruff's plexus or branches of the sphenopalatine artery and can be more severe/harder to control."
+    },
+    {
+      "id": "ENT16",
+      "subject": "ENT",
+      "topic": "ENT Trauma, Infections, Tonsils",
+      "question": "A patient with severe sore throat, high fever, trismus (difficulty opening the mouth), a muffled 'hot potato' voice, and uvula deviation away from the affected side on examination. What is the diagnosis, and what is the typical management?",
+      "options": {
+        "A": "Peritonsillar abscess (quinsy); needle aspiration or incision and drainage, plus antibiotics",
+        "B": "Simple acute tonsillitis; oral antibiotics alone, no drainage needed",
+        "C": "Retropharyngeal abscess; management is identical to peritonsillar abscess with no distinguishing features",
+        "D": "Ludwig's angina; management focuses only on oral antibiotics, no airway concern"
+      },
+      "correct": "A",
+      "explanation": "Peritonsillar abscess (quinsy) is a complication of acute tonsillitis, presenting with severe unilateral sore throat, trismus (from pterygoid muscle irritation), a muffled 'hot potato' voice, and uvula deviation away from the affected side due to peritonsillar swelling. Management requires drainage (needle aspiration or incision and drainage) in addition to antibiotics, distinguishing it from uncomplicated tonsillitis, which is managed medically without drainage."
+    },
+    {
+      "id": "ENT17",
+      "subject": "ENT",
+      "topic": "ENT Trauma, Infections, Tonsils",
+      "question": "A toddler presents to the emergency department after reportedly swallowing a small round battery. Why is this considered a time-critical emergency requiring urgent removal, unlike swallowing a coin?",
+      "options": {
+        "A": "Button batteries can cause rapid liquefactive necrosis and esophageal perforation within hours due to generation of hydroxide ions/electrical current at the site of impaction",
+        "B": "Button batteries are inert and pose no different risk compared to a coin",
+        "C": "The only risk is heavy metal toxicity, which develops over weeks, not hours",
+        "D": "Batteries are always small enough to pass through the GI tract without any risk"
+      },
+      "correct": "A",
+      "explanation": "Button/disc battery ingestion is a true emergency distinct from coin ingestion because impacted batteries generate an electrical current when in contact with moist tissue, producing hydroxide ions and causing rapid liquefactive necrosis of the esophageal wall — perforation, fistula formation (including into major vessels), and severe complications can occur within hours, so urgent endoscopic removal is required if the battery is lodged in the esophagus."
+    },
+    {
+      "id": "ENT17b",
+      "subject": "ENT",
+      "topic": "ENT Trauma, Infections, Tonsils",
+      "question": "A patient presents shortly after facial trauma with a deviated, swollen nose, epistaxis, and periorbital bruising. Before any definitive fracture reduction, which complication of nasal trauma must first be actively excluded on examination, given that missing it can lead to septal necrosis?",
+      "options": {
+        "A": "Septal hematoma; must be identified and drained promptly, as an untreated hematoma can cause septal cartilage necrosis and saddle-nose deformity",
+        "B": "Septal hematoma is not a recognized complication of nasal trauma",
+        "C": "Only cosmetic deviation needs to be addressed; hematoma exclusion is not part of standard assessment",
+        "D": "CSF rhinorrhea is the only complication requiring exclusion, and septal hematoma is irrelevant"
+      },
+      "correct": "A",
+      "explanation": "Following nasal trauma, examination must actively exclude a septal hematoma (a collection of blood between the septal cartilage and its overlying perichondrium), seen as a bilateral, bulging, bluish-red swelling of the septum. If missed and untreated, it can cause pressure necrosis of the cartilage (which depends on the perichondrium for its blood supply), leading to septal perforation and a saddle-nose deformity — so prompt incision and drainage is required before addressing the bony fracture itself."
+    },
+    {
+      "id": "ENT18",
+      "subject": "ENT",
+      "topic": "Head and Neck Spaces & Larynx and Vocal Cord Palsy",
+      "question": "A patient with a dental infection develops rapidly progressive, bilateral, brawny (non-fluctuant, board-like) swelling of the floor of the mouth and submandibular region, pushing the tongue upward and backward, with drooling and stridor. What is this life-threatening condition, and what is the primary concern requiring urgent management?",
+      "options": {
+        "A": "Ludwig's angina; airway obstruction is the primary life-threatening concern, requiring urgent airway management (often early intubation/tracheostomy) alongside antibiotics and surgical drainage",
+        "B": "Simple dental abscess; oral antibiotics alone are sufficient with no airway risk",
+        "C": "Peritonsillar abscess; managed identically with no distinct airway urgency",
+        "D": "Angioedema; managed with antihistamines alone, no airway concern"
+      },
+      "correct": "A",
+      "explanation": "Ludwig's angina is a rapidly progressive bilateral cellulitis of the submandibular, sublingual, and submental spaces (often odontogenic in origin), causing brawny, board-like swelling that pushes the tongue superoposteriorly, threatening airway obstruction — the primary life-threatening concern. Management prioritizes securing the airway (often early elective intubation or tracheostomy before obstruction becomes complete) alongside IV antibiotics and surgical decompression/drainage."
+    },
+    {
+      "id": "ENT19",
+      "subject": "ENT",
+      "topic": "Head and Neck Spaces & Larynx and Vocal Cord Palsy",
+      "question": "Following thyroidectomy, a patient develops hoarseness of voice. Which nerve is most likely injured intraoperatively, given its close anatomical relationship to the thyroid gland's inferior pole and inferior thyroid artery?",
+      "options": {
+        "A": "Recurrent laryngeal nerve",
+        "B": "Superior laryngeal nerve, external branch (which affects voice pitch, not hoarseness from vocal cord paralysis)",
+        "C": "Hypoglossal nerve",
+        "D": "Vagus nerve, at a point unrelated to the thyroid gland"
+      },
+      "correct": "A",
+      "explanation": "The recurrent laryngeal nerve runs in close proximity to the inferior thyroid artery and the posterior/inferior aspect of the thyroid gland, making it vulnerable to injury during thyroidectomy. Unilateral injury causes vocal cord paralysis and hoarseness; bilateral injury can cause severe airway compromise (bilateral vocal cord paralysis in a paramedian position), a surgical emergency. The external branch of the superior laryngeal nerve instead affects the cricothyroid muscle, altering voice pitch rather than causing frank hoarseness/cord paralysis."
+    },
+    {
+      "id": "ENT20",
+      "subject": "ENT",
+      "topic": "Oral Cavity and Salivary Glands",
+      "question": "A 55-year-old chronic tobacco chewer presents with a white patch on the lateral border of the tongue that cannot be scraped off. What is this lesion called, and why is it clinically significant?",
+      "options": {
+        "A": "Leukoplakia; it is a premalignant lesion with potential for malignant transformation to squamous cell carcinoma, especially with ongoing tobacco/areca nut use",
+        "B": "Erythroplakia; it is always benign and requires no follow-up",
+        "C": "Aphthous ulcer; entirely benign, self-limiting, unrelated to tobacco use",
+        "D": "Oral candidiasis; scrapes off easily leaving a normal mucosal surface underneath"
+      },
+      "correct": "A",
+      "explanation": "Leukoplakia is a clinical term for a white patch/plaque that cannot be scraped off and cannot be attributed to any other diagnosable condition; it is considered a premalignant lesion with a risk of transformation to squamous cell carcinoma, particularly with continued risk factor exposure (tobacco, areca nut/betel quid chewing, alcohol). Erythroplakia (a red patch) carries an even higher malignant transformation risk than leukoplakia and both require biopsy and close follow-up."
+    },
+    {
+      "id": "ENT21",
+      "subject": "ENT",
+      "topic": "Oral Cavity and Salivary Glands",
+      "question": "A patient presents with a slow-growing, painless, mobile swelling in the region of the parotid gland, present for several years without facial nerve involvement. What is the most likely diagnosis, and why is facial nerve preservation critical during its surgical excision?",
+      "options": {
+        "A": "Pleomorphic adenoma (the most common salivary gland tumor); facial nerve runs through the parotid gland and must be carefully identified/preserved during superficial parotidectomy to avoid facial palsy",
+        "B": "Warthin's tumor, which is more common in women and is the most common salivary tumor overall",
+        "C": "Mucoepidermoid carcinoma, which is universally benign and slow-growing",
+        "D": "Adenoid cystic carcinoma, characterized by rapid growth over weeks"
+      },
+      "correct": "A",
+      "explanation": "Pleomorphic adenoma is the most common salivary gland tumor overall, most frequently arising in the parotid gland, and typically presents as a slow-growing, painless, mobile mass without facial nerve involvement (facial weakness would suggest malignant infiltration). Since the facial nerve traverses the parotid gland, careful surgical dissection to identify and preserve it is essential during excision (typically via superficial parotidectomy) to avoid iatrogenic facial nerve injury."
+    },
+    {
+      "id": "NEURO1",
+      "subject": "Neurology",
+      "topic": "Sensory Receptors and Nerve Fibres & Hypothalamus/Thalamus/Memory",
+      "question": "A rapidly adapting mechanoreceptor located deep in the dermis and subcutaneous tissue is primarily responsible for sensing vibration and deep pressure. Which sensory receptor is this?",
+      "options": {
+        "A": "Pacinian corpuscle",
+        "B": "Meissner's corpuscle",
+        "C": "Merkel disc",
+        "D": "Free nerve endings"
+      },
+      "correct": "A",
+      "explanation": "Pacinian corpuscles are large, rapidly adapting mechanoreceptors located deep in the dermis/subcutaneous tissue and joint capsules, specialized for detecting vibration and deep pressure. Meissner's corpuscles (superficial dermis, rapidly adapting, light touch/texture), Merkel discs (superficial, slowly adapting, sustained touch/pressure), and free nerve endings (pain, temperature) are the other principal cutaneous sensory receptor types."
+    },
+    {
+      "id": "NEURO2",
+      "subject": "Neurology",
+      "topic": "Sensory Receptors and Nerve Fibres & Hypothalamus/Thalamus/Memory",
+      "question": "A patient with a hypothalamic lesion develops inability to regulate body temperature appropriately in a hot environment. Which specific hypothalamic nucleus/region is primarily responsible for heat dissipation responses (e.g., sweating, vasodilation)?",
+      "options": {
+        "A": "Anterior hypothalamus (with the preoptic area); its damage impairs heat-loss responses, predisposing to hyperthermia",
+        "B": "Posterior hypothalamus; primarily governs heat-loss responses",
+        "C": "Lateral hypothalamus; the primary satiety center",
+        "D": "Ventromedial nucleus; the primary hunger/feeding center"
+      },
+      "correct": "A",
+      "explanation": "The anterior hypothalamus (including the preoptic area) contains warmth-sensitive neurons and coordinates heat-loss mechanisms (sweating, cutaneous vasodilation); its damage impairs the ability to dissipate heat, predisposing to hyperthermia in warm conditions. The posterior hypothalamus, by contrast, coordinates heat-conservation and heat-production responses (vasoconstriction, shivering) — damage there predisposes to hypothermia in cold environments."
+    },
+    {
+      "id": "NEURO3",
+      "subject": "Neurology",
+      "topic": "Sensory Receptors and Nerve Fibres & Hypothalamus/Thalamus/Memory",
+      "question": "The thalamus serves as the major relay station for sensory information ascending to the cerebral cortex. Which specific thalamic nucleus relays somatosensory information (touch, proprioception, pain) from the body to the primary somatosensory cortex?",
+      "options": {
+        "A": "Ventral posterolateral (VPL) nucleus",
+        "B": "Lateral geniculate nucleus (visual relay)",
+        "C": "Medial geniculate nucleus (auditory relay)",
+        "D": "Anterior nucleus (limbic relay)"
+      },
+      "correct": "A",
+      "explanation": "The ventral posterolateral (VPL) nucleus of the thalamus relays somatosensory information (touch, proprioception, pain, temperature) from the body (via the spinothalamic tract and medial lemniscus) to the primary somatosensory cortex. The analogous relay for facial sensation is the ventral posteromedial (VPM) nucleus, while the lateral and medial geniculate nuclei serve visual and auditory relay respectively."
+    },
+    {
+      "id": "NEURO4",
+      "subject": "Neurology",
+      "topic": "Sensory Receptors and Nerve Fibres & Hypothalamus/Thalamus/Memory",
+      "question": "A patient with chronic alcohol use disorder and thiamine deficiency develops profound anterograde amnesia (inability to form new memories) with confabulation, out of proportion to other cognitive deficits. Damage to which brain structure(s) is most classically implicated in this memory disorder?",
+      "options": {
+        "A": "Mammillary bodies and the hippocampus/medial temporal lobe circuitry (as in Korsakoff syndrome)",
+        "B": "Primary motor cortex",
+        "C": "Cerebellum exclusively",
+        "D": "Basal ganglia exclusively, with no limbic involvement"
+      },
+      "correct": "A",
+      "explanation": "Korsakoff syndrome, resulting from thiamine (vitamin B1) deficiency (classically in chronic alcohol use, often following untreated Wernicke encephalopathy), causes profound anterograde amnesia with confabulation, due to damage to the mammillary bodies and other components of the hippocampal-diencephalic memory circuit (including the dorsomedial thalamic nucleus) — structures critical for consolidating new declarative memories."
+    },
+    {
+      "id": "NEURO5",
+      "subject": "Neurology",
+      "topic": "Basal Ganglia and Movement Disorders & Headache",
+      "question": "A 65-year-old presents with a resting 'pill-rolling' tremor, bradykinesia, cogwheel rigidity, and a shuffling gait with reduced arm swing. What is the diagnosis, and which basal ganglia structure/neurotransmitter pathway is primarily affected?",
+      "options": {
+        "A": "Parkinson's disease; degeneration of dopaminergic neurons in the substantia nigra pars compacta (nigrostriatal pathway)",
+        "B": "Huntington's disease; degeneration of the caudate nucleus with excess dopamine activity",
+        "C": "Wilson's disease; copper deposition in the lentiform nucleus with no dopaminergic involvement",
+        "D": "Essential tremor; a cerebellar, not basal ganglia, disorder"
+      },
+      "correct": "A",
+      "explanation": "Parkinson's disease results from progressive degeneration of dopaminergic neurons in the substantia nigra pars compacta, reducing dopaminergic input via the nigrostriatal pathway to the striatum. This produces the classic triad (plus postural instability, forming a tetrad) of resting tremor, rigidity, and bradykinesia, along with a characteristic shuffling, festinating gait with reduced arm swing."
+    },
+    {
+      "id": "NEURO6",
+      "subject": "Neurology",
+      "topic": "Basal Ganglia and Movement Disorders & Headache",
+      "question": "A 45-year-old with a strong family history of a similar illness develops progressive chorea (involuntary, dance-like movements), cognitive decline, and psychiatric symptoms. Imaging shows atrophy of a specific basal ganglia structure. Which structure is characteristically atrophied, and what is the mode of inheritance?",
+      "options": {
+        "A": "Caudate nucleus (with associated striatal atrophy); autosomal dominant inheritance (CAG trinucleotide repeat expansion in the HTT gene)",
+        "B": "Substantia nigra; autosomal recessive inheritance",
+        "C": "Subthalamic nucleus; X-linked inheritance",
+        "D": "Globus pallidus; mitochondrial inheritance"
+      },
+      "correct": "A",
+      "explanation": "Huntington's disease is an autosomal dominant neurodegenerative disorder caused by CAG trinucleotide repeat expansion in the HTT gene, leading to progressive atrophy of the caudate nucleus (and putamen), producing chorea, cognitive decline (progressing to dementia), and psychiatric disturbances. Unlike Parkinson's disease (a hypokinetic disorder from dopamine deficiency), Huntington's is a hyperkinetic disorder related to relative overactivity in specific basal ganglia circuits."
+    },
+    {
+      "id": "NEURO7",
+      "subject": "Neurology",
+      "topic": "Basal Ganglia and Movement Disorders & Headache",
+      "question": "A young patient presents with tremor, dysarthria, liver dysfunction, and a golden-brown ring at the periphery of the cornea on slit-lamp exam. What is the diagnosis, which basal ganglia structures are typically affected, and what is the underlying metabolic defect?",
+      "options": {
+        "A": "Wilson's disease; copper accumulation in the lentiform nucleus (putamen and globus pallidus) and liver, due to impaired biliary copper excretion (ATP7B gene mutation)",
+        "B": "Parkinson's disease; iron accumulation in the substantia nigra",
+        "C": "Huntington's disease; copper deposition in the caudate nucleus",
+        "D": "Hepatic encephalopathy from cirrhosis alone, unrelated to any specific metal accumulation"
+      },
+      "correct": "A",
+      "explanation": "Wilson's disease is an autosomal recessive disorder of copper metabolism (ATP7B gene mutation impairing biliary copper excretion and ceruloplasmin synthesis), leading to copper accumulation in the liver (hepatic dysfunction/cirrhosis), lentiform nucleus/basal ganglia (movement disorders, dysarthria, tremor), and cornea (Kayser-Fleischer ring — a golden-brown/greenish ring at the corneal periphery from copper deposition in Descemet's membrane)."
+    },
+    {
+      "id": "NEURO8",
+      "subject": "Neurology",
+      "topic": "Basal Ganglia and Movement Disorders & Headache",
+      "question": "A 30-year-old woman presents with recurrent unilateral throbbing headaches lasting 4-72 hours, associated with nausea, photophobia, and phonophobia, sometimes preceded by visual zigzag lines and scotomas. What is the diagnosis, and what are these preceding visual symptoms called?",
+      "options": {
+        "A": "Migraine (with aura); the preceding visual disturbance is called an 'aura'",
+        "B": "Tension-type headache; the visual symptoms are called 'prodrome' and are a defining feature of tension headache",
+        "C": "Cluster headache; visual auras are the defining feature of cluster headache",
+        "D": "Trigeminal neuralgia; associated with visual auras as a defining feature"
+      },
+      "correct": "A",
+      "explanation": "Migraine is characterized by recurrent unilateral (though can be bilateral), throbbing/pulsatile headache lasting 4-72 hours, with associated nausea/vomiting, photophobia, and phonophobia; in migraine with aura, transient neurological (typically visual — zigzag lines, scotomas) symptoms precede or accompany the headache. Tension-type headache is instead typically bilateral, band-like/pressing, without the associated autonomic/visual features; cluster headache causes severe unilateral periorbital pain with ipsilateral autonomic features (lacrimation, rhinorrhea) rather than visual aura."
+    },
+    {
+      "id": "NEURO9",
+      "subject": "Neurology",
+      "topic": "Basal Ganglia and Movement Disorders & Headache",
+      "question": "A patient describes severe, unilateral, excruciating periorbital/temporal headache attacks lasting 15-180 minutes, occurring in clusters over weeks, accompanied by ipsilateral lacrimation, conjunctival injection, and nasal congestion. What is the diagnosis, and what is a first-line acute abortive treatment?",
+      "options": {
+        "A": "Cluster headache; high-flow 100% oxygen (and/or subcutaneous sumatriptan) as first-line acute treatment",
+        "B": "Migraine; the same acute treatments apply identically with no difference in approach",
+        "C": "Tension-type headache; treated only with simple analgesics, never oxygen",
+        "D": "Trigeminal neuralgia; managed only with carbamazepine, with oxygen having no role"
+      },
+      "correct": "A",
+      "explanation": "Cluster headache causes severe, strictly unilateral, periorbital/temporal pain in relatively short attacks (15-180 minutes) occurring in clusters (bouts) over weeks to months, with prominent ipsilateral cranial autonomic features (lacrimation, conjunctival injection, rhinorrhea/nasal congestion, ptosis, miosis). High-flow 100% oxygen via non-rebreather mask and subcutaneous or intranasal triptans are established first-line acute (abortive) treatments, distinct from typical migraine management."
+    },
+    {
+      "id": "NEURO10",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "Lumbar puncture in a patient with fever, neck stiffness, and altered consciousness shows markedly elevated opening pressure, cloudy CSF with neutrophilic pleocytosis, elevated protein, and markedly low glucose (low CSF:serum glucose ratio). What type of meningitis does this CSF profile suggest?",
+      "options": {
+        "A": "Bacterial meningitis",
+        "B": "Viral (aseptic) meningitis",
+        "C": "Tuberculous meningitis, which classically shows neutrophilic (not lymphocytic) predominance and normal glucose",
+        "D": "Fungal meningitis, which always shows markedly elevated glucose"
+      },
+      "correct": "A",
+      "explanation": "Bacterial meningitis classically shows CSF with neutrophilic pleocytosis, markedly elevated protein, and markedly reduced glucose (low CSF:serum glucose ratio, reflecting bacterial glucose consumption) alongside high opening pressure and cloudy appearance. Viral meningitis typically shows lymphocytic pleocytosis with normal or mildly elevated protein and normal glucose; tuberculous and fungal meningitis typically show lymphocytic pleocytosis with markedly elevated protein and low-to-moderately-reduced glucose, evolving over a more subacute-chronic course."
+    },
+    {
+      "id": "NEURO11",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "A college student presents with fever, severe headache, neck stiffness, and a rapidly spreading non-blanching petechial/purpuric rash. Which organism is most classically responsible, and what is the most urgent initial management step?",
+      "options": {
+        "A": "Neisseria meningitidis; immediate empiric IV antibiotics (e.g., ceftriaxone) should not be delayed for investigations given the risk of rapid deterioration/septic shock",
+        "B": "Streptococcus pneumoniae; antibiotics can be safely delayed until lumbar puncture and blood cultures are obtained, with no urgency",
+        "C": "Listeria monocytogenes; the rash is a classic and defining feature of Listeria meningitis",
+        "D": "Herpes simplex virus; the petechial rash is a hallmark feature of HSV meningoencephalitis"
+      },
+      "correct": "A",
+      "explanation": "Neisseria meningitidis (meningococcus) classically causes the combination of meningitis with a rapidly progressive non-blanching petechial/purpuric rash (from meningococcemia and disseminated intravascular coagulation-like vascular injury), and can progress rapidly to septic shock (Waterhouse-Friderichsen syndrome with adrenal hemorrhage in severe cases). Empiric antibiotics should be given immediately on clinical suspicion — without waiting for lumbar puncture or culture results — given the risk of rapid deterioration and death."
+    },
+    {
+      "id": "NEURO12",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "A 30-year-old woman presents with episodes of unilateral vision loss with painful eye movement (optic neuritis), followed months later by sensory disturbances and weakness in a limb. MRI shows multiple periventricular white matter plaques disseminated in space and time. What is the diagnosis?",
+      "options": {
+        "A": "Multiple sclerosis",
+        "B": "Guillain-Barre syndrome",
+        "C": "Amyotrophic lateral sclerosis",
+        "D": "Myasthenia gravis"
+      },
+      "correct": "A",
+      "explanation": "Multiple sclerosis is an autoimmune demyelinating disease of the central nervous system, classically presenting in young adults (more common in women) with episodes of neurological dysfunction disseminated in space (different CNS locations, e.g., optic nerve, spinal cord, brainstem) and time (separate relapsing episodes). Optic neuritis (painful vision loss) is a common presenting feature, and MRI classically shows periventricular white matter plaques."
+    },
+    {
+      "id": "NEURO13",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "A patient develops rapidly progressive, symmetric ascending weakness starting in the legs and moving upward over days, following a recent diarrheal illness. Deep tendon reflexes are absent, and CSF analysis shows markedly elevated protein with a normal cell count. What is the diagnosis and this CSF finding called?",
+      "options": {
+        "A": "Guillain-Barre syndrome; the CSF finding is called albuminocytological dissociation",
+        "B": "Multiple sclerosis; the CSF finding is called oligoclonal bands",
+        "C": "Bacterial meningitis; the CSF finding is called neutrophilic pleocytosis",
+        "D": "Myasthenic crisis; CSF is typically entirely normal with no distinguishing findings"
+      },
+      "correct": "A",
+      "explanation": "Guillain-Barre syndrome is an acute inflammatory demyelinating polyradiculoneuropathy, often triggered by a preceding infection (classically Campylobacter jejuni gastroenteritis, among others), causing rapidly progressive ascending symmetric weakness with areflexia. The classic CSF finding is albuminocytological dissociation — markedly elevated protein with a normal or only mildly elevated cell count — distinguishing it from infectious causes of similar weakness."
+    },
+    {
+      "id": "NEURO14",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "Following a penetrating injury that hemisects the spinal cord on one side, a patient develops ipsilateral loss of motor function and proprioception/vibration sense below the lesion, with contralateral loss of pain and temperature sensation starting a couple of segments below the lesion level. What is this syndrome called?",
+      "options": {
+        "A": "Brown-Sequard syndrome",
+        "B": "Anterior cord syndrome",
+        "C": "Central cord syndrome",
+        "D": "Complete cord transection syndrome"
+      },
+      "correct": "A",
+      "explanation": "Brown-Sequard syndrome results from hemisection of the spinal cord, causing ipsilateral loss of motor function (corticospinal tract) and proprioception/vibration sense (dorsal columns, which do not decussate until the medulla) below the lesion, with contralateral loss of pain and temperature sensation (spinothalamic tract, which decussates within 1-2 segments of entering the cord) beginning a couple of segments below the lesion level — reflecting the different decussation patterns of these tracts."
+    },
+    {
+      "id": "NEURO15",
+      "subject": "Neurology",
+      "topic": "Meningitis/Demyelinating Disorders & Spinal Cord Lesions",
+      "question": "A patient presents with a characteristic 'cape-like' (shawl) distribution of loss of pain and temperature sensation over the shoulders and arms, with preserved touch and proprioception, and progressive hand weakness. MRI reveals a fluid-filled cavity within the central spinal cord. What is the diagnosis, and why does this pattern of sensory loss occur?",
+      "options": {
+        "A": "Syringomyelia; the expanding central cavity first damages the decussating spinothalamic fibers crossing near the central canal, sparing the more peripherally located dorsal columns",
+        "B": "Multiple sclerosis; a central cavity is a typical MS finding rather than a demyelinating plaque",
+        "C": "Brown-Sequard syndrome; a central cavity, rather than hemisection, defines this syndrome",
+        "D": "Anterior cord syndrome; sensory sparing of pain/temperature is expected in this syndrome"
+      },
+      "correct": "A",
+      "explanation": "Syringomyelia involves a fluid-filled cavity (syrinx) within the central spinal cord, often at the cervical level, classically associated with Chiari malformation. As the syrinx expands, it first damages the decussating spinothalamic tract fibers that cross near the central canal, causing a 'cape-like'/suspended sensory loss of pain and temperature over the shoulders/arms, while sparing touch and proprioception (carried in the more peripheral, uncrossed-at-this-level dorsal columns) — a dissociated sensory loss pattern."
+    },
+    {
+      "id": "NEURO16",
+      "subject": "Neurology",
+      "topic": "Stroke & Seizures",
+      "question": "A patient presents with sudden contralateral leg weakness greater than arm weakness, urinary incontinence, and abulia (reduced spontaneous speech/behavior). Occlusion of which cerebral artery territory best explains this presentation?",
+      "options": {
+        "A": "Anterior cerebral artery (supplying the medial frontal/parietal cortex, including the leg-dominant motor homunculus area)",
+        "B": "Middle cerebral artery (typically causing arm/face-predominant weakness and aphasia if the dominant hemisphere is involved)",
+        "C": "Posterior cerebral artery (typically causing visual field defects)",
+        "D": "Basilar artery (typically causing bilateral, brainstem-level deficits)"
+      },
+      "correct": "A",
+      "explanation": "The anterior cerebral artery supplies the medial surface of the frontal and parietal lobes, including the leg-dominant portion of the motor and sensory homunculus, so its occlusion classically causes contralateral leg weakness/sensory loss out of proportion to arm/face involvement, along with urinary incontinence and behavioral changes (abulia, apathy) from frontal lobe involvement. The middle cerebral artery, by contrast, supplies the lateral cortex and typically causes arm/face-predominant weakness, often with aphasia if the dominant hemisphere is affected."
+    },
+    {
+      "id": "NEURO17",
+      "subject": "Neurology",
+      "topic": "Stroke & Seizures",
+      "question": "A patient with acute ischemic stroke symptoms arrives at the hospital within 3 hours of clearly defined symptom onset, with no contraindications on CT. What is the standard maximum time window (from symptom onset) within which IV thrombolysis (alteplase/tPA) can generally be considered, per widely used stroke guidelines?",
+      "options": {
+        "A": "4.5 hours",
+        "B": "24 hours",
+        "C": "1 hour",
+        "D": "12 hours, with no upper limit variability based on imaging"
+      },
+      "correct": "A",
+      "explanation": "IV thrombolysis with alteplase (tPA) is generally recommended within 4.5 hours of clearly defined symptom onset in eligible ischemic stroke patients without contraindications (extending from the original 3-hour window based on later trial evidence for the 3-4.5 hour extended window, with additional eligibility criteria applying in that extended period). Mechanical thrombectomy, in appropriately selected large-vessel-occlusion patients, can be considered in an extended window (up to 24 hours in some protocols) based on advanced imaging criteria, but this is separate from standard IV thrombolysis timing."
+    },
+    {
+      "id": "NEURO18",
+      "subject": "Neurology",
+      "topic": "Stroke & Seizures",
+      "question": "A patient presents with a generalized tonic-clonic seizure that has been continuous for over 20 minutes without regaining consciousness between episodes. What is this condition called, and what is the first-line acute pharmacological treatment?",
+      "options": {
+        "A": "Status epilepticus; IV benzodiazepines (e.g., lorazepam) as first-line acute treatment",
+        "B": "Simple partial (focal aware) seizure; no urgent pharmacological treatment is typically needed",
+        "C": "Absence seizure; managed only with long-term ethosuximide, with no acute treatment role",
+        "D": "Todd's paralysis; treated with physical therapy only, not medication"
+      },
+      "correct": "A",
+      "explanation": "Status epilepticus is a neurological emergency, generally defined as a seizure lasting more than 5 minutes, or recurrent seizures without full recovery of consciousness between them (the 20+ minute description here clearly qualifies). First-line acute treatment is an IV benzodiazepine (e.g., lorazepam or diazepam), given promptly to terminate the seizure and reduce the risk of neuronal injury, with second-line agents (e.g., fosphenytoin, valproate, levetiracetam) used if seizures persist."
+    }
+  ]
+}

@@ -1,0 +1,700 @@
+{
+  "examTitle": "Weekly Practice Test — Week 2",
+  "examSubtitle": "Obstetrics & Gynaecology (finishing) | Preventive & Social Medicine (finishing) | Anatomy (starting)",
+  "totalMarks": 180,
+  "marksPerCorrect": 4,
+  "marksPerWrong": -1,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "durationSeconds": 1610,
+      "questionIds": [
+        "OBG1",
+        "OBG2",
+        "OBG3",
+        "OBG4",
+        "OBG5",
+        "OBG6",
+        "OBG7",
+        "OBG8",
+        "OBG9",
+        "OBG10",
+        "OBG11",
+        "OBG12",
+        "OBG13",
+        "OBG14",
+        "OBG15",
+        "OBG16",
+        "OBG17",
+        "OBG18",
+        "OBG19",
+        "OBG20",
+        "PSM1",
+        "PSM2",
+        "PSM3"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "durationSeconds": 1540,
+      "questionIds": [
+        "PSM4",
+        "PSM5",
+        "PSM6",
+        "PSM7",
+        "PSM8",
+        "PSM9",
+        "ANAT1",
+        "ANAT2",
+        "ANAT3",
+        "ANAT4",
+        "ANAT5",
+        "ANAT6",
+        "ANAT7",
+        "ANAT8",
+        "ANAT9",
+        "ANAT10",
+        "ANAT11",
+        "ANAT12",
+        "ANAT13",
+        "ANAT14",
+        "ANAT15",
+        "ANAT16"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "OBG1",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Basics of Obstetrics",
+      "question": "A woman's last menstrual period started on 10th May, and her cycles are regular at 28 days. Using Naegele's rule, what is her expected date of delivery?",
+      "options": {
+        "A": "17th February",
+        "B": "10th February",
+        "C": "17th January",
+        "D": "10th March"
+      },
+      "correct": "A",
+      "explanation": "Naegele's rule: EDD = LMP + 7 days, - 3 months, + 1 year (for a 28-day cycle). 10th May + 7 days = 17th May; minus 3 months = 17th February. The rule assumes a 28-day cycle with ovulation on day 14; it is adjusted by adding/subtracting days for longer/shorter cycles."
+    },
+    {
+      "id": "OBG2",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Basics of Obstetrics",
+      "question": "During a vaginal examination in labor, the obstetric conjugate (the shortest anteroposterior diameter of the pelvic inlet, from sacral promontory to the inner pubic symphysis) cannot be measured directly. Which measurable diameter is used clinically to estimate it?",
+      "options": {
+        "A": "Diagonal conjugate, minus 1.5-2 cm",
+        "B": "Transverse diameter of the inlet",
+        "C": "Bi-ischial diameter",
+        "D": "Intertuberous diameter"
+      },
+      "correct": "A",
+      "explanation": "The true (obstetric) conjugate is inaccessible on clinical exam. The diagonal conjugate (sacral promontory to the lower border of the pubic symphysis) is measured on vaginal exam, and subtracting 1.5-2 cm gives an estimate of the obstetric conjugate — the narrowest, most clinically important pelvic inlet diameter."
+    },
+    {
+      "id": "OBG3",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Basics of Obstetrics",
+      "question": "On abdominal examination of a woman at 36 weeks, the first Leopold maneuver (fundal grip) reveals a soft, irregular, non-ballotable mass at the fundus, and the third maneuver (Pawlik's grip) reveals a hard, round, ballotable mass above the pubic symphysis. What is the fetal presentation?",
+      "options": {
+        "A": "Cephalic presentation",
+        "B": "Breech presentation",
+        "C": "Transverse lie",
+        "D": "Face presentation"
+      },
+      "correct": "A",
+      "explanation": "A hard, round, ballotable mass at the pelvic inlet (third maneuver) is the fetal head, confirming cephalic presentation — the soft, irregular fundal mass is the breech. Leopold's maneuvers (fundal grip, umbilical/lateral grip, Pawlik's grip, and pelvic grip) together determine fetal lie, presentation, position, and engagement."
+    },
+    {
+      "id": "OBG4",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Early Pregnancy Complications",
+      "question": "A 26-year-old woman at 7 weeks gestation by dates presents with unilateral lower abdominal pain and light vaginal spotting. Transvaginal ultrasound shows an empty uterus and a positive urine pregnancy test. What is the most likely site of implantation if this is an ectopic pregnancy?",
+      "options": {
+        "A": "Ampulla of the fallopian tube",
+        "B": "Isthmus of the fallopian tube",
+        "C": "Interstitial (cornual) part of the tube",
+        "D": "Ovary"
+      },
+      "correct": "A",
+      "explanation": "The ampulla is the most common site of ectopic implantation (~70-80% of tubal ectopics), followed by the isthmus. Interstitial and ovarian ectopics are rare but carry higher risk of catastrophic rupture and hemorrhage due to their vascularity and later presentation."
+    },
+    {
+      "id": "OBG5",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Early Pregnancy Complications",
+      "question": "A woman with a confirmed intrauterine pregnancy at 8 weeks has mild vaginal bleeding, a closed cervical os on examination, and no cramping. Ultrasound confirms a live fetus with cardiac activity. What is this condition called, and what is the management?",
+      "options": {
+        "A": "Threatened abortion; expectant management with pelvic rest",
+        "B": "Inevitable abortion; urgent evacuation",
+        "C": "Missed abortion; medical or surgical evacuation",
+        "D": "Septic abortion; IV antibiotics and evacuation"
+      },
+      "correct": "A",
+      "explanation": "Threatened abortion = bleeding with a closed os and a live, viable intrauterine pregnancy. Management is expectant/conservative (pelvic rest, follow-up), as most such pregnancies continue. Inevitable abortion has an open os; missed abortion has fetal demise without expulsion; septic abortion has features of infection."
+    },
+    {
+      "id": "OBG6",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Early Pregnancy Complications",
+      "question": "A 22-year-old presents at 10 weeks with markedly excessive uterine size for dates, hyperemesis, and a serum beta-hCG far higher than expected for gestational age. Ultrasound shows a 'snowstorm' appearance with no fetal parts. What is the diagnosis and next best step?",
+      "options": {
+        "A": "Complete hydatidiform mole; suction evacuation and serial beta-hCG follow-up",
+        "B": "Twin pregnancy; routine antenatal care",
+        "C": "Choriocarcinoma; chemotherapy",
+        "D": "Missed abortion; expectant management"
+      },
+      "correct": "A",
+      "explanation": "A complete molar pregnancy shows a classic 'snowstorm'/'bunch of grapes' appearance on ultrasound with no fetal parts, markedly elevated beta-hCG, and uterus large-for-dates. Treatment is suction evacuation followed by serial beta-hCG monitoring until undetectable, to catch persistent gestational trophoblastic disease early."
+    },
+    {
+      "id": "OBG7",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Medical Diseases in Pregnancy",
+      "question": "A 28-year-old at 26 weeks gestation undergoes a 75g oral glucose tolerance test. Which single fasting or post-load plasma glucose value would meet the diagnostic threshold for gestational diabetes (IADPSG/DIPSI-aligned criteria)?",
+      "options": {
+        "A": "Fasting ≥92 mg/dL",
+        "B": "Fasting ≥126 mg/dL only",
+        "C": "2-hour value ≥140 mg/dL is required regardless of fasting value",
+        "D": "1-hour value ≥180 mg/dL only, with normal fasting and 2-hour values"
+      },
+      "correct": "A",
+      "explanation": "Under IADPSG criteria (widely used and DIPSI-aligned for a 75g OGTT), gestational diabetes is diagnosed if ANY one of: fasting ≥92 mg/dL, 1-hour ≥180 mg/dL, or 2-hour ≥153 mg/dL is met — a single abnormal value is sufficient, unlike the older Carpenter-Coustan two-value criteria."
+    },
+    {
+      "id": "OBG8",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Medical Diseases in Pregnancy",
+      "question": "A primigravida at 34 weeks has BP 160/110 mmHg on two occasions 4 hours apart, urine protein 2+ on dipstick, and now complains of severe headache and epigastric pain. What is the immediate priority in management?",
+      "options": {
+        "A": "IV magnesium sulfate for seizure prophylaxis and antihypertensives, then plan delivery",
+        "B": "Oral labetalol only, continue pregnancy to term",
+        "C": "Bed rest and reassess in one week",
+        "D": "Immediate induction without magnesium sulfate"
+      },
+      "correct": "A",
+      "explanation": "This is severe preeclampsia (BP ≥160/110 with proteinuria plus symptoms of end-organ involvement — headache, epigastric pain). Magnesium sulfate is given for seizure (eclampsia) prophylaxis, BP is controlled acutely, and delivery is planned once the mother is stabilized, as delivery is the definitive treatment."
+    },
+    {
+      "id": "OBG9",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Medical Diseases in Pregnancy",
+      "question": "A pregnant woman with pre-existing hypothyroidism on levothyroxine should have her TSH targeted to which range during pregnancy, and how should her dose typically change?",
+      "options": {
+        "A": "Low-normal TSH (trimester-specific, generally <2.5 mIU/L in the first trimester); dose usually needs to increase",
+        "B": "TSH 5-10 mIU/L is acceptable; dose stays the same",
+        "C": "TSH should be allowed to rise to boost fetal thyroid hormone; dose is reduced",
+        "D": "Levothyroxine should be stopped in the first trimester due to teratogenicity"
+      },
+      "correct": "A",
+      "explanation": "Maternal T4 crosses the placenta and is critical for early fetal neurodevelopment before the fetal thyroid is functional. Levothyroxine requirements typically increase by ~25-30% in pregnancy (due to increased thyroid-binding globulin and other factors), and TSH is kept low-normal, trimester-specifically, with levothyroxine continued throughout."
+    },
+    {
+      "id": "OBG10",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Twin Pregnancy, RH Isoimmunization & IUGR",
+      "question": "Ultrasound at 18 weeks in a twin pregnancy shows a single placenta with no dividing membrane visible between the two sacs (monochorionic monoamniotic), and importantly a thin dividing membrane is later confirmed making it monochorionic diamniotic. This chorionicity carries the specific risk of which complication?",
+      "options": {
+        "A": "Twin-to-twin transfusion syndrome (TTTS)",
+        "B": "Vasa previa exclusively, never seen in dichorionic twins",
+        "C": "No increased risk compared to dichorionic twins",
+        "D": "Molar degeneration of one twin"
+      },
+      "correct": "A",
+      "explanation": "Monochorionic twins share a single placenta with vascular anastomoses between the two fetal circulations, creating the risk of twin-to-twin transfusion syndrome (TTTS) — unbalanced blood flow causing a donor twin (oligohydramnios, growth restriction) and a recipient twin (polyhydramnios, volume overload). Dichorionic twins, with separate placentas, do not share this risk."
+    },
+    {
+      "id": "OBG11",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Twin Pregnancy, RH Isoimmunization & IUGR",
+      "question": "An Rh-negative woman with an Rh-positive partner is pregnant. Her indirect Coombs test at booking is negative. At what point should anti-D immunoglobulin prophylaxis routinely be given if no sensitizing event occurs?",
+      "options": {
+        "A": "At 28 weeks gestation, and again within 72 hours of delivery if the baby is Rh-positive",
+        "B": "Only after delivery, never antenatally",
+        "C": "At 12 weeks gestation only",
+        "D": "Anti-D is not needed if the indirect Coombs test is negative at booking"
+      },
+      "correct": "A",
+      "explanation": "Routine antenatal anti-D prophylaxis is given at 28 weeks (some protocols also give at 34 weeks) to Rh-negative, non-sensitized women, and again postnatally within 72 hours if the newborn is confirmed Rh-positive. A negative indirect Coombs test at booking only confirms the mother isn't currently sensitized — it doesn't remove the need for prophylaxis against sensitization during pregnancy/delivery."
+    },
+    {
+      "id": "OBG12",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Twin Pregnancy, RH Isoimmunization & IUGR",
+      "question": "A fetus at 32 weeks shows asymmetric IUGR on ultrasound (abdominal circumference lagging more than head circumference, with a normal head-to-abdomen ratio becoming elevated). Which underlying cause is most classically associated with asymmetric (rather than symmetric) IUGR?",
+      "options": {
+        "A": "Uteroplacental insufficiency (e.g., from preeclampsia)",
+        "B": "First-trimester TORCH infection",
+        "C": "Chromosomal abnormality (e.g., trisomy 18)",
+        "D": "Fetal alcohol syndrome"
+      },
+      "correct": "A",
+      "explanation": "Asymmetric IUGR (head-sparing growth restriction) typically results from a late-onset insult — most classically uteroplacental insufficiency (e.g., from preeclampsia or chronic hypertension) — where the fetus preferentially redirects blood flow to the brain ('brain-sparing effect'). Symmetric IUGR (proportionate reduction in all parameters) instead points to an early insult like first-trimester infection or chromosomal abnormality."
+    },
+    {
+      "id": "OBG13",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Twin Pregnancy, RH Isoimmunization & IUGR",
+      "question": "A dichorionic diamniotic twin pregnancy at 10 weeks shows only one visible fetal pole on a follow-up scan, where two were seen at 7 weeks; the remaining twin is developing normally. What is this phenomenon called?",
+      "options": {
+        "A": "Vanishing twin syndrome",
+        "B": "Twin-to-twin transfusion syndrome",
+        "C": "Fetus papyraceus",
+        "D": "Conjoined twinning"
+      },
+      "correct": "A",
+      "explanation": "Vanishing twin syndrome refers to the spontaneous loss and resorption of one twin, usually early in pregnancy, often with no clinical symptoms; the surviving twin typically continues to develop normally. Fetus papyraceus is a related but later phenomenon where a twin dies later in pregnancy and becomes flattened/mummified, remaining visible until delivery of the co-twin."
+    },
+    {
+      "id": "OBG14",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Placenta, APH, Fetal Monitoring & Pelvis-Skull",
+      "question": "A 30-year-old at 34 weeks presents with sudden, painless, bright-red vaginal bleeding; the uterus is soft and non-tender, and the fetal heart rate is reassuring. What is the most likely diagnosis and the key next step?",
+      "options": {
+        "A": "Placenta previa; avoid digital vaginal examination, confirm with ultrasound",
+        "B": "Abruptio placentae; immediate digital vaginal exam to assess dilation",
+        "C": "Vasa previa; reassure and discharge",
+        "D": "Normal 'show' of labor; no further action needed"
+      },
+      "correct": "A",
+      "explanation": "Painless bright-red bleeding with a soft, non-tender uterus is classic for placenta previa. Digital vaginal examination is avoided until previa is excluded, as it can provoke torrential hemorrhage from the previa. Diagnosis is confirmed by transabdominal or transvaginal ultrasound (which is safe in previa)."
+    },
+    {
+      "id": "OBG15",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Placenta, APH, Fetal Monitoring & Pelvis-Skull",
+      "question": "A woman with severe preeclampsia at 33 weeks develops sudden severe abdominal pain, a tense/tender 'board-like' uterus, and dark vaginal bleeding, with fetal distress on monitoring. What is the diagnosis, and what serious complication is she at risk of if the uterine wall becomes infiltrated with blood?",
+      "options": {
+        "A": "Abruptio placentae; risk of Couvelaire uterus (uteroplacental apoplexy)",
+        "B": "Placenta previa; risk of vasa previa",
+        "C": "Uterine rupture; risk of placenta accreta",
+        "D": "Chorioamnionitis; risk of neonatal sepsis only"
+      },
+      "correct": "A",
+      "explanation": "Painful bleeding with a tender, tense/'board-like' uterus and fetal distress is classic for abruptio placentae, strongly associated with preeclampsia/hypertension. Extensive hemorrhage infiltrating the myometrium produces a Couvelaire uterus (uteroplacental apoplexy), which can impair uterine contractility and predispose to postpartum hemorrhage."
+    },
+    {
+      "id": "OBG16",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Placenta, APH, Fetal Monitoring & Pelvis-Skull",
+      "question": "During labor, the cardiotocograph (CTG) shows a gradual decrease and return of fetal heart rate that begins after the peak of a uterine contraction and persists beyond the contraction's end. What type of deceleration is this, and what does it suggest?",
+      "options": {
+        "A": "Late deceleration, suggesting uteroplacental insufficiency/fetal hypoxia",
+        "B": "Early deceleration, suggesting fetal head compression (benign)",
+        "C": "Variable deceleration, suggesting umbilical cord compression",
+        "D": "Sinusoidal pattern, suggesting fetal anemia"
+      },
+      "correct": "A",
+      "explanation": "Late decelerations begin after the contraction peak and recover after the contraction ends (delayed in timing relative to the contraction), reflecting uteroplacental insufficiency and fetal hypoxia — an ominous pattern requiring prompt evaluation. Early decelerations mirror the contraction exactly (benign, from head compression); variable decelerations are abrupt and variable in shape/timing (cord compression)."
+    },
+    {
+      "id": "OBG17",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Placenta, APH, Fetal Monitoring & Pelvis-Skull",
+      "question": "A biophysical profile (BPP) is performed at 38 weeks for reduced fetal movements. Which of the following is NOT one of the five components scored in a standard BPP?",
+      "options": {
+        "A": "Maternal blood pressure",
+        "B": "Fetal breathing movements",
+        "C": "Amniotic fluid volume",
+        "D": "Non-stress test (fetal heart rate reactivity)"
+      },
+      "correct": "A",
+      "explanation": "The five components of the biophysical profile are: non-stress test (fetal heart rate reactivity), fetal breathing movements, gross fetal body movements, fetal tone, and amniotic fluid volume — each scored 0 or 2, for a maximum of 10. Maternal blood pressure is not part of the BPP scoring system."
+    },
+    {
+      "id": "OBG18",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Placenta, APH, Fetal Monitoring & Pelvis-Skull",
+      "question": "On vaginal examination in labor, the examiner palpates a diamond-shaped fontanelle at the junction of the sagittal, coronal, and frontal sutures. Which fontanelle is this, and when does it typically close?",
+      "options": {
+        "A": "Anterior fontanelle; closes by 18 months of age",
+        "B": "Posterior fontanelle; closes by 2-3 months of age",
+        "C": "Anterior fontanelle; closes by 6 weeks of age",
+        "D": "Posterior fontanelle; closes by 18 months of age"
+      },
+      "correct": "A",
+      "explanation": "The anterior fontanelle is diamond/rhomboid-shaped, formed at the junction of the sagittal, coronal, and frontal sutures, and closes by around 18 months. The posterior fontanelle is smaller and triangular, at the junction of the sagittal and lambdoid sutures, and closes earlier (by ~2-3 months) — identifying these fontanelles on vaginal exam helps determine fetal head position in labor."
+    },
+    {
+      "id": "OBG19",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Postpartum Hemorrhage",
+      "question": "A woman delivers vaginally and 20 minutes later has continuous heavy vaginal bleeding with a soft, boggy, poorly contracted uterus on abdominal palpation. What is the most common cause of this primary postpartum hemorrhage, and the first-line initial measure?",
+      "options": {
+        "A": "Uterine atony; uterine massage and oxytocin",
+        "B": "Retained placental tissue; immediate manual removal under anesthesia only",
+        "C": "Genital tract trauma; surgical repair only",
+        "D": "Coagulopathy; fresh frozen plasma as the first step"
+      },
+      "correct": "A",
+      "explanation": "Uterine atony (a soft, boggy uterus) is the most common cause of primary PPH, accounting for the majority of cases (the first of the '4 Ts': Tone, Tissue, Trauma, Thrombin). First-line management is bimanual uterine massage plus uterotonic agents (oxytocin as first-line), escalating to additional uterotonics, tamponade, or surgery if bleeding continues."
+    },
+    {
+      "id": "OBG20",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Postpartum Hemorrhage",
+      "question": "Per current WHO-aligned guidance on PPH management, which combination reflects the recommended first-line pharmacologic approach when uterine atony is confirmed?",
+      "options": {
+        "A": "Oxytocin as the first-line uterotonic, with tranexamic acid added early if bleeding continues",
+        "B": "Misoprostol alone, with oxytocin reserved only if misoprostol fails",
+        "C": "Tranexamic acid alone is sufficient; uterotonics are not needed",
+        "D": "Ergometrine is preferred first-line in all patients including those with hypertension"
+      },
+      "correct": "A",
+      "explanation": "Oxytocin remains the first-line uterotonic for PPH due to its favorable side-effect profile and rapid onset. Tranexamic acid (an antifibrinolytic) is recommended to be added early in PPH management (regardless of cause) as it reduces mortality from bleeding. Ergometrine is avoided in hypertensive patients, as it can further raise blood pressure."
+    },
+    {
+      "id": "PSM1",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Health Programs",
+      "question": "Under India's National TB Elimination Programme (NTEP, formerly RNTCP), a newly diagnosed pulmonary TB patient is started on a fixed-dose combination regimen. What is the standard duration and drug backbone of the intensive phase for a new, drug-sensitive case?",
+      "options": {
+        "A": "2 months of Isoniazid, Rifampicin, Pyrazinamide, and Ethambutol (HRZE)",
+        "B": "1 month of Isoniazid and Rifampicin only",
+        "C": "4 months of Isoniazid and Ethambutol only",
+        "D": "6 months of Rifampicin alone"
+      },
+      "correct": "A",
+      "explanation": "The standard first-line regimen for a new drug-sensitive TB case under NTEP is a 2-month intensive phase with four drugs (HRZE: Isoniazid, Rifampicin, Pyrazinamide, Ethambutol) followed by a 4-month continuation phase with Isoniazid and Rifampicin (HR), given as daily fixed-dose combinations under the current program."
+    },
+    {
+      "id": "PSM2",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Health Programs",
+      "question": "As per India's Universal Immunization Programme schedule, at what age is the BCG vaccine ideally administered?",
+      "options": {
+        "A": "At birth (or as early as possible up to 1 year if missed)",
+        "B": "At 6 weeks of age, along with the first dose of pentavalent vaccine",
+        "C": "At 9 months of age, along with measles vaccine",
+        "D": "At 5 years of age as a booster only"
+      },
+      "correct": "A",
+      "explanation": "BCG is given at birth under India's UIP to provide early protection against severe childhood forms of tuberculosis (miliary TB, TB meningitis). If missed at birth, it can be given up to 1 year of age without a prior tuberculin test; after 1 year, a tuberculin test is generally recommended first."
+    },
+    {
+      "id": "PSM3",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Health Programs",
+      "question": "Ayushman Bharat's Pradhan Mantri Jan Arogya Yojana (PM-JAY) primarily provides which type of coverage to eligible beneficiary families?",
+      "options": {
+        "A": "Cashless secondary and tertiary care hospitalization coverage up to a defined annual sum insured per family",
+        "B": "Only outpatient consultation reimbursement",
+        "C": "Unlimited coverage with no annual cap",
+        "D": "Coverage limited exclusively to maternal and child health services"
+      },
+      "correct": "A",
+      "explanation": "PM-JAY provides cashless and paperless access to secondary and tertiary care hospitalization services, with a defined annual health cover per eligible family (identified via socio-economic criteria), covering a wide range of medical and surgical conditions at empanelled public and private hospitals."
+    },
+    {
+      "id": "PSM4",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Environment",
+      "question": "On the Indian Air Quality Index (AQI), which pollutant most commonly drives the 'Severe' category during winter months in North Indian cities, and what health advisory typically accompanies this category?",
+      "options": {
+        "A": "PM2.5 (fine particulate matter); advisory to avoid outdoor activity, especially for vulnerable groups",
+        "B": "Ozone; advisory applies only to industrial workers",
+        "C": "Carbon monoxide; no specific advisory needed",
+        "D": "Sulfur dioxide; advisory to increase outdoor exercise"
+      },
+      "correct": "A",
+      "explanation": "PM2.5 (particulate matter ≤2.5 microns) is the dominant pollutant driving 'Severe' AQI readings in North Indian cities during winter (from crop residue burning, vehicular emissions, and temperature inversion trapping pollutants). At Severe AQI, advisories recommend that even healthy individuals avoid outdoor exertion, with stricter precautions for children, the elderly, and those with respiratory/cardiac disease."
+    },
+    {
+      "id": "PSM5",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Environment",
+      "question": "In water disinfection by chlorination, what does the term 'break-point chlorination' refer to?",
+      "options": {
+        "A": "The point at which added chlorine has satisfied the chlorine demand and further addition produces free residual chlorine available for disinfection",
+        "B": "The minimum chlorine dose required to just neutralize odor",
+        "C": "The chlorine dose at which water becomes unsafe to drink",
+        "D": "The point at which chlorine gas becomes explosive"
+      },
+      "correct": "A",
+      "explanation": "Break-point chlorination is the point beyond which added chlorine has fully reacted with and destroyed organic matter, ammonia, and other chlorine-demanding substances in water; any further chlorine added remains as free residual chlorine, which provides the actual ongoing disinfecting/protective action against recontamination."
+    },
+    {
+      "id": "PSM6",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Environment",
+      "question": "As per Indian noise pollution control norms, what is the permissible ambient noise limit (daytime) in a 'silence zone' such as areas near hospitals and schools?",
+      "options": {
+        "A": "50 dB(A)",
+        "B": "75 dB(A)",
+        "C": "90 dB(A)",
+        "D": "65 dB(A)"
+      },
+      "correct": "A",
+      "explanation": "Under the Noise Pollution (Regulation and Control) Rules, silence zones (areas within 100m of hospitals, schools, courts) have the strictest daytime limit of 50 dB(A) (and 40 dB(A) at night) — the lowest permissible limits among all zone categories (residential, commercial, industrial, silence), reflecting the need for a quiet environment in these sensitive areas."
+    },
+    {
+      "id": "PSM7",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Miscellaneous",
+      "question": "In the disaster management cycle, which phase specifically involves activities undertaken BEFORE a disaster occurs to reduce its potential impact, such as building codes and land-use planning?",
+      "options": {
+        "A": "Mitigation",
+        "B": "Response",
+        "C": "Recovery",
+        "D": "Rehabilitation only, which occurs after response"
+      },
+      "correct": "A",
+      "explanation": "Mitigation refers to pre-disaster structural and non-structural measures (building codes, early warning systems, land-use zoning) aimed at reducing the severity of a disaster's impact. This is distinct from preparedness (readiness activities just before/during onset), response (immediate post-disaster actions), and recovery/rehabilitation (restoring normalcy afterward)."
+    },
+    {
+      "id": "PSM8",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Miscellaneous",
+      "question": "A stonecutter with 20 years of occupational silica dust exposure presents with progressive dyspnea and bilateral upper-zone nodular opacities on chest X-ray, with 'egg-shell' calcification of hilar lymph nodes. What is the diagnosis?",
+      "options": {
+        "A": "Silicosis",
+        "B": "Asbestosis",
+        "C": "Byssinosis",
+        "D": "Coal worker's pneumoconiosis"
+      },
+      "correct": "A",
+      "explanation": "Silicosis, from chronic crystalline silica dust exposure (mining, stone-cutting, sandblasting), classically shows upper-zone predominant nodular opacities and characteristic 'egg-shell' calcification of hilar/mediastinal lymph nodes. It also increases the risk of tuberculosis (silicotuberculosis) and is a notifiable occupational disease in India."
+    },
+    {
+      "id": "PSM9",
+      "subject": "Preventive & Social Medicine",
+      "topic": "PSM Updates",
+      "question": "India's National TB Elimination Programme has set an ambitious target date for TB elimination that is notably ahead of the global (WHO End TB Strategy) target. What is India's targeted year for TB elimination?",
+      "options": {
+        "A": "2025",
+        "B": "2030",
+        "C": "2035",
+        "D": "2050"
+      },
+      "correct": "A",
+      "explanation": "India has set a national target of eliminating TB by 2025 — five years ahead of the WHO's global End TB Strategy target of 2030 — driving intensified case-finding, free diagnostics/treatment, and nutritional support (Ni-kshay Poshan Yojana) initiatives under NTEP."
+    },
+    {
+      "id": "ANAT1",
+      "subject": "Anatomy",
+      "topic": "Neuro-Anatomy",
+      "question": "The Circle of Willis provides collateral circulation at the base of the brain. Which artery connects the two anterior cerebral arteries to each other?",
+      "options": {
+        "A": "Anterior communicating artery",
+        "B": "Posterior communicating artery",
+        "C": "Posterior cerebral artery",
+        "D": "Middle cerebral artery"
+      },
+      "correct": "A",
+      "explanation": "The anterior communicating artery is a short vessel connecting the two anterior cerebral arteries, completing the anterior part of the Circle of Willis. The posterior communicating arteries instead connect each internal carotid artery to the ipsilateral posterior cerebral artery, linking the anterior and posterior circulations."
+    },
+    {
+      "id": "ANAT2",
+      "subject": "Anatomy",
+      "topic": "Neuro-Anatomy",
+      "question": "The internal capsule's posterior limb, carrying corticospinal fibers to the lower limb, is supplied predominantly by which vessels — whose occlusion classically produces a pure motor stroke?",
+      "options": {
+        "A": "Lenticulostriate branches of the middle cerebral artery",
+        "B": "Anterior spinal artery",
+        "C": "Posterior inferior cerebellar artery",
+        "D": "Ophthalmic artery"
+      },
+      "correct": "A",
+      "explanation": "The lenticulostriate arteries, small perforating branches of the middle cerebral artery, supply the internal capsule and basal ganglia. Their occlusion is a classic cause of lacunar (pure motor) stroke affecting the internal capsule, and they are prone to microaneurysm formation (Charcot-Bouchard aneurysms) in chronic hypertension, predisposing to hypertensive intracerebral hemorrhage."
+    },
+    {
+      "id": "ANAT3",
+      "subject": "Anatomy",
+      "topic": "Neuro-Anatomy",
+      "question": "The blood-brain barrier restricts passage of most substances from blood into brain tissue. Which structural feature of brain capillary endothelium is primarily responsible for this barrier function?",
+      "options": {
+        "A": "Tight junctions between endothelial cells, with continuous basement membrane and astrocytic end-feet",
+        "B": "Fenestrations with large pores",
+        "C": "Discontinuous endothelium with gaps, as in liver sinusoids",
+        "D": "Absence of a basement membrane"
+      },
+      "correct": "A",
+      "explanation": "Brain capillaries have non-fenestrated endothelial cells joined by tight junctions, a continuous basement membrane, and surrounding astrocytic end-feet — together restricting free diffusion and forcing selective transport, unlike fenestrated capillaries (e.g., in the choroid plexus, which lacks a true BBB) or discontinuous/sinusoidal capillaries found in the liver."
+    },
+    {
+      "id": "ANAT4",
+      "subject": "Anatomy",
+      "topic": "Neuro-Anatomy",
+      "question": "A brainstem lesion damages the nucleus ambiguus. In which part of the brainstem is this nucleus located, and which cranial nerves does it primarily supply?",
+      "options": {
+        "A": "Medulla; contributes motor fibers to cranial nerves IX, X, and XI (cranial part)",
+        "B": "Midbrain; supplies cranial nerve III",
+        "C": "Pons; supplies cranial nerve VII",
+        "D": "Midbrain; supplies cranial nerve IV"
+      },
+      "correct": "A",
+      "explanation": "The nucleus ambiguus lies in the medulla and provides motor innervation to the pharynx and larynx via the glossopharyngeal (IX), vagus (X), and the cranial root of the accessory (XI) nerves — important for palatal elevation, swallowing, and vocal cord movement; its damage classically causes dysphagia and dysphonia."
+    },
+    {
+      "id": "ANAT5",
+      "subject": "Anatomy",
+      "topic": "Neuro-Anatomy",
+      "question": "Cerebrospinal fluid produced by the choroid plexus of the lateral ventricles must pass through which structure to reach the third ventricle?",
+      "options": {
+        "A": "Foramen of Monro (interventricular foramen)",
+        "B": "Foramen of Magendie",
+        "C": "Cerebral aqueduct (of Sylvius)",
+        "D": "Foramina of Luschka"
+      },
+      "correct": "A",
+      "explanation": "CSF flows from each lateral ventricle into the third ventricle via the paired interventricular foramina (foramina of Monro). From the third ventricle, it passes through the cerebral aqueduct into the fourth ventricle, then exits via the midline foramen of Magendie and paired lateral foramina of Luschka into the subarachnoid space."
+    },
+    {
+      "id": "ANAT6",
+      "subject": "Anatomy",
+      "topic": "Head And Neck",
+      "question": "The carotid triangle is a key anatomical landmark in neck dissection. Which of the following forms the boundaries of the carotid triangle?",
+      "options": {
+        "A": "Superior belly of omohyoid, posterior belly of digastric, and anterior border of sternocleidomastoid",
+        "B": "Two bellies of digastric and the mandible",
+        "C": "Anterior belly of digastric, stylohyoid, and hyoid bone",
+        "D": "Both bellies of omohyoid only"
+      },
+      "correct": "A",
+      "explanation": "The carotid triangle is bounded by the superior belly of the omohyoid (inferiorly), the posterior belly of digastric (superiorly), and the anterior border of sternocleidomastoid (posteriorly). It contains the carotid sheath structures — common carotid artery, internal jugular vein, and vagus nerve — making it surgically important for carotid access."
+    },
+    {
+      "id": "ANAT7",
+      "subject": "Anatomy",
+      "topic": "Head And Neck",
+      "question": "During parotidectomy, the surgeon must carefully identify and preserve a nerve that runs through the substance of the parotid gland, dividing it into superficial and deep lobes. Which nerve is this?",
+      "options": {
+        "A": "Facial nerve (CN VII)",
+        "B": "Glossopharyngeal nerve (CN IX)",
+        "C": "Trigeminal nerve, mandibular division (CN V3)",
+        "D": "Hypoglossal nerve (CN XII)"
+      },
+      "correct": "A",
+      "explanation": "The facial nerve passes through the parotid gland (though not a secretomotor supply to it), dividing it anatomically into superficial and deep lobes, then branching into its five terminal branches (temporal, zygomatic, buccal, mandibular, cervical) to supply facial muscles. Iatrogenic facial nerve injury is the most feared complication of parotid surgery."
+    },
+    {
+      "id": "ANAT8",
+      "subject": "Anatomy",
+      "topic": "Head And Neck",
+      "question": "The thyroid gland receives its arterial supply mainly from the superior and inferior thyroid arteries. The inferior thyroid artery is a branch of which vessel, and why is its relation to a nearby nerve surgically important?",
+      "options": {
+        "A": "Thyrocervical trunk (from subclavian artery); it lies close to the recurrent laryngeal nerve, which must be identified during thyroidectomy",
+        "B": "External carotid artery directly; no important nerve relation",
+        "C": "Internal carotid artery; related to the hypoglossal nerve",
+        "D": "Brachiocephalic trunk; related to the phrenic nerve"
+      },
+      "correct": "A",
+      "explanation": "The inferior thyroid artery arises from the thyrocervical trunk (a branch of the subclavian artery) and has a close, variable relationship to the recurrent laryngeal nerve as it courses near the lower pole of the thyroid — careful identification and preservation of this nerve during thyroidectomy is essential to avoid vocal cord palsy."
+    },
+    {
+      "id": "ANAT9",
+      "subject": "Anatomy",
+      "topic": "Embryology",
+      "question": "A newborn is found to have a lumbosacral neural tube defect. Failure of closure of which embryological structure, and deficiency of which maternal supplement, is most strongly linked to this defect?",
+      "options": {
+        "A": "Neural tube (posterior neuropore); folic acid deficiency",
+        "B": "Notochord; vitamin B12 deficiency",
+        "C": "Neural crest; iron deficiency",
+        "D": "Somites; calcium deficiency"
+      },
+      "correct": "A",
+      "explanation": "Neural tube defects (spina bifida, anencephaly) result from failure of neural tube closure — the posterior neuropore closes around day 27-28, and its failure produces spinal defects like spina bifida. Periconceptional folic acid supplementation significantly reduces the risk of neural tube defects, which is why it is recommended before and during early pregnancy."
+    },
+    {
+      "id": "ANAT10",
+      "subject": "Anatomy",
+      "topic": "Embryology",
+      "question": "Meckel's cartilage is a key embryological structure in facial development. It is derived from which pharyngeal (branchial) arch, and gives rise to which adult structures?",
+      "options": {
+        "A": "First pharyngeal arch; malleus and incus (with the mandible ossifying membranously around it)",
+        "B": "Second pharyngeal arch; stapes and styloid process",
+        "C": "Third pharyngeal arch; greater cornu of hyoid",
+        "D": "Fourth pharyngeal arch; thyroid cartilage"
+      },
+      "correct": "A",
+      "explanation": "Meckel's cartilage, the cartilage of the first pharyngeal arch, gives rise to the malleus and incus of the middle ear (along with the anterior ligament of malleus and sphenomandibular ligament); the mandible itself forms by membranous ossification lateral to this cartilage. The second arch (Reichert's cartilage) instead gives the stapes, styloid process, and lesser cornu of hyoid."
+    },
+    {
+      "id": "ANAT11",
+      "subject": "Anatomy",
+      "topic": "Embryology",
+      "question": "A neonate is diagnosed with a persistent truncus arteriosus. This congenital heart defect results from failure of which embryological process?",
+      "options": {
+        "A": "Failure of the truncus arteriosus to septate into the aorta and pulmonary trunk (aorticopulmonary septum failure)",
+        "B": "Failure of closure of the ductus arteriosus",
+        "C": "Failure of the foramen ovale to close",
+        "D": "Failure of neural crest cells to migrate to the limb buds"
+      },
+      "correct": "A",
+      "explanation": "The truncus arteriosus normally divides into the aorta and pulmonary trunk via the spiraling aorticopulmonary septum, formed largely by neural crest cell contribution. Failure of this septation leaves a single common arterial trunk (persistent truncus arteriosus) arising from the heart, giving rise to both systemic and pulmonary circulations, causing mixing of oxygenated and deoxygenated blood."
+    },
+    {
+      "id": "ANAT12",
+      "subject": "Anatomy",
+      "topic": "Embryology",
+      "question": "Monozygotic twins that share a single chorion but have separate amnions (monochorionic diamniotic) most likely resulted from splitting of the embryonic mass at which stage after fertilization?",
+      "options": {
+        "A": "Day 4-8 (post-implantation blastocyst stage, after chorion formation but before amnion formation)",
+        "B": "Day 0-3 (before compaction, cleavage stage)",
+        "C": "Day 13 or later (after the primitive streak has formed)",
+        "D": "Day 9-12 (after amnion formation)"
+      },
+      "correct": "A",
+      "explanation": "Twinning timing determines chorionicity/amnionicity: splitting at day 0-3 gives dichorionic diamniotic twins; day 4-8 (after the chorion has formed but before the amnion) gives monochorionic diamniotic twins (the most common monozygotic pattern); day 9-12 (after amnion formation) gives monochorionic monoamniotic twins; splitting at day 13+ (after the primitive streak forms) results in incomplete separation — conjoined twins."
+    },
+    {
+      "id": "ANAT13",
+      "subject": "Anatomy",
+      "topic": "Embryology",
+      "question": "Gastrulation establishes the three primary germ layers. Which germ layer gives rise to the epidermis, nervous system, and adrenal medulla?",
+      "options": {
+        "A": "Ectoderm",
+        "B": "Mesoderm",
+        "C": "Endoderm",
+        "D": "Both mesoderm and endoderm equally"
+      },
+      "correct": "A",
+      "explanation": "Ectoderm gives rise to the epidermis and its appendages, the entire nervous system (via the neural tube and neural crest), and neural crest derivatives including the adrenal medulla, melanocytes, and Schwann cells. Mesoderm forms muscle, bone, connective tissue, the cardiovascular system, and the adrenal cortex; endoderm forms the gut epithelium and its associated glands."
+    },
+    {
+      "id": "ANAT14",
+      "subject": "Anatomy",
+      "topic": "Thorax",
+      "question": "The mediastinum is anatomically divided into superior and inferior compartments, with the inferior further subdivided into anterior, middle, and posterior parts. Which structure occupies the middle mediastinum?",
+      "options": {
+        "A": "The heart and pericardium, along with the roots of the great vessels",
+        "B": "The thymus",
+        "C": "The esophagus and thoracic duct",
+        "D": "The sympathetic trunk"
+      },
+      "correct": "A",
+      "explanation": "The middle mediastinum contains the heart enclosed in the pericardial sac, along with the roots of the great vessels (ascending aorta, pulmonary trunk, superior vena cava) and phrenic nerves. The anterior mediastinum contains the thymus (in children) and lymph nodes; the posterior mediastinum contains the esophagus, thoracic duct, descending aorta, and sympathetic trunks."
+    },
+    {
+      "id": "ANAT15",
+      "subject": "Anatomy",
+      "topic": "Thorax",
+      "question": "The diaphragm has three major openings for structures passing between the thorax and abdomen. At which vertebral level does the inferior vena cava pass through the diaphragm, and which other structure passes with it at that level?",
+      "options": {
+        "A": "T8; the right phrenic nerve",
+        "B": "T10; the vagus nerves",
+        "C": "T12; the aorta, thoracic duct, and azygos vein",
+        "D": "T9; the esophagus"
+      },
+      "correct": "A",
+      "explanation": "The three diaphragmatic openings are at T8 (inferior vena cava foramen, in the central tendon, accompanied by the right phrenic nerve), T10 (esophageal hiatus, with the vagus nerves and esophageal branches of the left gastric vessels), and T12 (aortic hiatus, with the aorta, thoracic duct, and azygos vein) — commonly remembered by the mnemonic 'I ate (8) ten (10) eggs at (12) twelve'."
+    },
+    {
+      "id": "ANAT16",
+      "subject": "Anatomy",
+      "topic": "Thorax",
+      "question": "On deep inspiration, the lung fails to fully expand into a certain pleural recess even at maximal inspiration, making it a common site for fluid accumulation detectable on imaging before other recesses. Which pleural recess is this?",
+      "options": {
+        "A": "Costodiaphragmatic recess",
+        "B": "Costomediastinal recess",
+        "C": "Oblique fissure",
+        "D": "Horizontal fissure"
+      },
+      "correct": "A",
+      "explanation": "The costodiaphragmatic recess, between the costal and diaphragmatic pleura, is the most dependent part of the pleural cavity and is never fully filled by lung even in deep inspiration. Being the most gravity-dependent space, it is the earliest and most common site for pleural fluid (effusion) to accumulate, and is where thoracocentesis is typically performed."
+    }
+  ]
+}

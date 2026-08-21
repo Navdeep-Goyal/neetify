@@ -3,11 +3,16 @@
 // Pure vanilla JS, localStorage persistence, no backend.
 // ============================================================
 
-const STORAGE_KEY_PROGRESS = "neetpg_inprogress";
 const STORAGE_KEY_HISTORY = "neetpg_history";
-const QUESTION_FILE = "data/questions-week1.json";
+const WEEKS_FILE = "data/weeks.json";
 
-let examData = null;       // loaded JSON
+// A week's exam unlocks at 1:00 PM IST on that week's weekEndDate (the Sunday
+// closing out the study week), regardless of what timezone the browser is in.
+const UNLOCK_HOUR_IST = 13; // 1 PM
+
+let weeksManifest = null;  // loaded JSON from weeks.json, with unlockTimestamp added
+let currentWeek = null;    // the manifest entry for the week currently being attempted/viewed
+let examData = null;       // loaded JSON for currentWeek.questionFile
 let state = null;          // live exam state
 let timerInterval = null;
 
@@ -23,9 +28,54 @@ function fmtTime(totalSeconds) {
 }
 function nowTs() { return Date.now(); }
 
+// ---------------- Weeks manifest & unlock gating ----------------
+async function loadWeeksManifest() {
+  const res = await fetch(WEEKS_FILE);
+  const data = await res.json();
+  weeksManifest = data.weeks.map(w => ({
+    ...w,
+    unlockTimestamp: computeUnlockTimestamp(w.weekEndDate),
+  }));
+  return weeksManifest;
+}
+
+// weekEndDateStr is that week's Sunday, e.g. "2026-08-23".
+// Returns the absolute ms timestamp for 1:00 PM IST on that date.
+// Built with Date.UTC so it's correct regardless of the viewer's own timezone.
+function computeUnlockTimestamp(weekEndDateStr) {
+  const [y, m, d] = weekEndDateStr.split("-").map(Number);
+  const unlockUtcHour = UNLOCK_HOUR_IST - 5;   // IST is UTC+5:30
+  const unlockUtcMinute = -30;
+  return Date.UTC(y, m - 1, d, unlockUtcHour, unlockUtcMinute, 0);
+}
+
+function isWeekUnlocked(week) {
+  if (new URLSearchParams(location.search).has("unlockall")) return true; // testing/QA override
+  return nowTs() >= week.unlockTimestamp;
+}
+
+function formatUnlockLabel(ts) {
+  return new Intl.DateTimeFormat("en-IN", {
+    weekday: "short", day: "numeric", month: "short", year: "numeric",
+    hour: "numeric", minute: "2-digit", hour12: true, timeZone: "Asia/Kolkata"
+  }).format(new Date(ts)) + " IST";
+}
+
+function formatCountdown(msRemaining) {
+  const totalMin = Math.max(0, Math.floor(msRemaining / 60000));
+  const days = Math.floor(totalMin / (60 * 24));
+  const hours = Math.floor((totalMin % (60 * 24)) / 60);
+  const mins = totalMin % 60;
+  const parts = [];
+  if (days) parts.push(`${days}d`);
+  if (days || hours) parts.push(`${hours}h`);
+  parts.push(`${mins}m`);
+  return parts.join(" ");
+}
+
 // ---------------- Loading question data ----------------
 async function loadExamData() {
-  const res = await fetch(QUESTION_FILE);
+  const res = await fetch(currentWeek.questionFile);
   examData = await res.json();
   return examData;
 }
@@ -58,22 +108,30 @@ function freshState() {
   };
 }
 
+function progressKey(weekId) { return `neetpg_inprogress_${weekId}`; }
+
 function saveProgress() {
-  localStorage.setItem(STORAGE_KEY_PROGRESS, JSON.stringify(state));
+  localStorage.setItem(progressKey(currentWeek.id), JSON.stringify(state));
 }
 function loadProgress() {
-  const raw = localStorage.getItem(STORAGE_KEY_PROGRESS);
+  return loadProgressFor(currentWeek.id);
+}
+function loadProgressFor(weekId) {
+  const raw = localStorage.getItem(progressKey(weekId));
   if (!raw) return null;
   try { return JSON.parse(raw); } catch (e) { return null; }
 }
 function clearProgress() {
-  localStorage.removeItem(STORAGE_KEY_PROGRESS);
+  localStorage.removeItem(progressKey(currentWeek.id));
 }
 
 function getHistory() {
   const raw = localStorage.getItem(STORAGE_KEY_HISTORY);
   if (!raw) return [];
   try { return JSON.parse(raw); } catch (e) { return []; }
+}
+function getHistoryForWeek(weekId) {
+  return getHistory().filter(h => h.weekId === weekId);
 }
 function saveHistoryEntry(entry) {
   const hist = getHistory();
@@ -83,18 +141,94 @@ function saveHistoryEntry(entry) {
 
 // ---------------- Landing screen ----------------
 function initLanding() {
-  const existing = loadProgress();
-  const resumeBtn = $("#btn-resume-exam");
-  const startBtn = $("#btn-start-exam");
-  if (existing && !existing.submitted) {
-    resumeBtn.classList.remove("hidden");
-  } else {
-    resumeBtn.classList.add("hidden");
-  }
-  startBtn.onclick = () => show("#screen-instructions");
-  resumeBtn.onclick = () => { state = existing; enterExam(true); };
-  $("#btn-view-history").onclick = () => { renderHistory(); show("#screen-history"); };
+  renderWeekList();
   renderLandingHistoryPreview();
+  $("#btn-view-history").onclick = () => { renderHistory(); show("#screen-history"); };
+}
+
+function renderWeekList() {
+  const wrap = $("#week-list");
+  if (!wrap || !weeksManifest) return;
+  wrap.innerHTML = "";
+
+  weeksManifest.forEach(week => {
+    const unlocked = isWeekUnlocked(week);
+    const savedProgress = unlocked ? loadProgressFor(week.id) : null;
+    const inProgress = !!(savedProgress && !savedProgress.submitted);
+    const weekHistory = getHistoryForWeek(week.id);
+    const hasCompleted = weekHistory.length > 0 && !inProgress;
+
+    const card = document.createElement("div");
+    card.className = "week-card" + (unlocked ? "" : " locked");
+
+    let statusHtml, actionsHtml;
+
+    if (!unlocked) {
+      statusHtml = `<span class="week-status-badge locked">Locked</span>`;
+      actionsHtml = `<div class="week-lock-note">Unlocks ${formatUnlockLabel(week.unlockTimestamp)}
+        <span class="week-countdown">(in ${formatCountdown(week.unlockTimestamp - nowTs())})</span></div>`;
+    } else if (inProgress) {
+      statusHtml = `<span class="week-status-badge inprogress">In Progress</span>`;
+      actionsHtml = `<button class="btn btn-mark" data-action="resume" data-week="${week.id}">Resume Exam</button>`;
+    } else if (hasCompleted) {
+      const best = weekHistory[0];
+      statusHtml = `<span class="week-status-badge completed">Completed &mdash; ${best.score}/${best.totalMarks} (${best.percentage}%)</span>`;
+      actionsHtml = `
+        <button class="btn btn-clear" data-action="view" data-week="${week.id}">View Result</button>
+        <button class="btn btn-submit" data-action="start" data-week="${week.id}">Retake Exam</button>`;
+    } else {
+      statusHtml = `<span class="week-status-badge available">Available</span>`;
+      actionsHtml = `<button class="btn btn-submit" data-action="start" data-week="${week.id}">Start Exam</button>`;
+    }
+
+    card.innerHTML = `
+      <div class="week-card-header">
+        <div>
+          <div class="week-card-title">${week.label}</div>
+          <div class="week-card-dates">${week.dateRangeLabel}</div>
+        </div>
+        ${statusHtml}
+      </div>
+      <div class="week-card-actions">${actionsHtml}</div>
+    `;
+    wrap.appendChild(card);
+  });
+
+  wrap.querySelectorAll("[data-action]").forEach(btn => {
+    const weekId = btn.dataset.week;
+    if (btn.dataset.action === "start") btn.onclick = () => startWeekExam(weekId);
+    if (btn.dataset.action === "resume") btn.onclick = () => resumeWeekExam(weekId);
+    if (btn.dataset.action === "view") btn.onclick = () => viewWeekResult(weekId);
+  });
+}
+
+async function startWeekExam(weekId) {
+  currentWeek = weeksManifest.find(w => w.id === weekId);
+  if (!isWeekUnlocked(currentWeek)) return; // guard against stale DOM/back-button access
+  await loadExamData();
+  const checkbox = $("#declaration-checkbox");
+  const beginBtn = $("#btn-begin-from-instructions");
+  checkbox.checked = false;
+  beginBtn.disabled = true;
+  show("#screen-instructions");
+}
+
+async function resumeWeekExam(weekId) {
+  currentWeek = weeksManifest.find(w => w.id === weekId);
+  if (!isWeekUnlocked(currentWeek)) return;
+  await loadExamData();
+  state = loadProgress();
+  if (!state) { initLanding(); return; }
+  enterExam(true);
+}
+
+async function viewWeekResult(weekId) {
+  currentWeek = weeksManifest.find(w => w.id === weekId);
+  await loadExamData();
+  const entries = getHistoryForWeek(weekId);
+  if (entries.length === 0) return;
+  renderResult(entries[0]);
+  show("#screen-result");
 }
 
 function renderLandingHistoryPreview() {
@@ -411,6 +545,7 @@ function finishExam() {
   const results = computeResults();
   const entry = {
     date: nowTs(),
+    weekId: currentWeek.id,
     examTitle: examData.examTitle,
     score: results.totalScore,
     totalMarks: examData.totalMarks,
@@ -540,11 +675,16 @@ function importHistory(e) {
 
 // ---------------- Boot ----------------
 async function boot() {
-  await loadExamData();
+  await loadWeeksManifest();
   wireStaticButtons();
   initInstructions();
   initLanding();
   show("#screen-landing");
+
+  // Keep the "Unlocks in Xd Xh Xm" countdown live while the landing screen is visible.
+  setInterval(() => {
+    if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
+  }, 30000);
 }
 
 document.addEventListener("DOMContentLoaded", boot);

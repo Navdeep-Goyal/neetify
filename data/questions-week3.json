@@ -1,0 +1,700 @@
+{
+  "examTitle": "Weekly Practice Test — Week 3",
+  "examSubtitle": "Pediatrics (complete) | Anatomy (finishing) | Ophthalmology (starting) | ENT (starting)",
+  "totalMarks": 180,
+  "marksPerCorrect": 4,
+  "marksPerWrong": -1,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "durationSeconds": 1610,
+      "questionIds": [
+        "PED1",
+        "PED2",
+        "PED3",
+        "PED4",
+        "PED5",
+        "PED6",
+        "PED7",
+        "PED8",
+        "PED9",
+        "PED10",
+        "PED11",
+        "PED12",
+        "PED13",
+        "PED14",
+        "PED15",
+        "PED16",
+        "PED17",
+        "PED18",
+        "PED19",
+        "PED20",
+        "ANAT17",
+        "ANAT18",
+        "ANAT19"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "durationSeconds": 1540,
+      "questionIds": [
+        "ANAT20",
+        "ANAT21",
+        "ANAT22",
+        "ANAT23",
+        "ANAT24",
+        "ANAT25",
+        "OPHTH1",
+        "OPHTH2",
+        "OPHTH3",
+        "OPHTH4",
+        "OPHTH5",
+        "OPHTH6",
+        "OPHTH7",
+        "OPHTH8",
+        "OPHTH9",
+        "OPHTH10",
+        "OPHTH11",
+        "ENT1",
+        "ENT2",
+        "ENT3",
+        "ENT4",
+        "ENT5"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "PED1",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A newborn is assessed at 1 minute of life: heart rate 105/min, slow irregular respiration, some flexion of limbs, grimace on stimulation, and body pink with blue extremities. What is the most likely APGAR score?",
+      "options": {
+        "A": "7",
+        "B": "10",
+        "C": "3",
+        "D": "5"
+      },
+      "correct": "A",
+      "explanation": "Scoring each component 0-2: heart rate >100 (2), respiration slow/irregular (1), some flexion of limbs (1), grimace/response to stimulation (1), color pink body/blue extremities i.e. acrocyanosis (1) = total 6-7 depending on exact tone scoring; 7 is the best fit here. APGAR (Appearance, Pulse, Grimace, Activity, Respiration) is scored at 1 and 5 minutes to assess the need for resuscitation."
+    },
+    {
+      "id": "PED2",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A term newborn develops visible jaundice on day 2 of life, with total serum bilirubin of 14 mg/dL, otherwise well and feeding adequately. What is the most appropriate initial management?",
+      "options": {
+        "A": "Phototherapy per age/risk-specific bilirubin threshold charts, with continued breastfeeding",
+        "B": "Immediate exchange transfusion",
+        "C": "Stop breastfeeding permanently",
+        "D": "No treatment needed regardless of bilirubin trend; reassure only"
+      },
+      "correct": "A",
+      "explanation": "Physiological neonatal jaundice appearing after 24 hours, with bilirubin in the phototherapy range per standard nomograms (based on age in hours and risk factors), is managed with phototherapy while continuing breastfeeding (which should not be stopped). Exchange transfusion is reserved for very high bilirubin levels or signs of acute bilirubin encephalopathy."
+    },
+    {
+      "id": "PED3",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A term neonate born after a difficult delivery with fetal distress is floppy, has poor respiratory effort, and requires prolonged resuscitation. At 24 hours, the baby has seizures and altered consciousness. Which staging system is used to grade the severity of this hypoxic-ischemic encephalopathy?",
+      "options": {
+        "A": "Sarnat staging (Stage I mild, II moderate, III severe)",
+        "B": "Ballard scoring",
+        "C": "New Ballard Score for gestational age",
+        "D": "Denver developmental scale"
+      },
+      "correct": "A",
+      "explanation": "Sarnat and Sarnat staging classifies hypoxic-ischemic encephalopathy (HIE) into Stage I (mild — hyperalert, irritable), Stage II (moderate — lethargy, hypotonia, seizures), and Stage III (severe — stupor/coma, flaccid tone) based on consciousness level, tone, reflexes, and seizure activity, guiding prognosis and the decision for therapeutic hypothermia."
+    },
+    {
+      "id": "PED4",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A preterm infant born at 28 weeks develops progressive respiratory distress within hours of birth, with a chest X-ray showing a diffuse 'ground-glass' reticulogranular pattern and air bronchograms. What is the underlying deficiency causing this condition?",
+      "options": {
+        "A": "Surfactant deficiency (Respiratory Distress Syndrome of prematurity)",
+        "B": "Excess surfactant production",
+        "C": "Meconium aspiration",
+        "D": "Congenital diaphragmatic hernia"
+      },
+      "correct": "A",
+      "explanation": "Respiratory distress syndrome (hyaline membrane disease) of prematurity results from surfactant deficiency due to immature type II pneumocytes, causing alveolar collapse, reduced compliance, and the classic reticulogranular ('ground-glass') pattern with air bronchograms on X-ray. Antenatal corticosteroids (to accelerate lung maturity) and postnatal exogenous surfactant are key preventive/therapeutic measures."
+    },
+    {
+      "id": "PED5",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A preterm neonate develops abdominal distension, bloody stools, and feeding intolerance in the second week of life. Abdominal X-ray shows pneumatosis intestinalis (gas within the bowel wall). What is the diagnosis?",
+      "options": {
+        "A": "Necrotizing enterocolitis",
+        "B": "Hirschsprung disease",
+        "C": "Duodenal atresia",
+        "D": "Intussusception"
+      },
+      "correct": "A",
+      "explanation": "Necrotizing enterocolitis (NEC) is a serious GI emergency of prematurity, presenting with abdominal distension, bloody stools, and feeding intolerance; pneumatosis intestinalis (intramural gas) on X-ray is a hallmark finding, reflecting bacterial invasion and gas production within the ischemic/necrotic bowel wall. Management includes bowel rest, antibiotics, and surgery for perforation."
+    },
+    {
+      "id": "PED6",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "During neonatal resuscitation of an apneic, term newborn, initial steps (warming, drying, stimulation, clearing airway) fail to establish adequate breathing. What is the immediate next step, often called the 'golden minute' intervention?",
+      "options": {
+        "A": "Positive pressure ventilation (PPV) with a bag and mask",
+        "B": "Chest compressions immediately, before ventilation",
+        "C": "Immediate intubation and epinephrine",
+        "D": "Wait an additional 2 minutes before any intervention"
+      },
+      "correct": "A",
+      "explanation": "If a newborn remains apneic or gasping after initial steps, positive pressure ventilation (PPV) is the next step and should be established within the first 'golden minute' of life. Chest compressions are only added if the heart rate remains <60/min despite adequate PPV for 30 seconds; epinephrine is reserved for persistent bradycardia despite compressions and ventilation."
+    },
+    {
+      "id": "PED7",
+      "subject": "Pediatrics",
+      "topic": "Neonatology",
+      "question": "A newborn has microcephaly, chorioretinitis, sensorineural hearing loss, and intracranial periventricular calcifications. Which congenital TORCH infection is most classically associated with this presentation?",
+      "options": {
+        "A": "Congenital cytomegalovirus (CMV) infection",
+        "B": "Congenital toxoplasmosis with diffuse (not periventricular) calcifications typically",
+        "C": "Congenital rubella syndrome (classic triad: cataract, deafness, PDA)",
+        "D": "Congenital syphilis"
+      },
+      "correct": "A",
+      "explanation": "Congenital CMV is the most common congenital infection overall and classically causes periventricular calcifications, microcephaly, sensorineural hearing loss, and chorioretinitis. Congenital toxoplasmosis instead typically causes diffuse (not periventricular) intracranial calcifications with hydrocephalus and chorioretinitis; congenital rubella's classic triad is cataract, sensorineural deafness, and PDA."
+    },
+    {
+      "id": "PED8",
+      "subject": "Pediatrics",
+      "topic": "Growth & Nutrition",
+      "question": "A 2-year-old's weight is plotted on a WHO growth chart and falls exactly on the 50th percentile line for their age. What does this mean?",
+      "options": {
+        "A": "The child's weight is average — equal to or greater than that of 50% of children of the same age and sex in the reference population",
+        "B": "The child is malnourished and needs immediate intervention",
+        "C": "The child is overweight",
+        "D": "The percentile has no meaningful interpretation without height data"
+      },
+      "correct": "A",
+      "explanation": "A percentile indicates a child's position relative to a reference population — the 50th percentile means the child's measurement is at the median, i.e., equal to or exceeding that of 50% of same-age, same-sex children in the reference standard. Growth charts are used to track a child's growth trajectory over time (a consistent percentile over time is generally reassuring) rather than relying on a single measurement."
+    },
+    {
+      "id": "PED9",
+      "subject": "Pediatrics",
+      "topic": "Growth & Nutrition",
+      "question": "As per WHO/national infant feeding recommendations, until what age should an infant be exclusively breastfed (no other foods or liquids, including water)?",
+      "options": {
+        "A": "6 months",
+        "B": "3 months",
+        "C": "12 months",
+        "D": "2 months"
+      },
+      "correct": "A",
+      "explanation": "Exclusive breastfeeding is recommended for the first 6 months of life, after which complementary feeding should be introduced alongside continued breastfeeding (ideally continuing breastfeeding up to 2 years or beyond). Exclusive breastfeeding provides optimal nutrition and immune protection and is associated with reduced infant morbidity and mortality."
+    },
+    {
+      "id": "PED10",
+      "subject": "Pediatrics",
+      "topic": "Growth & Nutrition",
+      "question": "A 2-year-old from a nutritionally deprived background presents with generalized edema, a distended abdomen, hepatomegaly, and hair/skin changes, but body weight is only mildly reduced for age. What is the most likely diagnosis?",
+      "options": {
+        "A": "Kwashiorkor",
+        "B": "Marasmus",
+        "C": "Marasmic-kwashiorkor (mixed)",
+        "D": "Simple failure to thrive without malnutrition"
+      },
+      "correct": "A",
+      "explanation": "Kwashiorkor results from predominantly protein-deficient (relatively calorie-preserved) malnutrition, characterized by edema, hepatomegaly (fatty liver from impaired lipoprotein synthesis), skin/hair changes, and a distended abdomen, with weight often only mildly reduced due to masking edema. Marasmus, by contrast, results from severe overall calorie deficiency, causing marked wasting without edema ('skin and bones' appearance)."
+    },
+    {
+      "id": "PED11",
+      "subject": "Pediatrics",
+      "topic": "Growth & Nutrition",
+      "question": "An exclusively breastfed 14-month-old who has had minimal sun exposure presents with delayed walking, bowing of the legs, and widened wrists on examination. What is the most likely diagnosis and underlying deficiency?",
+      "options": {
+        "A": "Rickets, due to vitamin D deficiency",
+        "B": "Scurvy, due to vitamin C deficiency",
+        "C": "Rickets, due to vitamin A deficiency",
+        "D": "Osteogenesis imperfecta, a genetic collagen disorder"
+      },
+      "correct": "A",
+      "explanation": "Nutritional rickets from vitamin D deficiency (compounded by limited sun exposure) classically presents with bone deformities — bowing of long bones, widened wrists/costochondral junctions ('rachitic rosary'), delayed fontanelle closure, and delayed motor milestones like walking — due to impaired mineralization of growing bone."
+    },
+    {
+      "id": "PED12",
+      "subject": "Pediatrics",
+      "topic": "Genetics & Congenital Heart Diseases",
+      "question": "A newborn has upslanting palpebral fissures, a flat facial profile, single palmar crease, and hypotonia. Echocardiography reveals an atrioventricular septal (endocardial cushion) defect. What is the most likely underlying chromosomal diagnosis?",
+      "options": {
+        "A": "Trisomy 21 (Down syndrome)",
+        "B": "Trisomy 18 (Edwards syndrome)",
+        "C": "Trisomy 13 (Patau syndrome)",
+        "D": "Turner syndrome (45,X)"
+      },
+      "correct": "A",
+      "explanation": "Down syndrome (trisomy 21) is characterized by upslanting palpebral fissures, flat facial profile, single palmar crease, and hypotonia, and is the syndrome most strongly associated with atrioventricular septal defects (endocardial cushion defects) — the most common congenital heart lesion in Down syndrome, though VSD and ASD also occur."
+    },
+    {
+      "id": "PED13",
+      "subject": "Pediatrics",
+      "topic": "Genetics & Congenital Heart Diseases",
+      "question": "A phenotypically female newborn has webbed neck, widely spaced nipples, lymphedema of the hands/feet, and a coarctation of the aorta on echocardiography. Karyotyping is most likely to reveal which finding?",
+      "options": {
+        "A": "45,X (Turner syndrome)",
+        "B": "47,XXY (Klinefelter syndrome)",
+        "C": "46,XX with normal karyotype",
+        "D": "47,XXX"
+      },
+      "correct": "A",
+      "explanation": "Turner syndrome (45,X or mosaic variants) presents with webbed neck, widely spaced nipples ('shield chest'), lymphedema of hands/feet (from lymphatic dysplasia, often noted at birth), short stature, and streak ovaries; coarctation of the aorta and bicuspid aortic valve are the classic associated cardiac defects."
+    },
+    {
+      "id": "PED14",
+      "subject": "Pediatrics",
+      "topic": "Genetics & Congenital Heart Diseases",
+      "question": "A newborn has rocker-bottom feet, overlapping fingers (clenched fists with index over middle finger), micrognathia, and a severe congenital heart defect; the prognosis is very poor with most infants not surviving beyond the first year. Which trisomy is most consistent with this presentation?",
+      "options": {
+        "A": "Trisomy 18 (Edwards syndrome)",
+        "B": "Trisomy 21 (Down syndrome)",
+        "C": "Trisomy 13 (Patau syndrome), which more classically shows midline defects like cleft lip/palate and holoprosencephaly",
+        "D": "Klinefelter syndrome"
+      },
+      "correct": "A",
+      "explanation": "Trisomy 18 (Edwards syndrome) classically presents with rocker-bottom feet, clenched fists with overlapping fingers, micrognathia, and severe congenital heart defects, with a poor prognosis (most do not survive the first year). Trisomy 13 (Patau) instead more classically features midline defects — cleft lip/palate, holoprosencephaly, and polydactyly."
+    },
+    {
+      "id": "PED15",
+      "subject": "Pediatrics",
+      "topic": "Genetics & Congenital Heart Diseases",
+      "question": "A 4-year-old is found to have a harsh pansystolic murmur best heard at the left lower sternal border, with a history of recurrent respiratory infections and failure to thrive in infancy. What is the most common congenital heart defect that fits this presentation?",
+      "options": {
+        "A": "Ventricular septal defect (VSD)",
+        "B": "Atrial septal defect (ASD)",
+        "C": "Patent ductus arteriosus (PDA)",
+        "D": "Tetralogy of Fallot"
+      },
+      "correct": "A",
+      "explanation": "Ventricular septal defect is the most common congenital heart defect overall, producing a harsh pansystolic murmur at the left lower sternal border. Larger defects cause left-to-right shunting leading to pulmonary overcirculation, recurrent respiratory infections, and failure to thrive due to increased metabolic demand and feeding difficulty from tachypnea."
+    },
+    {
+      "id": "PED16",
+      "subject": "Pediatrics",
+      "topic": "Cystic Fibrosis-Pneumonia & Pediatric GI Disorders",
+      "question": "An infant with recurrent respiratory infections, steatorrhea, and poor weight gain is suspected to have cystic fibrosis. Which test is the gold-standard diagnostic confirmatory test?",
+      "options": {
+        "A": "Sweat chloride test (pilocarpine iontophoresis)",
+        "B": "Stool fat quantification alone",
+        "C": "Chest X-ray alone",
+        "D": "Serum IgE levels"
+      },
+      "correct": "A",
+      "explanation": "The sweat chloride test (via pilocarpine iontophoresis) remains the gold-standard diagnostic test for cystic fibrosis; a chloride concentration >60 mmol/L is considered diagnostic. CF results from CFTR gene mutations causing thick secretions, leading to recurrent pulmonary infections, pancreatic insufficiency (steatorrhea, poor growth), and elevated sweat chloride due to defective chloride reabsorption in sweat ducts."
+    },
+    {
+      "id": "PED17",
+      "subject": "Pediatrics",
+      "topic": "Cystic Fibrosis-Pneumonia & Pediatric GI Disorders",
+      "question": "A 3-week-old male infant presents with progressive, forceful (projectile) non-bilious vomiting after feeds, and a firm, olive-shaped mass is palpable in the right upper quadrant. What is the diagnosis and definitive treatment?",
+      "options": {
+        "A": "Hypertrophic pyloric stenosis; Ramstedt's pyloromyotomy after correcting electrolyte/fluid imbalance",
+        "B": "Duodenal atresia; nasogastric decompression only, no surgery needed",
+        "C": "Intussusception; air/contrast enema alone",
+        "D": "Malrotation with volvulus; observation"
+      },
+      "correct": "A",
+      "explanation": "Hypertrophic pyloric stenosis classically presents in a 2-8 week old male infant with projectile, non-bilious vomiting and a palpable 'olive' mass (hypertrophied pylorus) in the right upper quadrant, often with hypochloremic hypokalemic metabolic alkalosis from vomiting. Electrolyte correction precedes surgery; Ramstedt's pyloromyotomy is the definitive curative treatment."
+    },
+    {
+      "id": "PED18",
+      "subject": "Pediatrics",
+      "topic": "Cystic Fibrosis-Pneumonia & Pediatric GI Disorders",
+      "question": "A previously well 10-month-old presents with sudden episodic abdominal pain (drawing up legs), vomiting, and 'currant jelly' stools. A sausage-shaped mass is palpated in the right upper quadrant. What is the diagnosis and first-line management if there are no signs of peritonitis or perforation?",
+      "options": {
+        "A": "Intussusception; air or hydrostatic (contrast) enema reduction",
+        "B": "Appendicitis; immediate appendectomy",
+        "C": "Meckel's diverticulum; observation only",
+        "D": "Hirschsprung disease; rectal biopsy first, no urgent treatment"
+      },
+      "correct": "A",
+      "explanation": "Intussusception (telescoping of bowel, most commonly ileocolic) classically presents with episodic colicky abdominal pain, vomiting, a sausage-shaped abdominal mass, and 'currant jelly' stools (blood mixed with mucus). In the absence of peritonitis/perforation, air or hydrostatic (contrast) enema is both diagnostic and therapeutic, reducing the intussusception non-operatively in most cases."
+    },
+    {
+      "id": "PED19",
+      "subject": "Pediatrics",
+      "topic": "Miscellaneous & Developmental Milestones",
+      "question": "A mother brings her infant for a routine check and asks when social smiling (smiling responsively to a caregiver's face, not just reflexively) is typically expected to develop. What is the expected age?",
+      "options": {
+        "A": "6-8 weeks",
+        "B": "6 months",
+        "C": "1 month",
+        "D": "4 months, and only in response to specific stimuli, not faces generally"
+      },
+      "correct": "A",
+      "explanation": "Social smile (a responsive smile to a caregiver's face/voice, distinct from earlier reflexive smiling) typically develops by 6-8 weeks of age and is an important early social/visual developmental milestone; its absence by 2-3 months warrants developmental evaluation, including for visual or social/communicative concerns."
+    },
+    {
+      "id": "PED20",
+      "subject": "Pediatrics",
+      "topic": "Miscellaneous & Developmental Milestones",
+      "question": "A 2-year-old shows limited eye contact, does not respond to their name, has delayed language development, and engages in repetitive hand-flapping behavior. Which of the following is a recognized early 'red flag' finding most suggestive of autism spectrum disorder?",
+      "options": {
+        "A": "Lack of joint attention (e.g., not pointing to show interest, not following another's pointing gaze) by 12-18 months",
+        "B": "Not walking independently by 12 months",
+        "C": "Not saying single words by 6 months",
+        "D": "Head lag persisting at 2 months"
+      },
+      "correct": "A",
+      "explanation": "Lack of joint attention — not pointing to share interest, not following a caregiver's gaze or pointing gesture — by 12-18 months is one of the earliest and most specific red flags for autism spectrum disorder, alongside poor eye contact, lack of response to name, and stereotyped/repetitive behaviors (e.g., hand-flapping). Gross motor delays (like walking) are less specific to ASD."
+    },
+    {
+      "id": "ANAT17",
+      "subject": "Anatomy",
+      "topic": "Upper Limb",
+      "question": "A newborn sustains a traction injury to the brachial plexus during a difficult shoulder dystocia delivery. The arm is held adducted and internally rotated at the shoulder, extended at the elbow, pronated at the forearm, with wrist flexion — the classic 'waiter's tip' posture. Which roots of the brachial plexus are most likely injured?",
+      "options": {
+        "A": "C5-C6 (Erb's palsy)",
+        "B": "C8-T1 (Klumpke's palsy)",
+        "C": "C7 only",
+        "D": "The entire brachial plexus (C5-T1) equally"
+      },
+      "correct": "A",
+      "explanation": "Erb's (Erb-Duchenne) palsy results from injury to the upper trunk (C5-C6 roots) of the brachial plexus, classically from excessive lateral traction on the neck during difficult delivery (shoulder dystocia). It produces the 'waiter's tip' posture — arm adducted, internally rotated, extended at elbow, forearm pronated — due to paralysis of the deltoid, biceps, and other C5-C6 innervated muscles."
+    },
+    {
+      "id": "ANAT18",
+      "subject": "Anatomy",
+      "topic": "Upper Limb",
+      "question": "A patient sustains a fracture of the surgical neck of the humerus. Injury to which nerve, running closely around this region, is most likely — and what deficit would it cause?",
+      "options": {
+        "A": "Axillary nerve; loss of shoulder abduction (deltoid) and sensory loss over the 'regimental badge' area",
+        "B": "Radial nerve; wrist drop",
+        "C": "Musculocutaneous nerve; loss of elbow flexion",
+        "D": "Ulnar nerve; claw hand"
+      },
+      "correct": "A",
+      "explanation": "The axillary nerve winds around the surgical neck of the humerus (through the quadrangular space) and is vulnerable to injury in surgical neck fractures or anterior shoulder dislocations, causing deltoid paralysis (loss of shoulder abduction beyond the first ~15°) and sensory loss over the 'regimental badge' area of the lateral shoulder. Radial nerve injury is instead classically associated with mid-shaft humeral fractures, causing wrist drop."
+    },
+    {
+      "id": "ANAT19",
+      "subject": "Anatomy",
+      "topic": "Upper Limb",
+      "question": "A patient presents with nocturnal hand pain and tingling in the thumb, index, middle, and lateral half of the ring finger, with thenar muscle wasting in advanced cases. Compression of which nerve, at which anatomical site, causes this presentation?",
+      "options": {
+        "A": "Median nerve, compressed within the carpal tunnel at the wrist",
+        "B": "Ulnar nerve, compressed at the cubital tunnel at the elbow",
+        "C": "Radial nerve, compressed at the spiral groove",
+        "D": "Median nerve, compressed at the elbow by the pronator teres"
+      },
+      "correct": "A",
+      "explanation": "Carpal tunnel syndrome results from median nerve compression within the carpal tunnel at the wrist (deep to the flexor retinaculum), causing sensory symptoms in the median nerve distribution (thumb, index, middle, and radial half of ring finger) and, in advanced/chronic cases, thenar eminence wasting from motor involvement (though sensation over the palm itself is often spared, as the palmar cutaneous branch passes superficial to the retinaculum)."
+    },
+    {
+      "id": "ANAT20",
+      "subject": "Anatomy",
+      "topic": "Abdomen & Pelvis",
+      "question": "A young man presents with a groin swelling that reduces on lying down and reappears on straining; it is found to protrude directly through a weakness in the posterior wall of the inguinal canal, medial to the inferior epigastric vessels. What type of hernia is this?",
+      "options": {
+        "A": "Direct inguinal hernia, through Hesselbach's triangle",
+        "B": "Indirect inguinal hernia, through the deep inguinal ring lateral to inferior epigastric vessels",
+        "C": "Femoral hernia, below the inguinal ligament",
+        "D": "Umbilical hernia"
+      },
+      "correct": "A",
+      "explanation": "A direct inguinal hernia protrudes through Hesselbach's triangle (bounded by the inferior epigastric vessels laterally, rectus abdominis medially, and inguinal ligament inferiorly) — medial to the inferior epigastric vessels — due to weakness of the posterior wall (transversalis fascia). An indirect hernia instead passes through the deep inguinal ring, lateral to the inferior epigastric vessels, following the path of the processus vaginalis."
+    },
+    {
+      "id": "ANAT21",
+      "subject": "Anatomy",
+      "topic": "Abdomen & Pelvis",
+      "question": "The portal vein is formed by the union of which two veins, and behind which structure does this union classically occur?",
+      "options": {
+        "A": "Splenic vein and superior mesenteric vein, behind the neck of the pancreas",
+        "B": "Splenic vein and inferior mesenteric vein, in front of the pancreas",
+        "C": "Superior and inferior mesenteric veins, behind the stomach",
+        "D": "Left and right gastric veins, behind the duodenum"
+      },
+      "correct": "A",
+      "explanation": "The portal vein forms behind the neck of the pancreas by the union of the splenic vein and the superior mesenteric vein (the inferior mesenteric vein usually drains into the splenic vein before this confluence). This portal-systemic drainage pathway is clinically important in portal hypertension, where collateral porto-systemic anastomoses (e.g., esophageal varices, caput medusae, hemorrhoids) develop."
+    },
+    {
+      "id": "ANAT22",
+      "subject": "Anatomy",
+      "topic": "Abdomen & Pelvis",
+      "question": "The femoral triangle is an important anatomical region in the upper thigh. From lateral to medial, which structures are contained within it (mnemonic: NAVEL)?",
+      "options": {
+        "A": "Femoral Nerve, Femoral Artery, Femoral Vein, then Empty space, then Lymphatics (deep inguinal nodes)",
+        "B": "Femoral vein, artery, then nerve, from lateral to medial",
+        "C": "Only the femoral artery and vein, with the nerve located outside the triangle",
+        "D": "Femoral nerve, femoral vein, femoral artery, in that lateral-to-medial order"
+      },
+      "correct": "A",
+      "explanation": "From lateral to medial within the femoral triangle: femoral Nerve, femoral Artery, femoral Vein, Empty space, and Lymphatics (deep inguinal nodes) — remembered by the mnemonic NAVEL. Note the nerve lies outside the femoral sheath, while the artery, vein, and femoral canal (containing lymphatics) lie within the sheath, which is clinically relevant for femoral hernias, which occur through the femoral canal medial to the vein."
+    },
+    {
+      "id": "ANAT23",
+      "subject": "Anatomy",
+      "topic": "Lower Limb & Histology-Osteology",
+      "question": "A patient with a fibular (lateral leg) fracture near the neck of the fibula develops foot drop with loss of dorsiflexion and eversion, and sensory loss over the dorsum of the foot. Which nerve is injured, given its superficial course around the fibular neck?",
+      "options": {
+        "A": "Common peroneal (fibular) nerve",
+        "B": "Tibial nerve",
+        "C": "Sural nerve",
+        "D": "Femoral nerve"
+      },
+      "correct": "A",
+      "explanation": "The common peroneal (fibular) nerve winds superficially around the neck of the fibula, making it vulnerable to injury from fibular neck fractures, tight casts, or prolonged leg crossing/compression. Injury causes foot drop (loss of dorsiflexion), loss of eversion, and sensory loss over the dorsum of the foot and lateral leg, as it supplies the anterior and lateral compartments of the leg."
+    },
+    {
+      "id": "ANAT24",
+      "subject": "Anatomy",
+      "topic": "Lower Limb & Histology-Osteology",
+      "question": "On histological examination of compact bone, concentric lamellae of bone matrix surround a central canal containing blood vessels and nerves. What is this basic structural unit of compact bone called?",
+      "options": {
+        "A": "Osteon (Haversian system)",
+        "B": "Trabecula",
+        "C": "Periosteum",
+        "D": "Epiphyseal plate"
+      },
+      "correct": "A",
+      "explanation": "The osteon (Haversian system) is the basic structural unit of compact (cortical) bone, consisting of concentric lamellae of mineralized matrix arranged around a central (Haversian) canal that carries blood vessels and nerves, interconnected by perforating (Volkmann's) canals. Trabecular (cancellous) bone, in contrast, has a spongy, non-lamellar-osteon architecture suited to weight distribution."
+    },
+    {
+      "id": "ANAT25",
+      "subject": "Anatomy",
+      "topic": "Cadaveric Sections",
+      "question": "On a cross-sectional (axial) cadaveric/CT section taken at the level of the umbilicus (approximately L3-L4 vertebral level), which major abdominal vessel is typically seen bifurcating into its terminal branches at this level?",
+      "options": {
+        "A": "Abdominal aorta, bifurcating into the common iliac arteries",
+        "B": "Inferior vena cava, bifurcating into the common iliac veins at this exact level",
+        "C": "Superior mesenteric artery, bifurcating into its terminal branches",
+        "D": "Portal vein, bifurcating into hepatic ducts"
+      },
+      "correct": "A",
+      "explanation": "The abdominal aorta bifurcates into the right and left common iliac arteries at approximately the L4 vertebral level (near the umbilicus), a key landmark on cross-sectional imaging and in cadaveric dissection. The inferior vena cava is formed slightly lower, at the L5 level, by the union of the common iliac veins — the two bifurcation/confluence points are not at exactly the same level."
+    },
+    {
+      "id": "OPHTH1",
+      "subject": "Ophthalmology",
+      "topic": "Cornea-Sclera & Lens-Cataract",
+      "question": "A 22-year-old presents with progressive blurring of vision, and examination reveals a cone-shaped protrusion of the cornea with irregular astigmatism and thinning, worse in one eye. What is the diagnosis, and which sign (seen as a V-shaped indentation of the lower lid margin on downgaze) supports it?",
+      "options": {
+        "A": "Keratoconus; Munson's sign",
+        "B": "Corneal ulcer; Fleischer ring",
+        "C": "Cataract; Munson's sign",
+        "D": "Glaucoma; cupping"
+      },
+      "correct": "A",
+      "explanation": "Keratoconus is a progressive, bilateral (often asymmetric) corneal ectasia causing conical corneal protrusion, irregular astigmatism, and thinning, typically presenting in the second-third decade. Munson's sign — a V-shaped bulge of the lower eyelid on downward gaze, caused by the conical cornea pushing against the lid — is a classic clinical sign; a Fleischer ring (iron deposition) is a separate corneal finding also seen in keratoconus."
+    },
+    {
+      "id": "OPHTH2",
+      "subject": "Ophthalmology",
+      "topic": "Cornea-Sclera & Lens-Cataract",
+      "question": "A farmer presents with severe eye pain, photophobia, and a corneal ulcer with feathery, filamentous margins and satellite lesions after a plant/vegetative matter injury to the eye. Which organism is most likely responsible?",
+      "options": {
+        "A": "Fungal keratitis (e.g., Fusarium or Aspergillus species)",
+        "B": "Pseudomonas aeruginosa (bacterial)",
+        "C": "Herpes simplex virus (dendritic ulcer)",
+        "D": "Acanthamoeba (from contact lens use in tap water)"
+      },
+      "correct": "A",
+      "explanation": "Fungal corneal ulcers classically follow vegetative matter/plant injury (common in agricultural workers) and show feathery, filamentous margins with satellite lesions and a dry, rough texture. Bacterial ulcers (e.g., Pseudomonas, often contact-lens related) tend to have a more purulent, rapidly progressive appearance; herpetic ulcers show a dendritic (branching) pattern; Acanthamoeba is classically linked to contact lens wear with exposure to contaminated water."
+    },
+    {
+      "id": "OPHTH3",
+      "subject": "Ophthalmology",
+      "topic": "Cornea-Sclera & Lens-Cataract",
+      "question": "A 68-year-old presents with gradual, painless, bilateral blurring of vision and glare, worse at night, with a hazy/opacified lens on slit-lamp exam. What is the most common type of cataract in this age group, and what is the standard management once vision is significantly affected?",
+      "options": {
+        "A": "Senile (age-related) cataract; phacoemulsification with intraocular lens implantation",
+        "B": "Congenital cataract; urgent surgery within weeks of presentation regardless of age",
+        "C": "Traumatic cataract; observation only",
+        "D": "Complicated cataract from uveitis; systemic steroids alone, no surgery"
+      },
+      "correct": "A",
+      "explanation": "Senile (age-related) cataract is the most common cause of cataract in older adults, presenting with gradual, painless visual blurring and glare. The standard treatment once vision significantly affects quality of life is surgical removal via phacoemulsification with intraocular lens (IOL) implantation — a highly successful, commonly performed procedure."
+    },
+    {
+      "id": "OPHTH4",
+      "subject": "Ophthalmology",
+      "topic": "Cornea-Sclera & Lens-Cataract",
+      "question": "A newborn is noted to have an absent red reflex on routine eye examination. Why is prompt referral and early surgical management (if congenital cataract is confirmed) considered urgent in this age group?",
+      "options": {
+        "A": "To prevent irreversible amblyopia (deprivation amblyopia) from visual deprivation during the critical period of visual development",
+        "B": "Because congenital cataracts always indicate a life-threatening systemic disease requiring emergency treatment",
+        "C": "Because delay increases the risk of the cataract becoming malignant",
+        "D": "There is no urgency; surgery can be deferred until adulthood"
+      },
+      "correct": "A",
+      "explanation": "An absent red reflex in a newborn raises concern for congenital cataract (among other causes like retinoblastoma), and if confirmed, early surgery (ideally within the first 6-8 weeks of life for a visually significant unilateral cataract) is critical to prevent irreversible deprivation amblyopia, since the visual cortex requires clear retinal images during the critical period of early visual development to develop normally."
+    },
+    {
+      "id": "OPHTH5",
+      "subject": "Ophthalmology",
+      "topic": "Uveitis & Glaucoma",
+      "question": "A patient presents with a painful red eye, photophobia, a small/irregular pupil, and circumcorneal (ciliary) redness concentrated around the limbus rather than diffusely. Slit-lamp exam shows cells and flare in the anterior chamber with keratic precipitates on the corneal endothelium. What is the diagnosis?",
+      "options": {
+        "A": "Anterior uveitis (iridocyclitis)",
+        "B": "Acute conjunctivitis",
+        "C": "Acute angle-closure glaucoma",
+        "D": "Episcleritis"
+      },
+      "correct": "A",
+      "explanation": "Anterior uveitis (iridocyclitis) presents with pain, photophobia, ciliary/circumcorneal injection (redness concentrated around the limbus, unlike the diffuse redness of conjunctivitis), a small or irregular pupil (from posterior synechiae/sphincter spasm), and slit-lamp findings of anterior chamber cells and flare with keratic precipitates — inflammatory deposits on the corneal endothelium."
+    },
+    {
+      "id": "OPHTH6",
+      "subject": "Ophthalmology",
+      "topic": "Uveitis & Glaucoma",
+      "question": "A young man with chronic lower back pain and morning stiffness, found to be HLA-B27 positive, presents with recurrent episodes of acute anterior uveitis. Which other condition, also associated with HLA-B27 and uveitis, is likely if he is a child with joint pain?",
+      "options": {
+        "A": "Juvenile idiopathic arthritis (particularly the oligoarticular type, though this is more classically HLA-B27-negative ANA-positive; HLA-B27 associations more classically include ankylosing spondylitis and reactive arthritis)",
+        "B": "Down syndrome",
+        "C": "Marfan syndrome",
+        "D": "Retinoblastoma"
+      },
+      "correct": "A",
+      "explanation": "HLA-B27 is strongly associated with the seronegative spondyloarthropathies (ankylosing spondylitis, reactive arthritis, psoriatic arthritis, IBD-associated arthritis), all of which carry an increased risk of acute anterior uveitis — often unilateral, recurrent, and alternating between eyes. Juvenile idiopathic arthritis-associated uveitis (classically the oligoarticular, ANA-positive subtype) tends to be chronic and asymptomatic, and is a distinct, separately-associated entity."
+    },
+    {
+      "id": "OPHTH7",
+      "subject": "Ophthalmology",
+      "topic": "Uveitis & Glaucoma",
+      "question": "A 60-year-old on routine eye exam is found to have elevated intraocular pressure, an increased cup-to-disc ratio on fundus exam, and peripheral visual field loss, with no pain or redness. What is the diagnosis and first-line treatment?",
+      "options": {
+        "A": "Primary open-angle glaucoma; topical prostaglandin analogues (e.g., latanoprost) as first-line",
+        "B": "Acute angle-closure glaucoma; emergency laser iridotomy",
+        "C": "Cataract; surgery",
+        "D": "Optic neuritis; IV steroids"
+      },
+      "correct": "A",
+      "explanation": "Primary open-angle glaucoma is typically asymptomatic until advanced, presenting with gradually progressive peripheral visual field loss, elevated intraocular pressure, and increased cup-to-disc ratio (optic disc cupping) from progressive optic nerve damage. First-line treatment is topical medical therapy, most commonly prostaglandin analogues (e.g., latanoprost), which increase uveoscleral outflow to lower IOP."
+    },
+    {
+      "id": "OPHTH8",
+      "subject": "Ophthalmology",
+      "topic": "Uveitis & Glaucoma",
+      "question": "A 55-year-old presents to the emergency department with sudden severe unilateral eye pain, blurred vision with halos around lights, nausea/vomiting, a fixed mid-dilated pupil, and a hard/tender eye on palpation. What is the diagnosis and immediate management?",
+      "options": {
+        "A": "Acute angle-closure glaucoma; immediate IOP-lowering measures (IV mannitol, topical agents) followed by laser peripheral iridotomy",
+        "B": "Anterior uveitis; topical steroids only, non-urgent",
+        "C": "Migraine with visual aura; analgesics and rest",
+        "D": "Retinal detachment; elective outpatient surgery"
+      },
+      "correct": "A",
+      "explanation": "Acute angle-closure glaucoma is an ophthalmic emergency presenting with sudden severe eye pain, halos around lights, nausea/vomiting (from the severe pain and pressure), a fixed mid-dilated pupil, and a hard eye on palpation due to markedly elevated IOP from sudden obstruction of aqueous outflow. Immediate treatment includes IOP-lowering agents (IV mannitol, topical beta-blockers/alpha-agonists, pilocarpine) followed by definitive laser peripheral iridotomy once the acute attack is controlled."
+    },
+    {
+      "id": "OPHTH9",
+      "subject": "Ophthalmology",
+      "topic": "Neuro-Ophthalmology",
+      "question": "When light is shone into a patient's right eye, both pupils constrict normally (direct and consensual reflex present). When the light is swiftly moved to the left eye, both pupils appear to dilate rather than remain constricted. What does this 'swinging flashlight test' finding indicate, and what is it called?",
+      "options": {
+        "A": "Relative afferent pupillary defect (RAPD, Marcus Gunn pupil) in the left eye, suggesting left optic nerve pathology",
+        "B": "Normal pupillary response, no defect",
+        "C": "Complete bilateral optic nerve damage",
+        "D": "Efferent pupillary defect due to oculomotor nerve palsy"
+      },
+      "correct": "A",
+      "explanation": "A relative afferent pupillary defect (Marcus Gunn pupil) is detected by the swinging flashlight test: when light moves from the unaffected to the affected eye, both pupils appear to dilate (paradoxically) because the afferent (sensory) signal from the affected optic nerve is weaker, causing less pupillary constriction than when light was in the healthy eye — indicating optic nerve or severe retinal pathology on the affected (here, left) side."
+    },
+    {
+      "id": "OPHTH10",
+      "subject": "Ophthalmology",
+      "topic": "Neuro-Ophthalmology",
+      "question": "A patient presents with progressive loss of the outer (temporal) visual fields in both eyes, sparing central vision, ultimately producing bitemporal hemianopia. A lesion at which site along the visual pathway best explains this pattern?",
+      "options": {
+        "A": "Optic chiasm (compressing crossing nasal retinal fibers, e.g., from a pituitary macroadenoma)",
+        "B": "Optic nerve, unilaterally",
+        "C": "Occipital lobe, bilaterally",
+        "D": "Optic tract, unilaterally"
+      },
+      "correct": "A",
+      "explanation": "Bitemporal hemianopia results from a lesion at the optic chiasm, which compresses the decussating fibers from the nasal retina of each eye (representing the temporal visual fields) — classically from a pituitary macroadenoma compressing the chiasm from below, or craniopharyngioma from above. Lesions elsewhere in the visual pathway (optic nerve, tract, radiations, occipital cortex) produce different field defect patterns (monocular loss, homonymous hemianopia, or quadrantanopia)."
+    },
+    {
+      "id": "OPHTH11",
+      "subject": "Ophthalmology",
+      "topic": "Neuro-Ophthalmology",
+      "question": "A patient with a history of raised intracranial pressure (e.g., from a brain tumor) is found on fundoscopy to have bilateral optic disc swelling with blurred disc margins, but preserved visual acuity and normal color vision initially. How does this differ from optic neuritis, which also causes disc swelling?",
+      "options": {
+        "A": "Papilledema (from raised ICP) is typically bilateral with preserved vision early on, while optic neuritis is often unilateral, painful on eye movement, and causes significant early vision loss/color desaturation",
+        "B": "Papilledema always causes immediate profound vision loss, unlike optic neuritis",
+        "C": "Optic neuritis is always bilateral and painless, unlike papilledema",
+        "D": "There is no clinically useful distinction between the two conditions"
+      },
+      "correct": "A",
+      "explanation": "Papilledema (disc swelling from raised intracranial pressure) is typically bilateral, and visual acuity/color vision are often preserved early despite the disc swelling (though enlarged blind spots may occur). Optic neuritis, by contrast, is often unilateral, associated with pain on eye movement, and causes significant early loss of visual acuity and color vision (red desaturation) — a key clinical distinction, since papilledema signals a separate underlying intracranial process requiring urgent neuroimaging."
+    },
+    {
+      "id": "ENT1",
+      "subject": "ENT",
+      "topic": "Ear Anatomy",
+      "question": "On otoscopic examination, the examiner identifies the 'cone of light' (light reflex) reflecting off the tympanic membrane. In a normal right ear, in which quadrant is this light reflex typically seen, and what does it indicate?",
+      "options": {
+        "A": "Anteroinferior quadrant; indicates the tympanic membrane is intact and normally concave/mobile",
+        "B": "Posterosuperior quadrant; indicates a perforation is present",
+        "C": "It is seen in all four quadrants equally in a normal ear",
+        "D": "Anterosuperior quadrant; indicates fluid in the middle ear"
+      },
+      "correct": "A",
+      "explanation": "The normal cone of light (light reflex) is seen in the anteroinferior quadrant of the tympanic membrane (pointing anteriorly from the umbo, at the tip of the malleus handle), a result of the light reflecting off the normally concave, translucent, and mobile drum. Its absence or distortion can suggest tympanic membrane pathology such as retraction, perforation, or middle ear effusion."
+    },
+    {
+      "id": "ENT2",
+      "subject": "ENT",
+      "topic": "Ear Anatomy",
+      "question": "Sound conduction through the middle ear involves the three ossicles. Which ossicle is directly attached to the tympanic membrane, and which is attached to the oval window of the inner ear?",
+      "options": {
+        "A": "Malleus attaches to the tympanic membrane; stapes footplate attaches to the oval window",
+        "B": "Incus attaches to the tympanic membrane; malleus attaches to the oval window",
+        "C": "Stapes attaches to the tympanic membrane; incus attaches to the oval window",
+        "D": "Malleus attaches to both the tympanic membrane and the oval window"
+      },
+      "correct": "A",
+      "explanation": "The ossicular chain conducts sound from the tympanic membrane to the inner ear: the malleus handle is embedded in and attached to the tympanic membrane, articulating with the incus, which in turn articulates with the stapes — whose footplate sits in the oval window, transmitting vibrations into the perilymph of the inner ear (cochlea)."
+    },
+    {
+      "id": "ENT3",
+      "subject": "ENT",
+      "topic": "Ear Anatomy",
+      "question": "The facial nerve (CN VII) runs an intricate course through the temporal bone, passing close to middle ear structures. Which part of its course makes it vulnerable to injury during middle ear/mastoid surgery?",
+      "options": {
+        "A": "Its horizontal (tympanic) segment, running just above the oval window/promontory within the middle ear, and its vertical (mastoid) segment",
+        "B": "Only its extracranial course through the parotid gland is at risk during ear surgery",
+        "C": "The facial nerve does not pass near the middle ear at all",
+        "D": "Only the geniculate ganglion is at risk, located far from the middle ear"
+      },
+      "correct": "A",
+      "explanation": "The facial nerve's tympanic (horizontal) segment runs through the middle ear just above the oval window/promontory, and its mastoid (vertical) segment continues down to exit at the stylomastoid foramen — both are in close proximity to structures operated on during middle ear and mastoid surgery (e.g., for cholesteatoma or chronic otitis media), making iatrogenic facial nerve injury and resultant facial palsy a recognized surgical risk."
+    },
+    {
+      "id": "ENT4",
+      "subject": "ENT",
+      "topic": "Ear Anatomy",
+      "question": "Children are more prone to acute otitis media than adults, partly due to differences in the anatomy of the Eustachian tube. Which anatomical feature of the pediatric Eustachian tube predisposes to this?",
+      "options": {
+        "A": "It is shorter, wider, and more horizontal in children, allowing easier reflux of nasopharyngeal secretions/pathogens into the middle ear",
+        "B": "It is longer and more vertical in children, trapping fluid more easily",
+        "C": "Children have an additional accessory Eustachian tube not present in adults",
+        "D": "The Eustachian tube is absent until age 5"
+      },
+      "correct": "A",
+      "explanation": "The pediatric Eustachian tube is shorter, wider, and more horizontally oriented compared to the adult tube (which is longer, narrower, and more obliquely/vertically angled) — this anatomical difference allows easier reflux of nasopharyngeal secretions and pathogens into the middle ear, and less efficient drainage, contributing to the higher incidence of acute otitis media and otitis media with effusion in young children."
+    },
+    {
+      "id": "ENT5",
+      "subject": "ENT",
+      "topic": "Ear Anatomy",
+      "question": "The inner ear (bony and membranous labyrinth) contains both auditory and vestibular sensory structures. Which structure is responsible for hearing, and which pair of structures is responsible for detecting linear acceleration/head position relative to gravity?",
+      "options": {
+        "A": "Cochlea for hearing; utricle and saccule for linear acceleration/gravity",
+        "B": "Semicircular canals for hearing; cochlea for balance",
+        "C": "Vestibule for hearing; cochlea for balance",
+        "D": "Cochlea for both hearing and linear acceleration, with no separate structures for balance"
+      },
+      "correct": "A",
+      "explanation": "The cochlea (containing the organ of Corti) is the auditory sensory organ, converting sound vibrations into neural signals. Within the vestibule, the utricle and saccule (containing maculae with otoliths) detect linear acceleration and static head position relative to gravity, while the three semicircular canals (with their cristae ampullares) detect angular/rotational acceleration of the head."
+    }
+  ]
+}

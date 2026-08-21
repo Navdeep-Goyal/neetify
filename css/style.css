@@ -378,6 +378,66 @@ a:focus-visible {
   font-size: 14px;
 }
 
+/* ---------------- Weekly exam picker ---------------- */
+.week-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+.week-card {
+  border: 1px solid var(--border-grey);
+  border-radius: 6px;
+  padding: 16px 18px;
+  background: #fafbfc;
+}
+.week-card.locked {
+  background: #f4f4f4;
+}
+.week-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.week-card-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--header-blue);
+}
+.week-card-dates {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+.week-status-badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.week-status-badge.locked { background: #e0e0e0; color: #666; }
+.week-status-badge.available { background: #dbe9ff; color: var(--header-blue); }
+.week-status-badge.inprogress { background: #f3e6ff; color: var(--purple-marked); }
+.week-status-badge.completed { background: #e3f5e8; color: #2c8244; }
+.week-card-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.week-lock-note {
+  font-size: 13px;
+  color: #888;
+}
+.week-countdown {
+  font-weight: bold;
+  color: var(--text-mid);
+}
+
 /* ---------------- Result screen ---------------- */
 .result-summary-grid {
   display: grid;
