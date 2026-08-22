@@ -42,6 +42,44 @@ Once you begin a section, the site tries to enforce exam-like conditions:
 - **The "leave site?" browser confirmation is unreliable on iOS/iPadOS Safari** — Apple's WebKit engine doesn't consistently show it, especially for app-switching. This isn't a gap in the core protection (that's the violation counter, which still fires), just a missing extra nudge when actually closing the tab.
 - **If fullscreen is ever denied** (e.g. by Screen Time or MDM content restrictions on a school-managed iPad), a small banner appears suggesting **Guided Access** (Settings → Accessibility → Guided Access, then triple-click the top button once in the exam) — this is the one thing that genuinely *can* lock an iPad to a single app at the OS level, since no website ever can.
 
+## Cross-device sync (optional)
+Results can sync across devices (e.g. iPad + laptop) via a free [Supabase](https://supabase.com) project. This is entirely additive — if it isn't set up, the site behaves exactly as it always has (localStorage only, one device).
+
+**One-time setup:**
+1. In your Supabase project's **SQL Editor**, paste and run `supabase_schema.sql` (included in this zip). It creates the `exam_history` table with Row Level Security, so each signed-in user can only ever read/write their own rows.
+2. Go to **Project Settings → API** and copy the **`anon` `public`** key (this is meant to be public/client-visible — it is *not* a secret; real access control comes from the Row Level Security policies, not from hiding this key).
+3. Paste that key into `js/supabase-config.js`, replacing `PASTE_YOUR_ANON_PUBLIC_KEY_HERE`.
+4. Go to **Authentication → URL Configuration** and add `https://navdeep-goyal.github.io/neetify/` to the **Redirect URLs** list — otherwise the magic-link sign-in email will fail to redirect back correctly.
+5. Push the updated `supabase-config.js` to GitHub Pages.
+
+**How it works day-to-day:**
+- On the landing page, enter your email and tap "Email me a sign-in link." Click the link from that email on each device (iPad, laptop, etc.) using the *same* email address.
+- Once signed in, every completed exam automatically syncs to the cloud, and signing in on a new device pulls down your existing results.
+- **In-progress exams are intentionally not synced** — only completed results. This avoids two devices fighting over one live section timer.
+- If you're not signed in, everything still works exactly as before — signing in is entirely optional.
+
+## Local user profiles (name + PIN)
+If more than one person uses this site on the same device, each person's progress and results stay completely separate:
+- The first time anyone opens the site (or taps **Switch User**), they enter a **name and a PIN** (4+ digits, anything they choose).
+- A new name creates a new local profile; an existing name requires its matching PIN to switch into it.
+- Once logged in, the site remembers you on that device and skips the login screen on future visits — until someone taps **Switch User**.
+- **This is a convenience separator, not real security.** The PIN just guards against accidentally switching into (or being switched into) someone else's profile — it isn't encryption, and anyone with basic browser dev tools could bypass it. Don't rely on it to keep results private from someone determined to see them.
+- **This is independent of the cross-device sync above.** Local profiles separate people sharing one device; Supabase sign-in (by email) separates *your own* results across your *own* devices. If two people on the same device both want their own cloud sync, each should sign in to Supabase with their own email while their own local profile is active.
+
+## Admin panel (one admin account)
+A single admin account can (1) start any week's exam early, before its scheduled unlock, and (2) see every synced user's results in one place. The admin is just a specific Supabase account (identified by email) with a row in an `admins` table — checked securely server-side via Postgres Row Level Security, not by a password baked into the site's code.
+
+**One-time setup (after the main `supabase_schema.sql` from above is already applied):**
+1. Decide which email address will be the admin, then sign in with it once via the site's normal "Email me a sign-in link" flow — this creates their Supabase Auth account.
+2. Run `supabase_admin_schema.sql` in the Supabase SQL Editor. At the bottom, replace `PUT_ADMIN_EMAIL_HERE@example.com` with that same email before running it — this looks up their account and adds them to the `admins` table.
+
+**What the admin gets, once signed in with that email:**
+- Every week's card shows **"Unlocked early (admin)"** and can be started immediately, regardless of the real Sunday-1pm schedule (everyone else still follows the normal schedule).
+- An **"Admin Panel"** button appears next to their sync status, showing every user's synced result (name/email, week, score, violation count, date) with a **View** button to open the full per-question review for any of them.
+- **Only results from users who have signed in and synced are visible here.** Anyone who never sets up sync keeps their results fully local and private — even from the admin.
+
+This is entirely separate from the local name+PIN profile switcher above — an admin is a real, securely-checked Supabase account; local profiles are just an on-device convenience with no real backend behind them.
+
 ## Weekly unlock rule
 Each week's exam is **locked until 1:00 PM IST on that week's Sunday** \u2014 the study window has to actually be over before you can attempt it. The landing page shows each week as a card:
 - **Locked** \u2014 disabled, shows the exact unlock date/time and a live "in Xd Xh Xm" countdown
@@ -86,6 +124,9 @@ data/questions-week1.json   Week 1 (45 Qs): Surgery (finish) / OBG (Parts 1-5) /
 data/questions-week2.json   Week 2 (45 Qs): OBG (finish, Parts 6-10+PPH) / PSM (finish, Parts 6-8+updates) / Anatomy (start, Parts 1-4)
 data/questions-week3.json   Week 3 (45 Qs): Pediatrics (complete) / Anatomy (finish, Parts 5-8) / Ophthalmology (start, Parts 1-3) / ENT (start, Part 1)
 data/questions-week4.json   Week 4 (45 Qs): Ophthalmology (finish, Parts 4-6) / ENT (finish, Parts 2-7) / Neurology (start, Parts 1-4)
+js/supabase-config.js       Cross-device sync config (fill in your anon key -- see "Cross-device sync" above)
+supabase_schema.sql         SQL to run once in Supabase's SQL Editor to create the synced results table
+supabase_admin_schema.sql   SQL to add the one admin account (run after supabase_schema.sql)
 ```
 
 Each week's questions were matched to the exact video parts/topics that schedule covers per `NEET_PG_2027_Schedule.pdf` (topics from subjects under active revision-only, like a completed subject's Notes+Qbank pass, are intentionally excluded — only newly-covered content gets exam questions).

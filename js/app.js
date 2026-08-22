@@ -3,7 +3,9 @@
 // Pure vanilla JS, localStorage persistence, no backend.
 // ============================================================
 
-const STORAGE_KEY_HISTORY = "neetpg_history";
+const STORAGE_KEY_HISTORY_PREFIX = "neetpg_history_";
+const STORAGE_KEY_PROFILES = "neetpg_profiles";
+const STORAGE_KEY_CURRENT_PROFILE = "neetpg_current_profile";
 const WEEKS_FILE = "data/weeks.json";
 
 // Once an exam is in progress, leaving fullscreen or switching tabs/apps counts
@@ -16,6 +18,7 @@ const MAX_VIOLATIONS = 3;
 // closing out the study week), regardless of what timezone the browser is in.
 const UNLOCK_HOUR_IST = 13; // 1 PM
 
+let currentProfile = null; // { id, name } -- whose progress/history is currently active
 let weeksManifest = null;  // loaded JSON from weeks.json, with unlockTimestamp added
 let currentWeek = null;    // the manifest entry for the week currently being attempted/viewed
 let examData = null;       // loaded JSON for currentWeek.questionFile
@@ -57,6 +60,7 @@ function computeUnlockTimestamp(weekEndDateStr) {
 
 function isWeekUnlocked(week) {
   if (new URLSearchParams(location.search).has("unlockall")) return true; // testing/QA override
+  if (isAdminUser) return true; // signed-in admin can start any week early
   return nowTs() >= week.unlockTimestamp;
 }
 
@@ -116,7 +120,81 @@ function freshState() {
   };
 }
 
-function progressKey(weekId) { return `neetpg_inprogress_${weekId}`; }
+// ---------------- Local user profiles (name + PIN) ----------------
+// Lightweight, device-local separation so multiple people sharing this site/device
+// each see only their own progress and results -- NOT a real security boundary (the
+// PIN is just a switch-guard, not encryption), and separate from the Supabase sign-in
+// above (which is about cross-device cloud sync of one person's own results).
+function loadProfiles() {
+  const raw = localStorage.getItem(STORAGE_KEY_PROFILES);
+  if (!raw) return [];
+  try { return JSON.parse(raw); } catch (e) { return []; }
+}
+function saveProfiles(profiles) {
+  localStorage.setItem(STORAGE_KEY_PROFILES, JSON.stringify(profiles));
+}
+function normalizeProfileName(name) { return name.trim(); }
+function profileKeyFromName(name) { return normalizeProfileName(name).toLowerCase(); }
+
+async function hashPin(pin) {
+  const data = new TextEncoder().encode("neetpg-pin-salt::" + pin);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function findProfile(name) {
+  const key = profileKeyFromName(name);
+  return loadProfiles().find(p => p.id === key) || null;
+}
+
+// Returns { ok: true, profile } or { ok: false, message }
+async function attemptLogin(name, pin) {
+  const trimmedName = normalizeProfileName(name);
+  if (!trimmedName) return { ok: false, message: "Enter your name." };
+  if (!pin || pin.length < 4) return { ok: false, message: "PIN must be at least 4 digits." };
+
+  const profiles = loadProfiles();
+  const key = profileKeyFromName(trimmedName);
+  const existing = profiles.find(p => p.id === key);
+  const pinHash = await hashPin(pin);
+
+  if (existing) {
+    if (existing.pinHash !== pinHash) {
+      return { ok: false, message: "Incorrect PIN for that name." };
+    }
+    return { ok: true, profile: existing };
+  }
+
+  const newProfile = { id: key, name: trimmedName, pinHash };
+  profiles.push(newProfile);
+  saveProfiles(profiles);
+  return { ok: true, profile: newProfile };
+}
+
+function setActiveProfile(profile) {
+  currentProfile = { id: profile.id, name: profile.name };
+  localStorage.setItem(STORAGE_KEY_CURRENT_PROFILE, JSON.stringify(currentProfile));
+}
+
+function loadRememberedProfile() {
+  const raw = localStorage.getItem(STORAGE_KEY_CURRENT_PROFILE);
+  if (!raw) return null;
+  try {
+    const remembered = JSON.parse(raw);
+    return findProfile(remembered.name) ? remembered : null;
+  } catch (e) { return null; }
+}
+
+function historyStorageKey() { return STORAGE_KEY_HISTORY_PREFIX + currentProfile.id; }
+
+function updateCandidateNameDisplays() {
+  document.querySelectorAll(".candidate-name-display").forEach(el => { el.textContent = currentProfile.name; });
+  const avatar = $("#candidate-avatar");
+  if (avatar) avatar.textContent = currentProfile.name.charAt(0).toUpperCase();
+}
+
+// ---------------- Progress & history (namespaced per active profile) ----------------
+function progressKey(weekId) { return `neetpg_inprogress_${currentProfile.id}_${weekId}`; }
 
 function saveProgress() {
   localStorage.setItem(progressKey(currentWeek.id), JSON.stringify(state));
@@ -134,20 +212,262 @@ function clearProgress() {
 }
 
 function getHistory() {
-  const raw = localStorage.getItem(STORAGE_KEY_HISTORY);
+  const raw = localStorage.getItem(historyStorageKey());
   if (!raw) return [];
   try { return JSON.parse(raw); } catch (e) { return []; }
 }
 function getHistoryForWeek(weekId) {
   return getHistory().filter(h => h.weekId === weekId);
 }
+function generateId() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return "id-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+}
 function saveHistoryEntry(entry) {
+  if (!entry.id) entry.id = generateId();
   const hist = getHistory();
   hist.unshift(entry);
-  localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(hist));
+  localStorage.setItem(historyStorageKey(), JSON.stringify(hist));
+  pushHistoryEntryToCloud(entry); // no-op if not signed in / not configured
 }
 
-// ---------------- Landing screen ----------------
+// ---------------- Cross-device sync (Supabase) ----------------
+// Entirely optional and additive: if SUPABASE_ANON_KEY hasn't been filled in, or the
+// Supabase SDK didn't load, every function below silently no-ops and the site behaves
+// exactly as it did with localStorage only. Nothing here can break offline/local use.
+let supabaseClient = null;
+let syncUser = null;   // current signed-in Supabase user, or null
+let isAdminUser = false; // whether the signed-in user is confirmed admin (via is_admin() RPC)
+
+function isSyncConfigured() {
+  return typeof SUPABASE_URL === "string" &&
+    typeof SUPABASE_ANON_KEY === "string" &&
+    !SUPABASE_ANON_KEY.includes("PASTE_YOUR");
+}
+
+async function initSync() {
+  if (!isSyncConfigured() || typeof window.supabase === "undefined") {
+    renderSyncStatus();
+    return;
+  }
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    syncUser = session ? session.user : null;
+    isAdminUser = false;
+    renderSyncStatus();
+    if (syncUser) { syncHistoryWithCloud(); checkAdminStatus(); }
+  });
+
+  const { data } = await supabaseClient.auth.getSession();
+  syncUser = data.session ? data.session.user : null;
+  renderSyncStatus();
+  if (syncUser) { syncHistoryWithCloud(); await checkAdminStatus(); }
+}
+
+async function checkAdminStatus() {
+  if (!supabaseClient || !syncUser) { isAdminUser = false; return; }
+  const { data, error } = await supabaseClient.rpc("is_admin");
+  isAdminUser = !error && data === true;
+  renderSyncStatus();
+  if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
+}
+
+async function requestMagicLink(email) {
+  if (!supabaseClient) return;
+  const { error } = await supabaseClient.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: window.location.href },
+  });
+  const msgEl = $("#sync-status-message");
+  if (error) {
+    if (msgEl) { msgEl.textContent = "Couldn't send link: " + error.message; msgEl.classList.remove("hidden"); }
+  } else if (msgEl) {
+    msgEl.textContent = `Check ${email} for a sign-in link, then open it on this device.`;
+    msgEl.classList.remove("hidden");
+  }
+}
+
+async function signOutSync() {
+  if (!supabaseClient) return;
+  await supabaseClient.auth.signOut();
+  syncUser = null;
+  isAdminUser = false;
+  renderSyncStatus();
+  renderWeekList();
+}
+
+function historyEntryToRow(h, userId) {
+  return {
+    id: h.id,
+    user_id: userId,
+    user_email: syncUser ? syncUser.email : null,
+    week_id: h.weekId,
+    exam_title: h.examTitle,
+    score: h.score,
+    total_marks: h.totalMarks,
+    percentage: h.percentage,
+    correct_count: h.correctCount,
+    wrong_count: h.wrongCount,
+    unattempted_count: h.unattemptedCount,
+    violations: h.violations || 0,
+    auto_submitted_for_violations: !!h.autoSubmittedForViolations,
+    section_breakdown: h.sectionBreakdown,
+    per_question: h.perQuestion,
+    attempt_date: new Date(h.date).toISOString(),
+  };
+}
+
+function rowToHistoryEntry(r) {
+  return {
+    id: r.id,
+    weekId: r.week_id,
+    examTitle: r.exam_title,
+    score: r.score,
+    totalMarks: r.total_marks,
+    percentage: r.percentage,
+    correctCount: r.correct_count,
+    wrongCount: r.wrong_count,
+    unattemptedCount: r.unattempted_count,
+    violations: r.violations,
+    autoSubmittedForViolations: r.auto_submitted_for_violations,
+    sectionBreakdown: r.section_breakdown,
+    perQuestion: r.per_question,
+    date: new Date(r.attempt_date).getTime(),
+    userEmail: r.user_email,
+  };
+}
+
+// ---------------- Admin panel ----------------
+let resultBackTarget = "landing"; // "landing" or "admin" -- where the result screen's Back button goes
+
+async function openAdminPanel() {
+  show("#screen-admin");
+  await loadAndRenderAdminResults();
+}
+
+async function loadAndRenderAdminResults() {
+  const content = $("#admin-content");
+  if (!supabaseClient || !isAdminUser) { content.innerHTML = "<p>Not authorized.</p>"; return; }
+  content.innerHTML = "<p>Loading...</p>";
+
+  const { data, error } = await supabaseClient
+    .from("exam_history").select("*").order("attempt_date", { ascending: false });
+  if (error) { content.innerHTML = `<p>Couldn't load results: ${error.message}</p>`; return; }
+
+  if (!data || data.length === 0) {
+    content.innerHTML = "<p>No synced results yet from any user.</p>";
+    return;
+  }
+
+  const rows = data.map(rowToHistoryEntry);
+  const weekLabelById = {};
+  (weeksManifest || []).forEach(w => { weekLabelById[w.id] = w.label; });
+
+  const table = document.createElement("table");
+  table.className = "section-breakdown admin-results-table";
+  table.innerHTML = `
+    <thead><tr><th>User</th><th>Week</th><th>Score</th><th>%</th><th>Violations</th><th>Date</th><th></th></tr></thead>
+    <tbody></tbody>
+  `;
+  const tbody = table.querySelector("tbody");
+  rows.forEach(entry => {
+    const tr = document.createElement("tr");
+    const dateLabel = new Date(entry.date).toLocaleString();
+    tr.innerHTML = `
+      <td>${entry.userEmail || "(unknown)"}</td>
+      <td>${weekLabelById[entry.weekId] || entry.weekId}</td>
+      <td>${entry.score}/${entry.totalMarks}</td>
+      <td>${entry.percentage}%</td>
+      <td>${entry.violations || 0}</td>
+      <td>${dateLabel}</td>
+      <td><button class="btn btn-clear admin-view-btn">View</button></td>
+    `;
+    tr.querySelector(".admin-view-btn").onclick = () => viewResultAsAdmin(entry);
+    tbody.appendChild(tr);
+  });
+
+  content.innerHTML = "";
+  content.appendChild(table);
+}
+
+async function viewResultAsAdmin(entry) {
+  const week = (weeksManifest || []).find(w => w.id === entry.weekId);
+  if (!week) { alert("Couldn't find that week's question file."); return; }
+  currentWeek = week;
+  await loadExamData();
+  resultBackTarget = "admin";
+  renderResult(entry);
+  show("#screen-result");
+}
+
+function pushHistoryEntryToCloud(entry) {
+  if (!supabaseClient || !syncUser) return;
+  supabaseClient.from("exam_history").insert([historyEntryToRow(entry, syncUser.id)])
+    .then(({ error }) => { if (error) console.error("cloud sync (push) failed:", error); });
+}
+
+async function syncHistoryWithCloud() {
+  if (!supabaseClient || !syncUser) return;
+  const { data: remoteRows, error } = await supabaseClient
+    .from("exam_history").select("*").eq("user_id", syncUser.id);
+  if (error) { console.error("cloud sync (pull) failed:", error); return; }
+
+  const localHistory = getHistory();
+  const localIds = new Set(localHistory.map(h => h.id));
+  const remoteIds = new Set((remoteRows || []).map(r => r.id));
+
+  const remoteOnly = (remoteRows || []).filter(r => !localIds.has(r.id)).map(rowToHistoryEntry);
+  if (remoteOnly.length) {
+    const merged = [...localHistory, ...remoteOnly].sort((a, b) => b.date - a.date);
+    localStorage.setItem(historyStorageKey(), JSON.stringify(merged));
+  }
+
+  const localOnly = localHistory.filter(h => !remoteIds.has(h.id));
+  if (localOnly.length) {
+    const rows = localOnly.map(h => historyEntryToRow(h, syncUser.id));
+    const { error: insertError } = await supabaseClient.from("exam_history").insert(rows);
+    if (insertError) console.error("cloud sync (initial push) failed:", insertError);
+  }
+
+  initLanding();
+  if (!$("#screen-history").classList.contains("hidden")) renderHistory();
+}
+
+function renderSyncStatus() {
+  const box = $("#sync-status-box");
+  if (!box) return;
+
+  if (!isSyncConfigured() || typeof window.supabase === "undefined") {
+    box.classList.add("hidden");
+    return;
+  }
+  box.classList.remove("hidden");
+
+  if (syncUser) {
+    const adminBadge = isAdminUser
+      ? ` <span class="admin-badge">Admin</span> <button id="btn-open-admin" class="btn btn-mark" style="margin-left:0;">Admin Panel</button>`
+      : "";
+    box.innerHTML = `
+      <span>Syncing as <b>${syncUser.email}</b>${adminBadge}</span>
+      <button id="btn-sync-signout" class="btn btn-clear" style="margin-left:0;">Sign out</button>
+    `;
+    $("#btn-sync-signout").onclick = signOutSync;
+    const adminBtn = $("#btn-open-admin");
+    if (adminBtn) adminBtn.onclick = openAdminPanel;
+  } else {
+    box.innerHTML = `
+      <span>Sync results across devices:</span>
+      <input id="sync-email-input" type="email" placeholder="you@example.com" />
+      <button id="btn-sync-signin" class="btn btn-mark" style="margin-left:0;">Email me a sign-in link</button>
+      <div id="sync-status-message" class="hidden"></div>
+    `;
+    $("#btn-sync-signin").onclick = () => {
+      const email = $("#sync-email-input").value.trim();
+      if (email) requestMagicLink(email);
+    };
+  }
+}
 function initLanding() {
   renderWeekList();
   renderLandingHistoryPreview();
@@ -161,6 +481,8 @@ function renderWeekList() {
 
   weeksManifest.forEach(week => {
     const unlocked = isWeekUnlocked(week);
+    const scheduledUnlocked = nowTs() >= week.unlockTimestamp;
+    const adminOverride = unlocked && !scheduledUnlocked && isAdminUser;
     const savedProgress = unlocked ? loadProgressFor(week.id) : null;
     const inProgress = !!(savedProgress && !savedProgress.submitted);
     const weekHistory = getHistoryForWeek(week.id);
@@ -170,6 +492,9 @@ function renderWeekList() {
     card.className = "week-card" + (unlocked ? "" : " locked");
 
     let statusHtml, actionsHtml;
+    const adminNote = adminOverride
+      ? `<div class="admin-override-note">Unlocked early (admin) &mdash; normally unlocks ${formatUnlockLabel(week.unlockTimestamp)}</div>`
+      : "";
 
     if (!unlocked) {
       statusHtml = `<span class="week-status-badge locked">Locked</span>`;
@@ -177,16 +502,16 @@ function renderWeekList() {
         <span class="week-countdown">(in ${formatCountdown(week.unlockTimestamp - nowTs())})</span></div>`;
     } else if (inProgress) {
       statusHtml = `<span class="week-status-badge inprogress">In Progress</span>`;
-      actionsHtml = `<button class="btn btn-mark" data-action="resume" data-week="${week.id}">Resume Exam</button>`;
+      actionsHtml = adminNote + `<button class="btn btn-mark" data-action="resume" data-week="${week.id}">Resume Exam</button>`;
     } else if (hasCompleted) {
       const best = weekHistory[0];
       statusHtml = `<span class="week-status-badge completed">Completed &mdash; ${best.score}/${best.totalMarks} (${best.percentage}%)</span>`;
-      actionsHtml = `
+      actionsHtml = adminNote + `
         <button class="btn btn-clear" data-action="view" data-week="${week.id}">View Result</button>
         <button class="btn btn-submit" data-action="start" data-week="${week.id}">Retake Exam</button>`;
     } else {
       statusHtml = `<span class="week-status-badge available">Available</span>`;
-      actionsHtml = `<button class="btn btn-submit" data-action="start" data-week="${week.id}">Start Exam</button>`;
+      actionsHtml = adminNote + `<button class="btn btn-submit" data-action="start" data-week="${week.id}">Start Exam</button>`;
     }
 
     card.innerHTML = `
@@ -770,7 +1095,10 @@ function wireStaticButtons() {
   $("#btn-clear-response").onclick = handleClear;
   $("#btn-submit-section").onclick = confirmSubmitSection;
   $("#btn-submit-exam").onclick = confirmSubmitExam;
-  $("#btn-back-to-landing-from-result").onclick = () => { initLanding(); show("#screen-landing"); };
+  $("#btn-back-to-landing-from-result").onclick = () => {
+    if (resultBackTarget === "admin") { resultBackTarget = "landing"; openAdminPanel(); }
+    else { initLanding(); show("#screen-landing"); }
+  };
   $("#btn-back-to-landing-from-history").onclick = () => { initLanding(); show("#screen-landing"); };
   $("#btn-export-history").onclick = exportHistory;
   $("#btn-import-history").onclick = () => $("#import-file-input").click();
@@ -778,6 +1106,15 @@ function wireStaticButtons() {
   $("#btn-lockdown-return").onclick = () => { hideViolationOverlay(); requestExamFullscreen(); };
   const dismissTip = $("#btn-dismiss-guided-access-tip");
   if (dismissTip) dismissTip.onclick = () => $("#guided-access-tip").classList.add("hidden");
+  $("#btn-switch-user").onclick = () => {
+    renderKnownProfilesRow();
+    $("#login-name-input").value = "";
+    $("#login-pin-input").value = "";
+    $("#login-error").classList.add("hidden");
+    show("#screen-login");
+  };
+  $("#btn-refresh-admin").onclick = loadAndRenderAdminResults;
+  $("#btn-back-to-landing-from-admin").onclick = () => { initLanding(); show("#screen-landing"); };
 }
 
 function exportHistory() {
@@ -800,7 +1137,7 @@ function importHistory(e) {
       const imported = JSON.parse(reader.result);
       const existing = getHistory();
       const merged = existing.concat(imported);
-      localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(merged));
+      localStorage.setItem(historyStorageKey(), JSON.stringify(merged));
       renderHistory();
       alert("Results imported successfully.");
     } catch (err) {
@@ -811,17 +1148,86 @@ function importHistory(e) {
 }
 
 // ---------------- Boot ----------------
+let appStarted = false;
+
 async function boot() {
-  await loadWeeksManifest();
-  wireStaticButtons();
-  initInstructions();
+  wireLoginScreen();
+  const remembered = loadRememberedProfile();
+  if (remembered) {
+    currentProfile = remembered;
+    await startAppForCurrentProfile();
+  } else {
+    renderKnownProfilesRow();
+    show("#screen-login");
+  }
+}
+
+async function startAppForCurrentProfile() {
+  updateCandidateNameDisplays();
+  if (!appStarted) {
+    appStarted = true;
+    await loadWeeksManifest();
+    wireStaticButtons();
+    initInstructions();
+    initSync();
+    // Keep the "Unlocks in Xd Xh Xm" countdown live while the landing screen is visible.
+    setInterval(() => {
+      if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
+    }, 30000);
+  }
   initLanding();
   show("#screen-landing");
+}
 
-  // Keep the "Unlocks in Xd Xh Xm" countdown live while the landing screen is visible.
-  setInterval(() => {
-    if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
-  }, 30000);
+function wireLoginScreen() {
+  renderKnownProfilesRow();
+  $("#btn-login-continue").onclick = handleLoginSubmit;
+  $("#login-pin-input").addEventListener("keydown", (e) => { if (e.key === "Enter") handleLoginSubmit(); });
+  $("#login-name-input").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#login-pin-input").focus(); });
+}
+
+async function handleLoginSubmit() {
+  const name = $("#login-name-input").value;
+  const pin = $("#login-pin-input").value;
+  const errorEl = $("#login-error");
+  errorEl.classList.add("hidden");
+
+  const result = await attemptLogin(name, pin);
+  if (!result.ok) {
+    errorEl.textContent = result.message;
+    errorEl.classList.remove("hidden");
+    return;
+  }
+  setActiveProfile(result.profile);
+  $("#login-name-input").value = "";
+  $("#login-pin-input").value = "";
+  await startAppForCurrentProfile();
+}
+
+function renderKnownProfilesRow() {
+  const row = $("#known-profiles-row");
+  if (!row) return;
+  const profiles = loadProfiles();
+  row.innerHTML = "";
+  if (profiles.length === 0) return;
+
+  const label = document.createElement("div");
+  label.className = "known-profiles-label";
+  label.textContent = "Known on this device:";
+  row.appendChild(label);
+
+  profiles.forEach(p => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "profile-chip";
+    chip.textContent = p.name;
+    chip.onclick = () => {
+      $("#login-name-input").value = p.name;
+      $("#login-pin-input").value = "";
+      $("#login-pin-input").focus();
+    };
+    row.appendChild(chip);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", boot);

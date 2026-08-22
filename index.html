@@ -8,12 +8,37 @@
 </head>
 <body>
 
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="screen-login" class="screen-root screen hidden">
+  <h1>Who's taking this exam?</h1>
+  <p>Enter your name and a PIN. This just keeps everyone's progress and results separate on this device -- it's not meant to be a real security lock.</p>
+
+  <div id="known-profiles-row" class="known-profiles-row"></div>
+
+  <div class="login-form">
+    <label for="login-name-input">Name</label>
+    <input id="login-name-input" type="text" placeholder="Your name" autocomplete="name">
+    <label for="login-pin-input">PIN (4+ digits)</label>
+    <input id="login-pin-input" type="password" inputmode="numeric" placeholder="e.g. 1234" autocomplete="off">
+    <p id="login-error" class="login-error hidden"></p>
+    <button id="btn-login-continue" class="btn btn-submit" style="margin-left:0;">Continue</button>
+  </div>
+</div>
+
 <!-- ============ LANDING SCREEN ============ -->
-<div id="screen-landing" class="screen-root screen">
-  <h1>Weekly Practice Test Portal</h1>
+<div id="screen-landing" class="screen-root screen hidden">
+  <div class="landing-header-row">
+    <h1>Weekly Practice Test Portal</h1>
+    <div class="profile-badge">
+      <span>Signed in locally as <b class="candidate-name-display"></b></span>
+      <button id="btn-switch-user" class="btn btn-clear">Switch User</button>
+    </div>
+  </div>
   <p>NEET PG-format mock tests, generated from your weekly study schedule. Same timing, sectioning, and marking scheme as the real NEET PG computer-based test.</p>
 
   <div id="landing-history-preview" style="margin:16px 0;"></div>
+
+  <div id="sync-status-box" class="sync-status-box hidden"></div>
 
   <div id="week-list" class="week-list"></div>
 
@@ -74,7 +99,7 @@
   <div class="top-header">
     <div class="exam-name">Weekly Practice Test &mdash; NEET PG Format</div>
     <div class="candidate-block">
-      <span>Candidate: Navdeep</span>
+      <span>Candidate: <span class="candidate-name-display"></span></span>
       <span class="timer" id="exam-timer">00:00</span>
     </div>
   </div>
@@ -101,9 +126,9 @@
 
     <div class="palette-pane">
       <div class="candidate-card">
-        <div class="candidate-avatar">N</div>
+        <div class="candidate-avatar" id="candidate-avatar">?</div>
         <div>
-          <div class="candidate-name">Navdeep</div>
+          <div class="candidate-name candidate-name-display"></div>
           <div class="candidate-sub">Weekly Practice Test</div>
         </div>
       </div>
@@ -169,6 +194,21 @@
   </div>
 </div>
 
+<!-- ============ ADMIN PANEL SCREEN ============ -->
+<div id="screen-admin" class="screen-root screen hidden">
+  <h1>Admin Panel</h1>
+  <p>Every synced result across all signed-in users. Anyone who hasn't signed in to sync stays fully local/private and won't appear here.</p>
+  <div id="admin-content"></div>
+  <div class="nav-row">
+    <button id="btn-refresh-admin" class="btn btn-clear">Refresh</button>
+    <button id="btn-back-to-landing-from-admin" class="btn btn-submit">Back to Home</button>
+  </div>
+</div>
+
+<!-- Optional cross-device sync (see README "Cross-device sync" section). Site works fully
+     offline/without this if SUPABASE_ANON_KEY in supabase-config.js is left as a placeholder. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
