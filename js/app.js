@@ -38,6 +38,23 @@ function fmtTime(totalSeconds) {
 }
 function nowTs() { return Date.now(); }
 
+// Escapes any string before it's interpolated into an innerHTML template literal.
+// Needed anywhere content originated from a user (a registered name) or from data an
+// authenticated client could submit directly via RPC (week IDs, exam titles, section
+// breakdowns, per-question review data) -- none of that is guaranteed safe HTML just
+// because it came from our own database. Content from our own static exam JSON files
+// (question text, options, explanations) doesn't need this, since only the site owner
+// ever edits those files.
+function escapeHtml(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 // ---------------- Custom modal (replaces native confirm/alert) ----------------
 // Native confirm()/alert() are OS-rendered and can interact unpredictably with the
 // Fullscreen API on some browsers (notably iPadOS Safari briefly drops fullscreen when
@@ -458,7 +475,7 @@ async function loadAndRenderAdminUsers() {
 
   const { data: users, error } = await supabaseClient
     .from("users_public").select("*").order("created_at", { ascending: true });
-  if (error) { content.innerHTML = `<p>Couldn't load users: ${error.message}</p>`; return; }
+  if (error) { content.innerHTML = `<p>Couldn't load users: ${escapeHtml(error.message)}</p>`; return; }
 
   adminUsersCache = users || [];
   if (adminUsersCache.length === 0) {
@@ -474,7 +491,7 @@ async function loadAndRenderAdminUsers() {
     row.className = "admin-user-row";
     row.innerHTML = `
       <div class="admin-user-header">
-        <span>${u.name}${u.user_type === "ADMIN" ? ' <span class="admin-badge">Admin</span>' : ""}</span>
+        <span>${escapeHtml(u.name)}${u.user_type === "ADMIN" ? ' <span class="admin-badge">Admin</span>' : ""}</span>
         <button class="btn btn-clear admin-expand-btn">Show Attempts</button>
       </div>
       <div class="admin-user-attempts hidden"></div>
@@ -503,7 +520,7 @@ async function loadAndRenderUserAttempts(user, container) {
     p_token: currentProfile.token,
     p_target_user_id: user.id,
   });
-  if (error) { container.innerHTML = `<p>Couldn't load attempts: ${error.message}</p>`; return; }
+  if (error) { container.innerHTML = `<p>Couldn't load attempts: ${escapeHtml(error.message)}</p>`; return; }
   if (!data || data.length === 0) { container.innerHTML = "<p>No attempts yet.</p>"; return; }
 
   const weekLabelById = {};
@@ -519,7 +536,7 @@ async function loadAndRenderUserAttempts(user, container) {
   data.map(rowToHistoryEntry).forEach(entry => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${weekLabelById[entry.weekId] || entry.weekId}</td>
+      <td>${weekLabelById[entry.weekId] || escapeHtml(entry.weekId)}</td>
       <td>${entry.score}/${entry.totalMarks}</td>
       <td>${entry.percentage}%</td>
       <td>${entry.violations || 0}</td>
@@ -1111,7 +1128,7 @@ function renderResult(entry) {
   tbody.innerHTML = "";
   entry.sectionBreakdown.forEach(s => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${s.name}</td><td>${s.score}</td><td>${s.correct}</td><td>${s.wrong}</td><td>${s.unattempted}</td><td>${s.total}</td>`;
+    tr.innerHTML = `<td>${escapeHtml(s.name)}</td><td>${s.score}</td><td>${s.correct}</td><td>${s.wrong}</td><td>${s.unattempted}</td><td>${s.total}</td>`;
     tbody.appendChild(tr);
   });
 
@@ -1119,6 +1136,7 @@ function renderResult(entry) {
   reviewWrap.innerHTML = "";
   entry.perQuestion.forEach(pq => {
     const q = questionById(pq.qid);
+    if (!q) return; // guards against a malformed/forged qid that doesn't match a real question
     const div = document.createElement("div");
     div.className = `review-item ${pq.outcome}`;
     let optionsHtml = "";
@@ -1126,14 +1144,14 @@ function renderResult(entry) {
       let cls = "";
       if (letter === q.correct) cls = "correct-answer";
       else if (letter === pq.selected) cls = "wrong-selected";
-      optionsHtml += `<div class="review-option ${cls}">${letter}. ${q.options[letter]}</div>`;
+      optionsHtml += `<div class="review-option ${cls}">${letter}. ${escapeHtml(q.options[letter])}</div>`;
     });
     div.innerHTML = `
-      <span class="review-tag">${pq.outcome.toUpperCase()} (${pq.marks > 0 ? "+" : ""}${pq.marks})</span>
-      <div style="font-size:12px;color:#777;margin-bottom:6px;">${pq.section} \u00b7 ${q.subject} \u2014 ${q.topic}</div>
-      <div style="font-weight:bold;margin-bottom:10px;">${q.question}</div>
+      <span class="review-tag">${escapeHtml(pq.outcome.toUpperCase())} (${pq.marks > 0 ? "+" : ""}${pq.marks})</span>
+      <div style="font-size:12px;color:#777;margin-bottom:6px;">${escapeHtml(pq.section)} \u00b7 ${escapeHtml(q.subject)} \u2014 ${escapeHtml(q.topic)}</div>
+      <div style="font-weight:bold;margin-bottom:10px;">${escapeHtml(q.question)}</div>
       ${optionsHtml}
-      <div class="review-explanation"><b>Explanation:</b> ${q.explanation}</div>
+      <div class="review-explanation"><b>Explanation:</b> ${escapeHtml(q.explanation)}</div>
     `;
     reviewWrap.appendChild(div);
   });
@@ -1153,7 +1171,7 @@ function renderHistory() {
   hist.forEach(h => {
     html += `<tr>
       <td>${new Date(h.date).toLocaleString()}</td>
-      <td>${h.examTitle}</td>
+      <td>${escapeHtml(h.examTitle)}</td>
       <td>${h.score} / ${h.totalMarks}</td>
       <td>${h.percentage}%</td>
       <td>${h.correctCount}</td>
