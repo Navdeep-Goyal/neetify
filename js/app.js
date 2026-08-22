@@ -610,6 +610,22 @@ function initInstructions() {
 // exit from fullscreen or the tab/window (visibilitychange), log it as a violation with
 // a visible warning, and auto-submit the exam once MAX_VIOLATIONS is reached.
 let lockdownActive = false;
+// Native confirm()/alert() dialogs can cause some browsers (notably iPadOS Safari) to
+// briefly drop out of fullscreen, or momentarily report the page as hidden, purely as a
+// side effect of rendering the dialog -- not because the person actually left the exam.
+// This window suppresses violations for a moment after any such dialog closes.
+let suppressViolationsUntil = 0;
+function withViolationSuppression(fn) {
+  return function (...args) {
+    suppressViolationsUntil = Date.now() + 3000; // covers a drop while the dialog is open
+    const result = fn.apply(this, args);
+    suppressViolationsUntil = Date.now() + 1500; // and a short grace period after it closes
+    requestExamFullscreen();
+    return result;
+  };
+}
+const safeConfirm = withViolationSuppression(confirm);
+const safeAlert = withViolationSuppression(alert);
 
 function enterLockdown() {
   if (lockdownActive) return;
@@ -666,11 +682,16 @@ function handleBeforeUnload(e) {
 
 function handleVisibilityChange() {
   if (!lockdownActive || state.submitted) return;
+  if (Date.now() < suppressViolationsUntil) return;
   if (document.hidden) recordViolation("Left the exam tab/window (switched app or tab)");
 }
 
 function handleFullscreenChange() {
   if (!lockdownActive || state.submitted) return;
+  if (Date.now() < suppressViolationsUntil) {
+    requestExamFullscreen(); // try to silently restore it rather than counting a violation
+    return;
+  }
   if (!document.fullscreenElement) recordViolation("Exited fullscreen mode");
 }
 
@@ -921,7 +942,7 @@ function submitCurrentSection(auto) {
     finishExam();
   } else {
     if (auto) {
-      alert(`Time up for ${currentSection().name}. Moving to the next section.`);
+      safeAlert(`Time up for ${currentSection().name}. Moving to the next section.`);
     }
     state.currentSectionIdx += 1;
     state.currentQIdxInSection = 0;
@@ -941,11 +962,11 @@ function confirmSubmitSection() {
   const msg = unanswered > 0
     ? `You have ${unanswered} unanswered question(s) in ${currentSection().name}. Submit this section anyway?`
     : `Submit ${currentSection().name} and move on? You cannot return to this section.`;
-  if (confirm(msg)) submitCurrentSection(false);
+  if (safeConfirm(msg)) submitCurrentSection(false);
 }
 
 function confirmSubmitExam() {
-  if (confirm("Submit the entire exam now? This cannot be undone.")) {
+  if (safeConfirm("Submit the entire exam now? This cannot be undone.")) {
     // submit all remaining (non-submitted) sections as-is
     for (let i = state.currentSectionIdx; i < examData.sections.length; i++) {
       state.sectionState[i].submitted = true;
