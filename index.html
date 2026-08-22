@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<!-- ============ CUSTOM MODAL (replaces native confirm/alert everywhere -- native -->
+<!-- dialogs can cause some browsers, notably iPadOS Safari, to drop fullscreen) ==== -->
+<div id="custom-modal-overlay" class="custom-modal-overlay hidden">
+  <div class="custom-modal-card">
+    <p id="custom-modal-message"></p>
+    <div class="custom-modal-buttons">
+      <button id="custom-modal-cancel" class="btn btn-clear hidden">Cancel</button>
+      <button id="custom-modal-ok" class="btn btn-submit">OK</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ LOGIN SCREEN ============ -->
 <div id="screen-login" class="screen-root screen hidden">
   <h1>Who's taking this exam?</h1>

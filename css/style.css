@@ -576,6 +576,35 @@ body.exam-lockdown {
   -webkit-user-select: none;
   user-select: none;
 }
+.custom-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 30, 0.55);
+  z-index: 1200; /* above the lockdown warning overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.custom-modal-card {
+  background: white;
+  border-radius: 8px;
+  padding: 28px 32px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.custom-modal-card p {
+  font-size: 15px;
+  color: var(--text-dark);
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+.custom-modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
 .lockdown-overlay {
   position: fixed;
   inset: 0;
