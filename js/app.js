@@ -342,37 +342,19 @@ async function loadWeekOverrides() {
 }
 
 async function setWeekOverride(weekId, forceUnlocked) {
-  if (!supabaseClient) return;
-  const { error } = await supabaseClient.from("week_overrides")
-    .upsert({ week_id: weekId, force_unlocked: forceUnlocked, updated_at: new Date().toISOString() });
+  if (!supabaseClient || !currentProfile) return;
+  const { error } = await supabaseClient.rpc("set_week_override", {
+    p_token: currentProfile.token,
+    p_week_id: weekId,
+    p_force_unlocked: forceUnlocked,
+  });
   if (error) { customAlert("Couldn't update that week's lock: " + error.message); return; }
   weekOverrides[weekId] = forceUnlocked;
   renderWeekList();
   if (!$("#screen-admin").classList.contains("hidden")) renderAdminWeekControls();
 }
 
-// ---------------- Exam history sync (fully open table, per project scope) ----------------
-function historyEntryToRow(h) {
-  return {
-    id: h.id,
-    user_id: currentProfile.id,
-    user_name: currentProfile.name,
-    week_id: h.weekId,
-    exam_title: h.examTitle,
-    score: h.score,
-    total_marks: h.totalMarks,
-    percentage: h.percentage,
-    correct_count: h.correctCount,
-    wrong_count: h.wrongCount,
-    unattempted_count: h.unattemptedCount,
-    violations: h.violations || 0,
-    auto_submitted_for_violations: !!h.autoSubmittedForViolations,
-    section_breakdown: h.sectionBreakdown,
-    per_question: h.perQuestion,
-    attempt_date: new Date(h.date).toISOString(),
-  };
-}
-
+// ---------------- Exam history sync (via token-verified RPC functions) ----------------
 function rowToHistoryEntry(r) {
   return {
     id: r.id,
@@ -395,14 +377,34 @@ function rowToHistoryEntry(r) {
 
 function pushHistoryEntryToCloud(entry) {
   if (!supabaseClient || !currentProfile) return;
-  supabaseClient.from("exam_history").insert([historyEntryToRow(entry)])
-    .then(({ error }) => { if (error) console.error("cloud sync (push) failed:", error); });
+  submitExamResultToCloud(entry).then(({ error }) => {
+    if (error) console.error("cloud sync (push) failed:", error);
+  });
+}
+
+function submitExamResultToCloud(entry) {
+  return supabaseClient.rpc("submit_exam_result", {
+    p_token: currentProfile.token,
+    p_id: entry.id,
+    p_week_id: entry.weekId,
+    p_exam_title: entry.examTitle,
+    p_score: entry.score,
+    p_total_marks: entry.totalMarks,
+    p_percentage: entry.percentage,
+    p_correct_count: entry.correctCount,
+    p_wrong_count: entry.wrongCount,
+    p_unattempted_count: entry.unattemptedCount,
+    p_violations: entry.violations || 0,
+    p_auto_submitted_for_violations: !!entry.autoSubmittedForViolations,
+    p_section_breakdown: entry.sectionBreakdown,
+    p_per_question: entry.perQuestion,
+    p_attempt_date: new Date(entry.date).toISOString(),
+  });
 }
 
 async function syncHistoryWithCloud() {
   if (!supabaseClient || !currentProfile) return;
-  const { data: remoteRows, error } = await supabaseClient
-    .from("exam_history").select("*").eq("user_id", currentProfile.id);
+  const { data: remoteRows, error } = await supabaseClient.rpc("get_my_history", { p_token: currentProfile.token });
   if (error) { console.error("cloud sync (pull) failed:", error); return; }
 
   const localHistory = getHistory();
@@ -416,9 +418,8 @@ async function syncHistoryWithCloud() {
   }
 
   const localOnly = localHistory.filter(h => !remoteIds.has(h.id));
-  if (localOnly.length) {
-    const rows = localOnly.map(h => historyEntryToRow(h));
-    const { error: insertError } = await supabaseClient.from("exam_history").insert(rows);
+  for (const entry of localOnly) {
+    const { error: insertError } = await submitExamResultToCloud(entry);
     if (insertError) console.error("cloud sync (initial push) failed:", insertError);
   }
 }
@@ -498,8 +499,10 @@ async function loadAndRenderAdminUsers() {
 
 async function loadAndRenderUserAttempts(user, container) {
   container.innerHTML = "<p>Loading...</p>";
-  const { data, error } = await supabaseClient
-    .from("exam_history").select("*").eq("user_id", user.id).order("attempt_date", { ascending: false });
+  const { data, error } = await supabaseClient.rpc("get_user_history_admin", {
+    p_token: currentProfile.token,
+    p_target_user_id: user.id,
+  });
   if (error) { container.innerHTML = `<p>Couldn't load attempts: ${error.message}</p>`; return; }
   if (!data || data.length === 0) { container.innerHTML = "<p>No attempts yet.</p>"; return; }
 
