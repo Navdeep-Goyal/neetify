@@ -31,7 +31,7 @@ create or replace function public.register_user(p_name text, p_pin text)
 returns table(id uuid, name text, user_type text)
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_key text := lower(trim(p_name));
@@ -61,7 +61,7 @@ create or replace function public.login_user(p_name text, p_pin text)
 returns table(id uuid, name text, user_type text)
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_key text := lower(trim(p_name));
