@@ -31,6 +31,14 @@
       "weekStartDate": "2026-09-07",
       "weekEndDate": "2026-09-13",
       "questionFile": "data/questions-week4.json"
+    },
+    {
+      "id": "gt2026",
+      "label": "NEET PG 2026 — Full Grand Test",
+      "dateRangeLabel": "Exam: Sun 30 Aug 2026 · take this before then",
+      "weekStartDate": "2026-08-22",
+      "weekEndDate": "2026-08-22",
+      "questionFile": "data/gt-neetpg2026.json"
     }
   ]
 }

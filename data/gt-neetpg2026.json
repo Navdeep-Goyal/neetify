@@ -1,0 +1,1105 @@
+{
+  "examTitle": "NEET PG 2026 — Full Grand Test",
+  "examSubtitle": "NBEMS 2026 pattern · 180 questions · 5 groups × 36 · 42 min per group · +4/−1",
+  "totalMarks": 288,
+  "marksPerCorrect": 4,
+  "marksPerWrong": -1,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Group A",
+      "durationSeconds": 2520,
+      "questionIds": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A19",
+        "A20",
+        "A21",
+        "A22",
+        "A23",
+        "A24",
+        "A25",
+        "A26",
+        "A27",
+        "A28",
+        "A29",
+        "A30",
+        "A31",
+        "A32",
+        "A33",
+        "A34",
+        "A35",
+        "A36"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Group B",
+      "durationSeconds": 2520,
+      "questionIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "B17",
+        "B18",
+        "B19",
+        "B20",
+        "B21",
+        "B22",
+        "B23",
+        "B24",
+        "B25",
+        "B26",
+        "B27",
+        "B28",
+        "B29",
+        "B30",
+        "B31",
+        "B32",
+        "B33",
+        "B34",
+        "B35",
+        "B36"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "A01",
+      "subject": "Medicine",
+      "topic": "Cardiology - ACS",
+      "question": "A 58-year-old man with diabetes presents with crushing retrosternal chest pain for 40 minutes. ECG shows 2 mm ST elevation in leads II, III and aVF with reciprocal depression in I and aVL. BP is 82/56 mmHg, JVP is raised, and lungs are clear on auscultation. Which of the following is the most appropriate immediate step?",
+      "options": {
+        "A": "Intravenous metoprolol",
+        "B": "Sublingual nitroglycerin",
+        "C": "Intravenous furosemide",
+        "D": "Intravenous fluid bolus"
+      },
+      "correct": "D",
+      "explanation": "Inferior wall STEMI (II, III, aVF) with hypotension, raised JVP and CLEAR lungs is the classic triad of right ventricular infarction. The RV becomes preload-dependent, so management is volume loading with IV fluids. Nitrates and diuretics reduce preload and can precipitate profound hypotension - both are contraindicated. Beta-blockers are avoided in cardiogenic shock. A right-sided ECG showing ST elevation in V4R would confirm the diagnosis."
+    },
+    {
+      "id": "A02",
+      "subject": "Medicine",
+      "topic": "Endocrinology - Diabetic emergencies",
+      "question": "A 22-year-old type 1 diabetic presents with vomiting and drowsiness. Investigations: glucose 480 mg/dL, arterial pH 7.12, bicarbonate 9 mEq/L, serum potassium 3.1 mEq/L, urine ketones 3+. Which of the following should be done FIRST?",
+      "options": {
+        "A": "Administer intravenous sodium bicarbonate",
+        "B": "Start intravenous insulin infusion immediately",
+        "C": "Start potassium replacement before insulin infusion",
+        "D": "Give a bolus of 50% dextrose"
+      },
+      "correct": "C",
+      "explanation": "In diabetic ketoacidosis, insulin drives potassium intracellularly and will precipitate life-threatening hypokalaemia and arrhythmia if the potassium is already low. When serum K+ is below 3.3 mEq/L, potassium replacement must precede insulin. Insulin is withheld until K+ exceeds 3.3 mEq/L. Bicarbonate is reserved for pH below 6.9 and dextrose is added only once glucose falls to around 200 mg/dL."
+    },
+    {
+      "id": "A03",
+      "subject": "Medicine",
+      "topic": "Neurology - Stroke",
+      "question": "A 64-year-old hypertensive man is brought 2.5 hours after sudden-onset right hemiparesis and aphasia. Non-contrast CT head shows no haemorrhage. BP is 178/98 mmHg, platelets 240000/mm3, INR 1.0, glucose 130 mg/dL. Which of the following is the most appropriate management?",
+      "options": {
+        "A": "Intravenous thrombolysis with alteplase or tenecteplase",
+        "B": "Delay treatment and repeat CT after 24 hours",
+        "C": "Intravenous heparin infusion",
+        "D": "Oral aspirin 325 mg and observation"
+      },
+      "correct": "A",
+      "explanation": "This patient is within the 4.5-hour window for IV thrombolysis, with haemorrhage excluded on CT and no contraindications (BP below 185/110, normal INR and platelets, glucose acceptable). IV thrombolysis is the standard of care and current guidance also endorses tenecteplase as an alternative to alteplase. Aspirin is started only after 24 hours post-thrombolysis. Urgent heparin has no role in acute ischaemic stroke."
+    },
+    {
+      "id": "A04",
+      "subject": "Medicine",
+      "topic": "Nephrology - Glomerular disease",
+      "question": "A 9-year-old boy presents with generalised oedema. Urinalysis shows 4+ proteinuria with no red cells. Serum albumin is 1.8 g/dL and cholesterol is 340 mg/dL. Complement C3 is normal. Which of the following is the most likely finding on renal biopsy light microscopy?",
+      "options": {
+        "A": "Diffuse endocapillary proliferation",
+        "B": "Crescents in more than 50% of glomeruli",
+        "C": "Normal glomeruli",
+        "D": "Nodular glomerulosclerosis"
+      },
+      "correct": "C",
+      "explanation": "Nephrotic syndrome in a child with normal complement and bland urinary sediment is minimal change disease in the great majority of cases. Light microscopy is characteristically normal; the diagnostic abnormality (podocyte foot process effacement) is visible only on electron microscopy. Endocapillary proliferation with low C3 suggests post-streptococcal GN, crescents indicate RPGN, and nodular sclerosis (Kimmelstiel-Wilson) is diabetic nephropathy."
+    },
+    {
+      "id": "A05",
+      "subject": "Medicine",
+      "topic": "Respiratory - Obstructive airway disease",
+      "question": "A 60-year-old smoker has progressive breathlessness. Spirometry shows FEV1/FVC of 0.58 and FEV1 of 62% predicted, with no significant improvement after bronchodilator. Which of the following best describes this pattern?",
+      "options": {
+        "A": "Irreversible obstructive defect, GOLD grade 2",
+        "B": "Reversible obstructive defect suggesting asthma",
+        "C": "Restrictive defect",
+        "D": "Mixed obstructive and restrictive defect"
+      },
+      "correct": "A",
+      "explanation": "A post-bronchodilator FEV1/FVC below 0.70 defines persistent airflow limitation, and absence of significant reversibility (below 12% and 200 mL improvement) points to COPD rather than asthma. GOLD severity is graded on FEV1 percent predicted: grade 1 is 80% or more, grade 2 is 50-79%, grade 3 is 30-49%, grade 4 is below 30%. At 62%, this is GOLD grade 2. A restrictive defect would show a normal or high ratio with reduced FVC."
+    },
+    {
+      "id": "A06",
+      "subject": "Medicine",
+      "topic": "Infectious disease - Sepsis",
+      "question": "A 45-year-old woman with pyelonephritis has BP 78/44 mmHg despite 30 mL/kg crystalloid, lactate 4.2 mmol/L, and requires noradrenaline to maintain mean arterial pressure. Per current sepsis guidance, which of the following is the recommended target for initiating antimicrobials?",
+      "options": {
+        "A": "Within 1 hour of recognition of septic shock",
+        "B": "After blood culture results are available",
+        "C": "After source control is achieved surgically",
+        "D": "Within 6 hours of recognition"
+      },
+      "correct": "A",
+      "explanation": "Current Surviving Sepsis Campaign guidance recommends administering broad-spectrum antimicrobials immediately, ideally within 1 hour, for septic shock and for sepsis with high likelihood of infection. Every hour of delay increases mortality. Blood cultures should be drawn before antibiotics but must not delay them. Source control is pursued as soon as feasible but does not precede antimicrobials."
+    },
+    {
+      "id": "A07",
+      "subject": "Surgery",
+      "topic": "Trauma",
+      "question": "A 26-year-old man is brought after a road traffic accident. He is restless, BP 88/60 mmHg, pulse 128/min, respiratory rate 30/min. Chest is clear with equal air entry, abdomen is distended and tender. FAST scan shows free fluid in Morison's pouch. Which of the following is the most appropriate next step?",
+      "options": {
+        "A": "Diagnostic peritoneal lavage",
+        "B": "Immediate exploratory laparotomy",
+        "C": "CECT abdomen for grading of injury",
+        "D": "Serial abdominal examination with observation"
+      },
+      "correct": "B",
+      "explanation": "A haemodynamically unstable patient with a positive FAST has intra-abdominal haemorrhage and requires immediate laparotomy. CT is reserved for haemodynamically stable patients, since transporting an unstable patient to the scanner is dangerous. DPL is largely obsolete where FAST is available. Non-operative management applies only to stable patients with solid organ injury."
+    },
+    {
+      "id": "A08",
+      "subject": "Surgery",
+      "topic": "GI Surgery - Acute abdomen",
+      "question": "A 30-year-old man has periumbilical pain that shifted to the right iliac fossa over 12 hours, with anorexia and low-grade fever. On examination, pressing the left iliac fossa elicits pain in the right iliac fossa. This sign is known as:",
+      "options": {
+        "A": "Psoas sign",
+        "B": "Rovsing's sign",
+        "C": "Obturator sign",
+        "D": "Murphy's sign"
+      },
+      "correct": "B",
+      "explanation": "Rovsing's sign is pain referred to the right iliac fossa on palpation of the left iliac fossa, produced by shifting of bowel gas and peritoneal irritation, and supports acute appendicitis. Murphy's sign is inspiratory arrest on right hypochondrial palpation in cholecystitis. The obturator sign (pain on internal rotation of the flexed hip) and psoas sign (pain on hip extension) indicate pelvic and retrocaecal appendix positions respectively."
+    },
+    {
+      "id": "A09",
+      "subject": "Surgery",
+      "topic": "Breast",
+      "question": "A 52-year-old woman has a hard, non-tender 2.5 cm lump in the upper outer quadrant of the right breast with skin dimpling. Which of the following is the recommended initial diagnostic approach?",
+      "options": {
+        "A": "Observation and review after one menstrual cycle",
+        "B": "Triple assessment with clinical examination, imaging and core needle biopsy",
+        "C": "Fine needle aspiration cytology alone",
+        "D": "Excision biopsy of the lump"
+      },
+      "correct": "B",
+      "explanation": "Triple assessment - clinical examination, imaging (mammography with or without ultrasound), and pathology (preferably core needle biopsy) - is the standard for evaluating any suspicious breast lump. Core biopsy is preferred over FNAC because it distinguishes invasive from in-situ disease and permits receptor testing. Excision biopsy as a first step is inappropriate before a tissue diagnosis, and observation is unsafe given the dimpling."
+    },
+    {
+      "id": "A10",
+      "subject": "Surgery",
+      "topic": "Hepatobiliary",
+      "question": "A 45-year-old obese woman presents with right upper quadrant pain, fever and jaundice. Serum bilirubin is 6 mg/dL, ALP is markedly raised and ultrasound shows a dilated common bile duct with stones. This triad of fever, jaundice and RUQ pain is known as:",
+      "options": {
+        "A": "Virchow's triad",
+        "B": "Beck's triad",
+        "C": "Reynold's pentad",
+        "D": "Charcot's triad"
+      },
+      "correct": "D",
+      "explanation": "Charcot's triad (fever, jaundice, right upper quadrant pain) indicates acute cholangitis. If hypotension and altered mental status are added, it becomes Reynold's pentad, signifying suppurative cholangitis requiring emergency biliary decompression. Beck's triad (hypotension, raised JVP, muffled heart sounds) indicates cardiac tamponade, and Virchow's triad describes the pathogenesis of venous thrombosis."
+    },
+    {
+      "id": "A11",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Postpartum haemorrhage",
+      "question": "A woman has an estimated blood loss of 900 mL following vaginal delivery, with a soft, poorly contracted uterus. Uterine massage has been started. According to current WHO guidance, which combination represents appropriate first-line pharmacological management?",
+      "options": {
+        "A": "Intramuscular ergometrine as sole first-line agent",
+        "B": "Tranexamic acid alone without a uterotonic",
+        "C": "Intravenous oxytocin with early tranexamic acid",
+        "D": "Misoprostol only, reserving oxytocin for failure"
+      },
+      "correct": "C",
+      "explanation": "Uterine atony is the commonest cause of primary PPH. Oxytocin remains the first-line uterotonic, and current WHO guidance recommends early administration of tranexamic acid (within 3 hours of birth) in addition to uterotonics, as it reduces death due to bleeding. Ergometrine is contraindicated in hypertensive disorders and is not preferred as a sole first-line agent. Misoprostol is an alternative only where oxytocin is unavailable."
+    },
+    {
+      "id": "A12",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Hypertensive disorders",
+      "question": "A primigravida at 34 weeks has BP 168/112 mmHg on two readings, 3+ proteinuria, severe headache and epigastric pain. Which of the following is the drug of choice for preventing eclamptic seizures?",
+      "options": {
+        "A": "Levetiracetam",
+        "B": "Diazepam",
+        "C": "Magnesium sulfate",
+        "D": "Phenytoin"
+      },
+      "correct": "C",
+      "explanation": "Magnesium sulfate is the established drug of choice for both prevention and treatment of eclamptic seizures, and is superior to phenytoin and diazepam in reducing recurrence and maternal mortality. Monitoring includes deep tendon reflexes, respiratory rate and urine output; calcium gluconate is the antidote for toxicity. Antihypertensives control BP but do not prevent seizures, and delivery remains the definitive treatment."
+    },
+    {
+      "id": "A13",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Contraception",
+      "question": "A 28-year-old woman presents 3 days after an episode of unprotected intercourse and requests emergency contraception. She wishes to continue with an effective long-term method thereafter. Which of the following is the most effective option?",
+      "options": {
+        "A": "Levonorgestrel 1.5 mg orally",
+        "B": "Copper intrauterine device insertion",
+        "C": "Depot medroxyprogesterone acetate injection",
+        "D": "Combined oral contraceptive pills in the Yuzpe regimen"
+      },
+      "correct": "B",
+      "explanation": "The copper IUD is the most effective form of emergency contraception, with a failure rate below 1%, and can be inserted up to 5 days after unprotected intercourse. It has the added advantage of providing ongoing long-acting reversible contraception, which suits this patient's wish. Levonorgestrel efficacy declines with time and is lower than the copper IUD. The Yuzpe regimen is less effective with more nausea, and DMPA is not an emergency method."
+    },
+    {
+      "id": "A14",
+      "subject": "Paediatrics",
+      "topic": "Neonatology",
+      "question": "A term neonate develops jaundice at 18 hours of life. Mother is O negative, baby is A positive. Total serum bilirubin is 14 mg/dL, haemoglobin 12 g/dL, reticulocytes are raised and direct Coombs test is positive. Which of the following is the most likely diagnosis?",
+      "options": {
+        "A": "ABO haemolytic disease of the newborn",
+        "B": "Physiological jaundice",
+        "C": "Crigler-Najjar syndrome type I",
+        "D": "Breast milk jaundice"
+      },
+      "correct": "A",
+      "explanation": "Jaundice appearing within the first 24 hours of life is always pathological. An O-negative mother with an A-positive infant, positive direct Coombs test and reticulocytosis indicates ABO incompatibility causing immune haemolysis. Physiological jaundice never appears before 24 hours. Breast milk jaundice presents later, in the second week. Crigler-Najjar is a rare conjugation defect without haemolysis or a positive Coombs test."
+    },
+    {
+      "id": "A15",
+      "subject": "Paediatrics",
+      "topic": "Growth and development",
+      "question": "A mother brings her infant for review. The child can sit without support, transfers objects from one hand to the other, and babbles with monosyllables. Which of the following is the most likely age?",
+      "options": {
+        "A": "6-7 months",
+        "B": "9-10 months",
+        "C": "3-4 months",
+        "D": "12 months"
+      },
+      "correct": "A",
+      "explanation": "Sitting without support, transferring objects hand to hand, and monosyllabic babbling cluster at around 6-7 months. At 3-4 months the infant has head control and reaches for objects but cannot sit unsupported. By 9-10 months the child stands with support and has a pincer grasp. At 12 months the child walks with support and speaks one or two meaningful words."
+    },
+    {
+      "id": "A16",
+      "subject": "Pathology",
+      "topic": "Haematology",
+      "question": "A 35-year-old woman has fatigue. Haemoglobin is 8.4 g/dL, MCV 68 fL, serum ferritin 6 ng/mL, and total iron binding capacity is raised. Peripheral smear shows microcytic hypochromic red cells. Which of the following additional findings is most consistent with this diagnosis?",
+      "options": {
+        "A": "Increased serum iron",
+        "B": "Ringed sideroblasts in the marrow",
+        "C": "Raised haemoglobin A2 on electrophoresis",
+        "D": "Increased red cell distribution width"
+      },
+      "correct": "D",
+      "explanation": "Low ferritin with a raised TIBC establishes iron deficiency anaemia. Anisocytosis, reflected as an increased red cell distribution width, is characteristic and helps distinguish it from thalassaemia trait, where the RDW is typically normal and haemoglobin A2 is raised. Serum iron is reduced, not increased. Ringed sideroblasts indicate sideroblastic anaemia, in which iron stores are elevated."
+    },
+    {
+      "id": "A17",
+      "subject": "Pathology",
+      "topic": "Neoplasia",
+      "question": "Which of the following tumour markers is most useful for monitoring recurrence following curative resection of colorectal carcinoma?",
+      "options": {
+        "A": "CA 19-9",
+        "B": "CA-125",
+        "C": "Carcinoembryonic antigen",
+        "D": "Alpha-fetoprotein"
+      },
+      "correct": "C",
+      "explanation": "Carcinoembryonic antigen is the marker of choice for postoperative surveillance in colorectal carcinoma; a rising level after resection suggests recurrence. It is not used for screening because of poor specificity, being raised in smokers, cirrhosis and other malignancies. AFP relates to hepatocellular carcinoma and non-seminomatous germ cell tumours, CA-125 to ovarian carcinoma, and CA 19-9 chiefly to pancreatic carcinoma."
+    },
+    {
+      "id": "A18",
+      "subject": "Pathology",
+      "topic": "Cell injury",
+      "question": "Which of the following morphological features distinguishes apoptosis from necrosis?",
+      "options": {
+        "A": "Preservation of cell membrane integrity with cell shrinkage",
+        "B": "Karyolysis with cell swelling",
+        "C": "Release of lysosomal enzymes into the interstitium",
+        "D": "Prominent acute inflammatory infiltrate"
+      },
+      "correct": "A",
+      "explanation": "Apoptosis is programmed cell death characterised by cell shrinkage, chromatin condensation (pyknosis), formation of apoptotic bodies, and crucially an intact plasma membrane, so cellular contents are not released and no inflammatory response is provoked. Necrosis involves cell swelling, membrane rupture, karyolysis, leakage of lysosomal enzymes and an accompanying inflammatory infiltrate."
+    },
+    {
+      "id": "A19",
+      "subject": "Pharmacology",
+      "topic": "Toxicology - antidotes",
+      "question": "A 24-year-old woman is brought 6 hours after ingesting 20 tablets of paracetamol. She is asymptomatic. Which of the following is the most appropriate management?",
+      "options": {
+        "A": "Intravenous naloxone",
+        "B": "Intravenous N-acetylcysteine",
+        "C": "Await symptoms before initiating therapy",
+        "D": "Oral activated charcoal alone"
+      },
+      "correct": "B",
+      "explanation": "N-acetylcysteine replenishes hepatic glutathione and detoxifies the reactive metabolite NAPQI. It is maximally effective within 8-10 hours of ingestion and must be started on the basis of dose and nomogram-predicted risk, not on symptoms, since patients are characteristically asymptomatic during the first 24 hours while hepatic injury is developing. Activated charcoal is useful only within about 1-2 hours. Naloxone is the antidote for opioids."
+    },
+    {
+      "id": "A20",
+      "subject": "Pharmacology",
+      "topic": "Autonomic pharmacology",
+      "question": "A patient on a non-selective beta-blocker develops severe hypoglycaemia. Which of the following clinical features is most likely to be MASKED by the drug?",
+      "options": {
+        "A": "Confusion",
+        "B": "Hunger",
+        "C": "Tremor and tachycardia",
+        "D": "Sweating"
+      },
+      "correct": "C",
+      "explanation": "Non-selective beta-blockers blunt the sympathetically mediated warning symptoms of hypoglycaemia - notably tremor, palpitations and tachycardia - which are beta-adrenergic. Sweating is mediated by sympathetic cholinergic fibres and is therefore preserved, often becoming the only remaining warning sign. Hunger and confusion are neuroglycopenic and unaffected. This is why beta-blockers are used cautiously in insulin-treated diabetics."
+    },
+    {
+      "id": "A21",
+      "subject": "Pharmacology",
+      "topic": "Antimicrobials",
+      "question": "Which of the following antitubercular drugs is most likely to cause optic neuritis with loss of red-green colour discrimination?",
+      "options": {
+        "A": "Isoniazid",
+        "B": "Pyrazinamide",
+        "C": "Rifampicin",
+        "D": "Ethambutol"
+      },
+      "correct": "D",
+      "explanation": "Ethambutol characteristically causes dose-dependent retrobulbar optic neuritis, presenting with reduced visual acuity and impaired red-green colour vision; it is usually reversible on stopping the drug, and baseline plus periodic visual assessment is advised. Isoniazid causes peripheral neuropathy through pyridoxine deficiency, rifampicin causes orange discolouration of secretions and hepatitis, and pyrazinamide causes hyperuricaemia and hepatotoxicity."
+    },
+    {
+      "id": "A22",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Epidemiology - screening",
+      "question": "A new screening test for a disease is applied to 1000 people, of whom 100 truly have the disease. The test correctly identifies 90 of the diseased and incorrectly labels 90 of the non-diseased as positive. What is the sensitivity of the test?",
+      "options": {
+        "A": "10%",
+        "B": "80%",
+        "C": "50%",
+        "D": "90%"
+      },
+      "correct": "D",
+      "explanation": "Sensitivity is the ability of a test to correctly identify those with the disease, calculated as true positives divided by all diseased, that is 90/100 = 90%. Specificity here would be true negatives over all non-diseased, 810/900 = 90%. Positive predictive value would be 90/180 = 50%, which illustrates how PPV falls with low disease prevalence even when sensitivity and specificity are high."
+    },
+    {
+      "id": "A23",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Biostatistics",
+      "question": "In a normally distributed dataset, approximately what percentage of observations lie within two standard deviations of the mean?",
+      "options": {
+        "A": "68%",
+        "B": "95%",
+        "C": "50%",
+        "D": "99.7%"
+      },
+      "correct": "B",
+      "explanation": "For a normal (Gaussian) distribution, roughly 68% of observations lie within one standard deviation of the mean, about 95% within two standard deviations, and about 99.7% within three - the empirical or 68-95-99.7 rule. This underlies the construction of the conventional 95% confidence interval, which corresponds to approximately 1.96 standard deviations either side of the mean."
+    },
+    {
+      "id": "A24",
+      "subject": "Preventive & Social Medicine",
+      "topic": "National health programmes",
+      "question": "Under India's National Tuberculosis Elimination Programme, what is the standard regimen for a new, drug-sensitive case of pulmonary tuberculosis?",
+      "options": {
+        "A": "3 months of HRZE followed by 3 months of HR",
+        "B": "6 months of HR alone throughout",
+        "C": "2 months of HRZE followed by 4 months of HRE",
+        "D": "2 months of HRZE followed by 4 months of HR only, given thrice weekly"
+      },
+      "correct": "C",
+      "explanation": "NTEP treats new drug-sensitive pulmonary TB with a 2-month intensive phase of Isoniazid, Rifampicin, Pyrazinamide and Ethambutol, followed by a 4-month continuation phase. Ethambutol is now retained in the continuation phase (HRE) under the daily fixed-dose combination regimen, replacing the older thrice-weekly HR schedule. India's stated national target is TB elimination by 2025, ahead of the global End TB target of 2030."
+    },
+    {
+      "id": "A25",
+      "subject": "Microbiology",
+      "topic": "Bacteriology",
+      "question": "A patient develops profuse watery diarrhoea described as rice-water stools with no fever. Dark-field microscopy of stool shows darting motile organisms. Which of the following is the most likely causative agent?",
+      "options": {
+        "A": "Shigella dysenteriae",
+        "B": "Vibrio cholerae",
+        "C": "Entamoeba histolytica",
+        "D": "Salmonella typhi"
+      },
+      "correct": "B",
+      "explanation": "Painless, profuse rice-water stools without fever, together with characteristic darting or shooting-star motility of curved gram-negative bacilli on dark-field microscopy, is classic for Vibrio cholerae. The toxin activates adenylate cyclase, raising cyclic AMP and driving massive secretory diarrhoea. Shigella and Entamoeba cause dysentery with blood and mucus, and Salmonella typhi produces enteric fever with a stepladder pyrexia."
+    },
+    {
+      "id": "A26",
+      "subject": "Microbiology",
+      "topic": "Virology",
+      "question": "Which of the following laboratory parameters is used to define AIDS in an HIV-infected adult, irrespective of clinical symptoms?",
+      "options": {
+        "A": "CD4 count below 500 cells/mm3",
+        "B": "CD4 count below 200 cells/mm3",
+        "C": "CD4:CD8 ratio below 1",
+        "D": "HIV viral load above 1000 copies/mL"
+      },
+      "correct": "B",
+      "explanation": "AIDS is defined in an HIV-positive adult by a CD4 count below 200 cells/mm3 or by the presence of an AIDS-defining opportunistic illness, whichever occurs first. A CD4 below 200 marks the threshold at which Pneumocystis jirovecii pneumonia risk rises sharply and prophylaxis is indicated. Viral load guides treatment response and transmission risk but does not define AIDS, and a reversed CD4:CD8 ratio is non-specific."
+    },
+    {
+      "id": "A27",
+      "subject": "Anatomy",
+      "topic": "Upper limb",
+      "question": "A patient sustains a mid-shaft fracture of the humerus and subsequently cannot extend the wrist. Sensation is reduced over the dorsum of the first web space. Which nerve is injured?",
+      "options": {
+        "A": "Ulnar nerve",
+        "B": "Axillary nerve",
+        "C": "Median nerve",
+        "D": "Radial nerve"
+      },
+      "correct": "D",
+      "explanation": "The radial nerve runs in the spiral (radial) groove against the humeral shaft and is classically injured in mid-shaft fractures, producing wrist drop from paralysis of the extensor compartment and sensory loss over the dorsal first web space. Axillary nerve injury accompanies surgical neck fractures and shoulder dislocation. Ulnar nerve injury occurs at the medial epicondyle causing claw hand, and median nerve compression at the wrist causes carpal tunnel syndrome."
+    },
+    {
+      "id": "A28",
+      "subject": "Anatomy",
+      "topic": "Thorax",
+      "question": "At which vertebral level does the inferior vena cava traverse the diaphragm?",
+      "options": {
+        "A": "T12",
+        "B": "T10",
+        "C": "L1",
+        "D": "T8"
+      },
+      "correct": "D",
+      "explanation": "The three major diaphragmatic openings are at T8 for the inferior vena cava (within the central tendon, accompanied by the right phrenic nerve), T10 for the oesophagus (with the vagal trunks), and T12 for the aorta (with the thoracic duct and azygos vein). The mnemonic 'I ate ten eggs at twelve' aids recall. The IVC opening lies in the central tendon so that it remains patent during diaphragmatic contraction."
+    },
+    {
+      "id": "A29",
+      "subject": "Physiology",
+      "topic": "Respiratory physiology",
+      "question": "Which of the following lung volumes or capacities CANNOT be measured by simple spirometry?",
+      "options": {
+        "A": "Inspiratory reserve volume",
+        "B": "Tidal volume",
+        "C": "Residual volume",
+        "D": "Vital capacity"
+      },
+      "correct": "C",
+      "explanation": "Residual volume is the air remaining in the lungs after maximal expiration and cannot be exhaled, so spirometry cannot measure it. It requires helium dilution, nitrogen washout or body plethysmography. Consequently, any capacity that includes residual volume - functional residual capacity and total lung capacity - is also unmeasurable by spirometry. Tidal volume, inspiratory reserve volume and vital capacity all involve measurable airflow."
+    },
+    {
+      "id": "A30",
+      "subject": "Physiology",
+      "topic": "Cardiovascular physiology",
+      "question": "During which phase of the cardiac cycle does maximal coronary blood flow to the left ventricular myocardium occur?",
+      "options": {
+        "A": "Rapid ejection phase",
+        "B": "Atrial systole",
+        "C": "Isovolumetric contraction",
+        "D": "Diastole"
+      },
+      "correct": "D",
+      "explanation": "Left ventricular myocardial perfusion occurs predominantly during diastole, because systolic contraction compresses the intramural coronary vessels and impedes flow, particularly to the subendocardium. This explains why tachycardia, which shortens diastole disproportionately, can precipitate ischaemia, and why the subendocardium is the region most vulnerable to infarction. Right ventricular flow, facing lower pressures, occurs throughout the cycle."
+    },
+    {
+      "id": "A31",
+      "subject": "Biochemistry",
+      "topic": "Metabolism",
+      "question": "A neonate develops vomiting, jaundice, hepatomegaly and cataracts after starting breast feeds. Reducing substances are present in the urine but the glucose oxidase test is negative. Which enzyme deficiency is most likely?",
+      "options": {
+        "A": "Galactose-1-phosphate uridyltransferase",
+        "B": "Fructose-1-phosphate aldolase B",
+        "C": "Glucose-6-phosphate dehydrogenase",
+        "D": "Phenylalanine hydroxylase"
+      },
+      "correct": "A",
+      "explanation": "Classical galactosaemia results from deficiency of galactose-1-phosphate uridyltransferase. Accumulated galactose-1-phosphate damages liver, kidney and brain, while galactitol formation in the lens produces cataracts. Urine contains a reducing substance (galactose) that is not detected by the glucose-specific oxidase test - a classic discriminating clue. Onset follows lactose exposure through milk. Aldolase B deficiency causes hereditary fructose intolerance, triggered by fructose rather than milk."
+    },
+    {
+      "id": "A32",
+      "subject": "Forensic Medicine & Toxicology",
+      "topic": "Thanatology",
+      "question": "Which of the following is the most reliable early sign for estimating the time since death within the first 12 hours?",
+      "options": {
+        "A": "Putrefaction",
+        "B": "Adipocere formation",
+        "C": "Rigor mortis progression",
+        "D": "Skeletonisation"
+      },
+      "correct": "C",
+      "explanation": "Rigor mortis typically begins in the small muscles of the face within 1-2 hours, becomes generalised by about 12 hours, persists for around 12 hours and then passes off, making its pattern useful for estimating early post-mortem interval. Algor mortis and livor mortis are also used early. Putrefaction begins after roughly 24-48 hours, while adipocere and skeletonisation are late changes occurring over weeks to months."
+    },
+    {
+      "id": "A33",
+      "subject": "Ophthalmology",
+      "topic": "Glaucoma",
+      "question": "A 55-year-old presents with severe pain in one eye, coloured haloes around lights, nausea and vomiting. The eye is red, the cornea hazy and the pupil mid-dilated and non-reactive. Which of the following is the most appropriate definitive management after control of intraocular pressure?",
+      "options": {
+        "A": "Topical atropine",
+        "B": "Laser peripheral iridotomy",
+        "C": "Topical prostaglandin analogue long term",
+        "D": "Trabeculectomy"
+      },
+      "correct": "B",
+      "explanation": "This is acute angle-closure glaucoma, an ophthalmic emergency. After medical reduction of intraocular pressure with agents such as IV mannitol, acetazolamide, topical beta-blockers and pilocarpine, the definitive treatment is laser peripheral iridotomy, which creates an alternative aqueous pathway and relieves pupillary block; the fellow eye is usually treated prophylactically. Atropine is strongly contraindicated as mydriasis worsens angle closure."
+    },
+    {
+      "id": "A34",
+      "subject": "ENT",
+      "topic": "Otology",
+      "question": "On tuning fork testing of a patient with left-sided hearing loss, the Rinne test is negative on the left and the Weber test lateralises to the left. What is the nature of the hearing loss?",
+      "options": {
+        "A": "Left conductive hearing loss",
+        "B": "Bilateral mixed hearing loss",
+        "C": "Left sensorineural hearing loss",
+        "D": "Right sensorineural hearing loss"
+      },
+      "correct": "A",
+      "explanation": "A negative Rinne (bone conduction better than air conduction) in the affected ear together with Weber lateralising towards that same ear indicates conductive hearing loss on that side. In sensorineural loss, Weber lateralises away from the affected ear to the better ear, and Rinne remains positive though thresholds are reduced. Common causes of conductive loss include otosclerosis, otitis media with effusion and ossicular disruption."
+    },
+    {
+      "id": "A35",
+      "subject": "Orthopaedics",
+      "topic": "Fractures and complications",
+      "question": "A child with a supracondylar fracture of the humerus develops severe forearm pain worsened by passive finger extension, along with tense swelling. Distal pulses are palpable. Which of the following is the most appropriate immediate action?",
+      "options": {
+        "A": "Urgent fasciotomy after removing constricting dressings",
+        "B": "Apply a compression bandage",
+        "C": "Arteriography of the upper limb",
+        "D": "Elevate the limb and observe"
+      },
+      "correct": "A",
+      "explanation": "Pain out of proportion to injury, aggravated by passive stretch of the involved compartment, is the earliest and most reliable sign of acute compartment syndrome; supracondylar fractures are a classic setting. Palpable pulses do not exclude it, since compartment pressure rises above capillary perfusion pressure well before arterial occlusion. All constricting dressings must be released and urgent fasciotomy performed to prevent Volkmann's ischaemic contracture. Elevation above heart level and compression both worsen perfusion."
+    },
+    {
+      "id": "A36",
+      "subject": "Psychiatry",
+      "topic": "Psychotic disorders",
+      "question": "A 24-year-old man has had auditory hallucinations, delusions of persecution and social withdrawal for 8 months, with a decline in occupational functioning. There is no mood disorder or substance use. Which of the following is the most likely diagnosis?",
+      "options": {
+        "A": "Brief psychotic disorder",
+        "B": "Schizophreniform disorder",
+        "C": "Delusional disorder",
+        "D": "Schizophrenia"
+      },
+      "correct": "D",
+      "explanation": "Schizophrenia requires continuous disturbance for at least 6 months, including at least 1 month of active-phase symptoms such as hallucinations and delusions, with functional decline - all satisfied here at 8 months. Brief psychotic disorder lasts less than 1 month with return to baseline. Schizophreniform disorder lasts 1 to 6 months. Delusional disorder features non-bizarre delusions without prominent hallucinations or functional deterioration."
+    },
+    {
+      "id": "B01",
+      "subject": "Medicine",
+      "topic": "Cardiology - Valvular disease",
+      "question": "A 32-year-old woman with a history of rheumatic fever presents with exertional dyspnoea and haemoptysis. On auscultation there is a loud first heart sound, an opening snap, and a low-pitched rumbling mid-diastolic murmur best heard at the apex in the left lateral position. Which valvular lesion is most likely?",
+      "options": {
+        "A": "Mitral stenosis",
+        "B": "Tricuspid regurgitation",
+        "C": "Aortic stenosis",
+        "D": "Mitral regurgitation"
+      },
+      "correct": "A",
+      "explanation": "A loud S1, opening snap and rumbling mid-diastolic apical murmur constitute the classic triad of rheumatic mitral stenosis, which remains the commonest chronic valvular sequel of rheumatic fever. Haemoptysis reflects raised left atrial and pulmonary venous pressure. A shorter interval between S2 and the opening snap indicates more severe stenosis. Mitral regurgitation gives a pansystolic murmur radiating to the axilla, and aortic stenosis an ejection systolic murmur radiating to the carotids."
+    },
+    {
+      "id": "B02",
+      "subject": "Medicine",
+      "topic": "Nephrology - Electrolytes",
+      "question": "A patient with chronic kidney disease has serum potassium of 7.2 mEq/L. ECG shows tall peaked T waves and widening of the QRS complex. Which of the following should be administered FIRST?",
+      "options": {
+        "A": "Nebulised salbutamol",
+        "B": "Oral sodium polystyrene sulfonate",
+        "C": "Intravenous insulin with dextrose",
+        "D": "Intravenous calcium gluconate"
+      },
+      "correct": "D",
+      "explanation": "With ECG changes of hyperkalaemia, the immediate priority is myocardial membrane stabilisation using intravenous calcium gluconate. It does not lower serum potassium but antagonises the effect on cardiac conduction within minutes, preventing arrhythmia. Insulin with dextrose and salbutamol act next by shifting potassium intracellularly, and dialysis or binders remove it from the body. Sequencing matters: stabilise, then shift, then remove."
+    },
+    {
+      "id": "B03",
+      "subject": "Medicine",
+      "topic": "Hepatology",
+      "question": "A 48-year-old man with alcoholic cirrhosis presents with fever and abdominal pain. Ascitic fluid analysis shows a polymorphonuclear cell count of 420 cells/mm3 with a single organism on culture. Which of the following is the most appropriate diagnosis and treatment?",
+      "options": {
+        "A": "Spontaneous bacterial peritonitis; intravenous third-generation cephalosporin",
+        "B": "Secondary bacterial peritonitis; urgent laparotomy",
+        "C": "Tuberculous peritonitis; antitubercular therapy",
+        "D": "Malignant ascites; palliative drainage"
+      },
+      "correct": "A",
+      "explanation": "An ascitic fluid polymorphonuclear count of 250 cells/mm3 or more establishes spontaneous bacterial peritonitis, and monomicrobial culture supports it. Treatment is an intravenous third-generation cephalosporin such as cefotaxime, with intravenous albumin to reduce hepatorenal syndrome risk in high-risk patients. Secondary peritonitis is suggested by polymicrobial growth with multiple organisms and features such as low glucose and high protein, and requires imaging and surgical evaluation."
+    },
+    {
+      "id": "B04",
+      "subject": "Medicine",
+      "topic": "Rheumatology",
+      "question": "A 28-year-old woman presents with a malar rash, oral ulcers, polyarthritis and proteinuria. Which of the following antibodies is MOST specific for her likely diagnosis?",
+      "options": {
+        "A": "Anti-cyclic citrullinated peptide antibody",
+        "B": "Anti-double stranded DNA antibody",
+        "C": "Antinuclear antibody",
+        "D": "Rheumatoid factor"
+      },
+      "correct": "B",
+      "explanation": "This presentation indicates systemic lupus erythematosus. Anti-double stranded DNA and anti-Smith antibodies are highly specific for SLE, and anti-dsDNA titres additionally correlate with disease activity and lupus nephritis. Antinuclear antibody is highly sensitive and is the appropriate screening test, but it is poorly specific and positive in many other conditions. Rheumatoid factor and anti-CCP relate principally to rheumatoid arthritis, anti-CCP being the more specific of those two."
+    },
+    {
+      "id": "B05",
+      "subject": "Medicine",
+      "topic": "Endocrinology - Thyroid",
+      "question": "A 40-year-old woman has weight loss, palpitations, heat intolerance and a diffuse goitre with a bruit. There is bilateral proptosis. TSH is suppressed and free T4 elevated. Which of the following findings is specific to her underlying diagnosis rather than to thyrotoxicosis in general?",
+      "options": {
+        "A": "Warm moist skin",
+        "B": "Ophthalmopathy with proptosis",
+        "C": "Sinus tachycardia",
+        "D": "Fine tremor of outstretched hands"
+      },
+      "correct": "B",
+      "explanation": "Graves disease is an autoimmune thyrotoxicosis mediated by TSH receptor stimulating antibodies. Its extrathyroidal manifestations - infiltrative ophthalmopathy with proptosis, and pretibial myxoedema - are specific to Graves disease and are not features of thyrotoxicosis from other causes such as toxic nodular goitre or thyroiditis. Tachycardia, tremor and warm moist skin are common to any cause of thyroid hormone excess."
+    },
+    {
+      "id": "B06",
+      "subject": "Medicine",
+      "topic": "Respiratory - Tuberculosis",
+      "question": "A patient on antitubercular therapy for 2 months develops numbness and tingling of both feet. Which of the following would have prevented this complication?",
+      "options": {
+        "A": "Cyanocobalamin supplementation",
+        "B": "Thiamine supplementation",
+        "C": "Folic acid supplementation",
+        "D": "Pyridoxine supplementation"
+      },
+      "correct": "D",
+      "explanation": "Isoniazid causes peripheral neuropathy by interfering with pyridoxine (vitamin B6) metabolism, producing a functional deficiency. Prophylactic pyridoxine 10 to 25 mg daily prevents it and is routinely co-prescribed, particularly in those at higher risk such as diabetics, alcohol users, pregnant women, malnourished patients and people living with HIV. The neuropathy is typically a symmetrical distal sensory disturbance beginning in the feet."
+    },
+    {
+      "id": "B07",
+      "subject": "Surgery",
+      "topic": "Burns",
+      "question": "An adult sustains burns involving the entire front of the chest and abdomen, and the whole of one upper limb. Using the Wallace rule of nines, what is the approximate percentage of total body surface area burnt?",
+      "options": {
+        "A": "18%",
+        "B": "27%",
+        "C": "45%",
+        "D": "36%"
+      },
+      "correct": "B",
+      "explanation": "By the Wallace rule of nines in adults, the anterior trunk (chest plus abdomen) accounts for 18% and an entire upper limb for 9%, giving 27%. Each lower limb is 18%, the head and neck 9%, the posterior trunk 18%, and the perineum 1%. The rule is modified in children, in whom the head is relatively larger and the lower limbs smaller. Accurate estimation matters because it drives fluid resuscitation by the Parkland formula."
+    },
+    {
+      "id": "B08",
+      "subject": "Surgery",
+      "topic": "Urology",
+      "question": "A 40-year-old man presents with sudden severe left loin pain radiating to the groin, with haematuria. Which of the following is the investigation of choice?",
+      "options": {
+        "A": "Plain radiograph of the abdomen",
+        "B": "Intravenous urography",
+        "C": "Retrograde pyelography",
+        "D": "Non-contrast CT of the kidney, ureter and bladder"
+      },
+      "correct": "D",
+      "explanation": "Non-contrast CT KUB is the investigation of choice for suspected ureteric colic, with sensitivity and specificity above 95%. It detects radiolucent stones such as uric acid calculi that plain radiography misses, requires no contrast, and simultaneously identifies alternative causes of acute flank pain. Plain radiography detects only radio-opaque stones. Intravenous urography is largely superseded, and retrograde pyelography is invasive and reserved for therapeutic or problem-solving use."
+    },
+    {
+      "id": "B09",
+      "subject": "Surgery",
+      "topic": "Intestinal obstruction",
+      "question": "A 60-year-old man with previous abdominal surgery presents with colicky abdominal pain, vomiting, distension and absolute constipation. Erect abdominal radiograph shows multiple air-fluid levels. What is the most likely cause of his obstruction?",
+      "options": {
+        "A": "Obstructed inguinal hernia",
+        "B": "Colorectal carcinoma",
+        "C": "Sigmoid volvulus",
+        "D": "Postoperative adhesions"
+      },
+      "correct": "D",
+      "explanation": "Adhesions from previous abdominal surgery are the commonest cause of small bowel obstruction in adults in settings where operative rates are high, and the history of prior laparotomy is the key clue. Hernia is the leading cause in patients without previous surgery and must always be excluded by examining the hernial orifices. Colorectal carcinoma typically produces large bowel obstruction with more gradual onset, and sigmoid volvulus shows a characteristic coffee-bean loop."
+    },
+    {
+      "id": "B10",
+      "subject": "Surgery",
+      "topic": "Thyroid surgery",
+      "question": "Following total thyroidectomy, a patient develops perioral tingling and carpopedal spasm on the second postoperative day. Tapping over the facial nerve produces twitching of the facial muscles. Which of the following is the underlying cause?",
+      "options": {
+        "A": "Inadvertent removal of or injury to the parathyroid glands",
+        "B": "Superior laryngeal nerve injury",
+        "C": "Recurrent laryngeal nerve injury",
+        "D": "Thyroid storm"
+      },
+      "correct": "A",
+      "explanation": "These are features of acute hypocalcaemia following inadvertent parathyroid removal or devascularisation during total thyroidectomy. Chvostek's sign is facial twitching on tapping the facial nerve, and Trousseau's sign is carpopedal spasm on inflating a blood pressure cuff. Treatment is calcium with vitamin D supplementation. Recurrent laryngeal nerve injury causes hoarseness or, if bilateral, stridor, and superior laryngeal nerve injury alters voice pitch."
+    },
+    {
+      "id": "B11",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Antepartum haemorrhage",
+      "question": "A woman at 32 weeks with severe preeclampsia develops sudden abdominal pain with dark vaginal bleeding. The uterus is tense and tender, and fetal heart rate is non-reassuring. Which of the following complications results from blood infiltrating the myometrium?",
+      "options": {
+        "A": "Uterine inversion",
+        "B": "Amniotic fluid embolism",
+        "C": "Uterine rupture",
+        "D": "Couvelaire uterus"
+      },
+      "correct": "D",
+      "explanation": "Painful bleeding with a tense, tender, board-like uterus in a preeclamptic woman indicates abruptio placentae. Extensive retroplacental haemorrhage infiltrating the myometrium produces the Couvelaire uterus, or uteroplacental apoplexy, which impairs uterine contractility and predisposes to postpartum haemorrhage. Abruption is also a leading obstetric cause of disseminated intravascular coagulation, so coagulation status must be assessed."
+    },
+    {
+      "id": "B12",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Gynaecological oncology",
+      "question": "Which of the following is the causative agent most strongly implicated in the pathogenesis of carcinoma cervix?",
+      "options": {
+        "A": "Epstein-Barr virus",
+        "B": "Herpes simplex virus type 2",
+        "C": "Human papillomavirus types 16 and 18",
+        "D": "Human papillomavirus types 6 and 11"
+      },
+      "correct": "C",
+      "explanation": "High-risk human papillomavirus, principally types 16 and 18, is responsible for the great majority of cervical cancers; viral E6 and E7 oncoproteins inactivate p53 and retinoblastoma tumour suppressor proteins respectively. HPV types 6 and 11 are low-risk and cause genital warts rather than malignancy. Prophylactic HPV vaccination and cytology or HPV-based screening are the basis of cervical cancer prevention programmes."
+    },
+    {
+      "id": "B13",
+      "subject": "Obstetrics & Gynaecology",
+      "topic": "Labour and fetal monitoring",
+      "question": "On a partograph, the alert line is crossed during the active phase of labour. What does this signify?",
+      "options": {
+        "A": "The second stage of labour has begun",
+        "B": "Cervical dilatation is progressing slower than 1 cm per hour and the woman needs closer monitoring or transfer",
+        "C": "Labour is progressing normally",
+        "D": "Immediate caesarean section is indicated"
+      },
+      "correct": "B",
+      "explanation": "On the WHO partograph the alert line represents cervical dilatation of 1 cm per hour in the active phase. Crossing it indicates slower than expected progress and prompts closer surveillance and, in a peripheral facility, transfer to a centre with operative capability. The action line, drawn 4 hours to the right, is the point at which definitive intervention is considered. Crossing the alert line alone is not an indication for immediate caesarean section."
+    },
+    {
+      "id": "B14",
+      "subject": "Paediatrics",
+      "topic": "Congenital heart disease",
+      "question": "A 2-year-old child has episodes of cyanosis relieved by squatting. Examination shows clubbing and an ejection systolic murmur at the left upper sternal border. Chest radiograph shows a boot-shaped heart with decreased pulmonary vascularity. Which component of the underlying lesion determines the severity of cyanosis?",
+      "options": {
+        "A": "Degree of aortic override",
+        "B": "Size of the ventricular septal defect",
+        "C": "Degree of right ventricular hypertrophy",
+        "D": "Degree of right ventricular outflow tract obstruction"
+      },
+      "correct": "D",
+      "explanation": "This is Tetralogy of Fallot, comprising ventricular septal defect, right ventricular outflow tract obstruction, overriding aorta and right ventricular hypertrophy. The severity of cyanosis is determined chiefly by the degree of RVOT obstruction, which governs how much deoxygenated blood is shunted right to left across the VSD. Squatting increases systemic vascular resistance and so reduces the right-to-left shunt, relieving cyanosis."
+    },
+    {
+      "id": "B15",
+      "subject": "Paediatrics",
+      "topic": "Nutrition",
+      "question": "A 2-year-old child has severe wasting, no oedema, visible ribs and a weight-for-height Z score below minus 3. Which of the following best describes this condition?",
+      "options": {
+        "A": "Marasmus",
+        "B": "Kwashiorkor",
+        "C": "Nutritional dwarfism",
+        "D": "Marasmic kwashiorkor"
+      },
+      "correct": "A",
+      "explanation": "Marasmus results from severe deficiency of total calories, producing gross muscle and subcutaneous fat wasting without oedema, giving the characteristic emaciated appearance with visible ribs. Kwashiorkor is predominantly protein deficiency and is defined by bilateral pitting oedema, with hepatomegaly and skin and hair changes. Absence of oedema here excludes kwashiorkor and the mixed form. Severe acute malnutrition is defined by a weight-for-height Z score below minus 3, or mid-upper arm circumference under 11.5 cm, or nutritional oedema."
+    },
+    {
+      "id": "B16",
+      "subject": "Pathology",
+      "topic": "Haemato-oncology",
+      "question": "A 55-year-old man has massive splenomegaly and a leucocyte count of 180000/mm3 with the full spectrum of granulocyte precursors on peripheral smear. Leucocyte alkaline phosphatase score is low. Which cytogenetic abnormality is expected?",
+      "options": {
+        "A": "Trisomy 12",
+        "B": "t(15;17) PML-RARA fusion",
+        "C": "t(9;22) BCR-ABL1 fusion",
+        "D": "t(8;14) MYC rearrangement"
+      },
+      "correct": "C",
+      "explanation": "Chronic myeloid leukaemia is characterised by the Philadelphia chromosome, t(9;22), producing the BCR-ABL1 fusion gene with constitutive tyrosine kinase activity - the target of imatinib. Marked leucocytosis with the whole granulocytic series, massive splenomegaly and a low leucocyte alkaline phosphatase score distinguish it from a leukaemoid reaction, in which the LAP score is high. The t(15;17) translocation defines acute promyelocytic leukaemia."
+    },
+    {
+      "id": "B17",
+      "subject": "Pathology",
+      "topic": "Haemostasis",
+      "question": "A boy has recurrent haemarthroses. Investigations show a prolonged activated partial thromboplastin time with normal prothrombin time, normal platelet count and normal bleeding time. Which of the following is the most likely diagnosis?",
+      "options": {
+        "A": "Von Willebrand disease",
+        "B": "Vitamin K deficiency",
+        "C": "Haemophilia A",
+        "D": "Immune thrombocytopenic purpura"
+      },
+      "correct": "C",
+      "explanation": "Isolated prolongation of the aPTT with a normal PT, platelet count and bleeding time indicates an intrinsic pathway factor deficiency, and recurrent haemarthrosis in a boy points to X-linked recessive haemophilia A (factor VIII deficiency). Von Willebrand disease additionally prolongs the bleeding time because platelet adhesion is impaired. Immune thrombocytopenic purpura causes thrombocytopenia with mucocutaneous bleeding, and vitamin K deficiency prolongs the PT first."
+    },
+    {
+      "id": "B18",
+      "subject": "Pathology",
+      "topic": "Amyloidosis",
+      "question": "Which stain, viewed under polarised light, demonstrates apple-green birefringence in tissue deposits of amyloid?",
+      "options": {
+        "A": "Periodic acid-Schiff",
+        "B": "Prussian blue",
+        "C": "Congo red",
+        "D": "Masson trichrome"
+      },
+      "correct": "C",
+      "explanation": "Congo red staining with apple-green birefringence under polarised light is the diagnostic hallmark of amyloid, reflecting its beta-pleated sheet structure. Periodic acid-Schiff stains glycogen, glycoproteins and basement membranes; Prussian blue demonstrates haemosiderin and iron; and Masson trichrome highlights collagen and fibrosis. Amyloid appears as amorphous eosinophilic extracellular material on routine haematoxylin and eosin staining."
+    },
+    {
+      "id": "B19",
+      "subject": "Pharmacology",
+      "topic": "Anticoagulants",
+      "question": "A patient on warfarin presents with an INR of 8 but no bleeding. Which of the following is the most appropriate management?",
+      "options": {
+        "A": "Continue warfarin at the same dose and recheck in one week",
+        "B": "Administer protamine sulfate",
+        "C": "Withhold warfarin and give oral vitamin K",
+        "D": "Give fresh frozen plasma immediately"
+      },
+      "correct": "C",
+      "explanation": "For a markedly raised INR without bleeding, warfarin is withheld and low-dose oral vitamin K (phytonadione) is given, with the INR rechecked. Fresh frozen plasma or prothrombin complex concentrate is reserved for serious or life-threatening bleeding, or before urgent surgery, because these carry transfusion-related risks. Protamine sulfate reverses heparin, not warfarin. Continuing the same dose risks major haemorrhage."
+    },
+    {
+      "id": "B20",
+      "subject": "Pharmacology",
+      "topic": "Antiepileptics",
+      "question": "Which antiepileptic drug is most strongly associated with neural tube defects when used in the first trimester of pregnancy?",
+      "options": {
+        "A": "Lamotrigine",
+        "B": "Sodium valproate",
+        "C": "Carbamazepine",
+        "D": "Levetiracetam"
+      },
+      "correct": "B",
+      "explanation": "Sodium valproate carries the highest teratogenic risk among antiepileptics, causing neural tube defects in roughly 1 to 2% of exposures along with reduced IQ and neurodevelopmental disorders, and is therefore avoided in women of childbearing potential wherever an alternative exists. Carbamazepine also raises neural tube defect risk but substantially less. Lamotrigine and levetiracetam have the most favourable profiles in pregnancy. Periconceptional folic acid is advised for all women on antiepileptics."
+    },
+    {
+      "id": "B21",
+      "subject": "Pharmacology",
+      "topic": "Pharmacokinetics",
+      "question": "A drug follows zero-order kinetics. Which of the following statements is correct?",
+      "options": {
+        "A": "A constant amount of drug is eliminated per unit time regardless of plasma concentration",
+        "B": "A constant fraction of drug is eliminated per unit time",
+        "C": "Elimination rate increases proportionally with plasma concentration",
+        "D": "The half-life remains constant at all plasma concentrations"
+      },
+      "correct": "A",
+      "explanation": "In zero-order (saturation) kinetics the eliminating enzyme system is saturated, so a fixed amount of drug is cleared per unit time irrespective of concentration, and half-life therefore lengthens as concentration rises. Small dose increments can produce disproportionately large rises in plasma level, which is why phenytoin, ethanol, salicylate in overdose and warfarin require careful titration. First-order kinetics, by contrast, clears a constant fraction with a constant half-life."
+    },
+    {
+      "id": "B22",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Study design",
+      "question": "Investigators identify people with lung cancer and a comparable group without it, then compare past smoking exposure between the two groups. Which study design is this, and which measure of association is appropriate?",
+      "options": {
+        "A": "Case-control study; odds ratio",
+        "B": "Cross-sectional study; prevalence ratio",
+        "C": "Cohort study; relative risk",
+        "D": "Randomised controlled trial; risk difference"
+      },
+      "correct": "A",
+      "explanation": "Selecting participants on the basis of disease status and looking backward at exposure defines a case-control study. Because incidence cannot be measured directly, the odds ratio is the appropriate measure of association, approximating relative risk when the disease is rare. Case-control designs are efficient for rare diseases and long latency periods but are vulnerable to recall and selection bias. A cohort study follows exposed and unexposed groups forward and yields relative risk."
+    },
+    {
+      "id": "B23",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Immunisation",
+      "question": "Under India's Universal Immunisation Programme, at what age is the first dose of measles-rubella vaccine administered?",
+      "options": {
+        "A": "At birth",
+        "B": "16-24 months",
+        "C": "6 weeks",
+        "D": "9 completed months"
+      },
+      "correct": "D",
+      "explanation": "Under the UIP the first dose of measles-rubella vaccine is given at 9 completed months, together with vitamin A and JE vaccine in endemic districts, and the second dose at 16 to 24 months. Vaccination before 9 months is generally avoided because persisting maternal antibody may neutralise the vaccine virus. BCG, zero-dose OPV and hepatitis B are given at birth, and pentavalent with OPV and rotavirus at 6, 10 and 14 weeks."
+    },
+    {
+      "id": "B24",
+      "subject": "Preventive & Social Medicine",
+      "topic": "Health indicators",
+      "question": "Which of the following is the correct definition of the infant mortality rate?",
+      "options": {
+        "A": "Deaths under 1 year of age per 1000 mid-year population",
+        "B": "Deaths under 5 years of age per 1000 live births in a year",
+        "C": "Deaths in the first 28 days per 1000 live births in a year",
+        "D": "Deaths under 1 year of age per 1000 live births in a year"
+      },
+      "correct": "D",
+      "explanation": "The infant mortality rate is the number of deaths of infants under one year of age per 1000 live births in a given year, and is a sensitive indicator of the overall health and socioeconomic status of a population. Deaths within the first 28 days constitute the neonatal mortality rate, deaths under 5 years the under-five mortality rate, and the maternal mortality ratio is expressed per 100000 live births."
+    },
+    {
+      "id": "B25",
+      "subject": "Microbiology",
+      "topic": "Sterilisation",
+      "question": "Which of the following is the method of choice for sterilising surgical instruments that are heat stable?",
+      "options": {
+        "A": "Boiling at 100 degrees Celsius for 30 minutes",
+        "B": "Immersion in 2% glutaraldehyde for 20 minutes",
+        "C": "Autoclaving at 121 degrees Celsius and 15 psi for 15 minutes",
+        "D": "Hot air oven at 160 degrees Celsius for 2 hours"
+      },
+      "correct": "C",
+      "explanation": "Moist heat sterilisation by autoclave at 121 degrees Celsius and 15 psi for 15 minutes is the method of choice for heat-stable instruments, as steam under pressure kills bacterial spores reliably and quickly. Efficacy is monitored using Bacillus stearothermophilus spore strips. Hot air ovens use dry heat and are reserved for glassware, oils and powders that steam would damage. Glutaraldehyde achieves high-level disinfection rather than reliable sterilisation, and boiling does not destroy spores."
+    },
+    {
+      "id": "B26",
+      "subject": "Microbiology",
+      "topic": "Parasitology",
+      "question": "A patient returning from a forested area has cyclical fever every 48 hours with chills and rigors. Peripheral smear shows enlarged red cells containing amoeboid trophozoites and Schuffner's dots. Which species is responsible?",
+      "options": {
+        "A": "Plasmodium malariae",
+        "B": "Plasmodium falciparum",
+        "C": "Plasmodium vivax",
+        "D": "Plasmodium knowlesi"
+      },
+      "correct": "C",
+      "explanation": "Enlarged infected erythrocytes with Schuffner's dots and amoeboid trophozoites, together with a 48-hour (tertian) fever periodicity, indicate Plasmodium vivax. Vivax forms dormant hepatic hypnozoites, so radical cure requires primaquine after testing for G6PD deficiency. Falciparum shows small ring forms with multiple rings per cell, banana-shaped gametocytes and no red cell enlargement, and malariae produces a 72-hour quartan periodicity with band forms."
+    },
+    {
+      "id": "B27",
+      "subject": "Anatomy",
+      "topic": "Head and neck",
+      "question": "Which structure passes through the foramen ovale of the skull?",
+      "options": {
+        "A": "Internal carotid artery",
+        "B": "Mandibular division of the trigeminal nerve",
+        "C": "Middle meningeal artery",
+        "D": "Maxillary division of the trigeminal nerve"
+      },
+      "correct": "B",
+      "explanation": "The foramen ovale transmits the mandibular division of the trigeminal nerve, along with the accessory meningeal artery and the lesser petrosal nerve. The maxillary division exits through the foramen rotundum, the middle meningeal artery enters through the foramen spinosum, and the internal carotid artery passes through the carotid canal. These relationships are commonly tested and explain patterns of deficit in skull base lesions."
+    },
+    {
+      "id": "B28",
+      "subject": "Anatomy",
+      "topic": "Lower limb",
+      "question": "Which nerve is at greatest risk during an incorrectly placed intramuscular injection into the gluteal region?",
+      "options": {
+        "A": "Superior gluteal nerve",
+        "B": "Obturator nerve",
+        "C": "Sciatic nerve",
+        "D": "Femoral nerve"
+      },
+      "correct": "C",
+      "explanation": "The sciatic nerve emerges below the piriformis and traverses the lower medial quadrant of the gluteal region, making it vulnerable to injury from injections placed incorrectly. Injections are therefore given in the upper outer quadrant, which is free of the nerve. Sciatic injury causes foot drop with sensory loss below the knee except the medial leg, which is supplied by the saphenous nerve."
+    },
+    {
+      "id": "B29",
+      "subject": "Physiology",
+      "topic": "Renal physiology",
+      "question": "Which substance is used to measure the glomerular filtration rate most accurately because it is freely filtered and is neither reabsorbed nor secreted by the renal tubules?",
+      "options": {
+        "A": "Creatinine",
+        "B": "Glucose",
+        "C": "Para-aminohippuric acid",
+        "D": "Inulin"
+      },
+      "correct": "D",
+      "explanation": "Inulin is the gold standard for measuring glomerular filtration rate because it is freely filtered at the glomerulus and undergoes neither tubular reabsorption nor secretion, so its clearance equals GFR exactly. Para-aminohippuric acid clearance estimates effective renal plasma flow, since it is both filtered and secreted. Creatinine clearance is the practical clinical surrogate but slightly overestimates GFR because of a small amount of tubular secretion. Glucose is completely reabsorbed below the renal threshold."
+    },
+    {
+      "id": "B30",
+      "subject": "Physiology",
+      "topic": "Neurophysiology",
+      "question": "Which ion is primarily responsible for the depolarisation phase of the action potential in a typical neuron?",
+      "options": {
+        "A": "Sodium influx",
+        "B": "Chloride influx",
+        "C": "Calcium efflux",
+        "D": "Potassium efflux"
+      },
+      "correct": "A",
+      "explanation": "Depolarisation results from opening of voltage-gated sodium channels and rapid sodium influx down its electrochemical gradient, driving the membrane potential towards the sodium equilibrium potential. Repolarisation follows from sodium channel inactivation together with delayed opening of voltage-gated potassium channels and potassium efflux, which may overshoot to produce after-hyperpolarisation. Calcium influx is central at the presynaptic terminal, where it triggers neurotransmitter release."
+    },
+    {
+      "id": "B31",
+      "subject": "Biochemistry",
+      "topic": "Vitamins",
+      "question": "A malnourished alcoholic patient develops confusion, ophthalmoplegia and ataxia. Deficiency of which vitamin is responsible?",
+      "options": {
+        "A": "Pyridoxine",
+        "B": "Thiamine",
+        "C": "Niacin",
+        "D": "Riboflavin"
+      },
+      "correct": "B",
+      "explanation": "The triad of confusion, ophthalmoplegia and ataxia constitutes Wernicke encephalopathy, caused by thiamine (vitamin B1) deficiency, to which people with chronic alcohol use are particularly prone. Thiamine must be given before any glucose load, since administering glucose first can precipitate or worsen the encephalopathy. Untreated, it may progress to the irreversible amnesia and confabulation of Korsakoff psychosis. Niacin deficiency causes pellagra with dermatitis, diarrhoea and dementia."
+    },
+    {
+      "id": "B32",
+      "subject": "Biochemistry",
+      "topic": "Enzyme kinetics",
+      "question": "A competitive inhibitor is added to an enzyme-catalysed reaction. What effect does it have on the kinetic parameters?",
+      "options": {
+        "A": "Km increases and Vmax remains unchanged",
+        "B": "Km remains unchanged and Vmax decreases",
+        "C": "Km decreases and Vmax remains unchanged",
+        "D": "Both Km and Vmax decrease"
+      },
+      "correct": "A",
+      "explanation": "A competitive inhibitor binds reversibly to the active site and competes with substrate, so a higher substrate concentration is required to reach half-maximal velocity - the apparent Km rises - while sufficient substrate can still overcome the inhibition, leaving Vmax unchanged. Non-competitive inhibitors bind elsewhere and reduce Vmax with unchanged Km. Methanol poisoning treated with ethanol, and folate synthesis inhibition by sulfonamides, are classic competitive examples."
+    },
+    {
+      "id": "B33",
+      "subject": "Forensic Medicine & Toxicology",
+      "topic": "Toxicology",
+      "question": "A farmer is brought unconscious with pinpoint pupils, excessive salivation, bronchial secretions, bradycardia and muscle fasciculations. Which of the following is the specific antidote that reactivates the inhibited enzyme?",
+      "options": {
+        "A": "Pralidoxime",
+        "B": "Naloxone",
+        "C": "Atropine",
+        "D": "Flumazenil"
+      },
+      "correct": "A",
+      "explanation": "This is organophosphate poisoning from inhibition of acetylcholinesterase, producing muscarinic features (pinpoint pupils, salivation, bronchorrhoea, bradycardia) and nicotinic features (fasciculations). Pralidoxime is the specific antidote because it reactivates the phosphorylated enzyme, and must be given early before irreversible ageing of the enzyme occurs. Atropine is essential but antagonises muscarinic effects symptomatically rather than reactivating the enzyme, and does not treat fasciculations or weakness."
+    },
+    {
+      "id": "B34",
+      "subject": "Ophthalmology",
+      "topic": "Retina",
+      "question": "A patient with 15 years of poorly controlled diabetes has neovascularisation of the disc on fundus examination. What is the most appropriate treatment?",
+      "options": {
+        "A": "Topical steroids",
+        "B": "Panretinal photocoagulation",
+        "C": "Observation with tighter glycaemic control alone",
+        "D": "Immediate vitrectomy"
+      },
+      "correct": "B",
+      "explanation": "Neovascularisation defines proliferative diabetic retinopathy, which threatens vision through vitreous haemorrhage and tractional retinal detachment. Panretinal photocoagulation is the mainstay: ablating ischaemic peripheral retina reduces VEGF drive and causes regression of new vessels. Intravitreal anti-VEGF agents are used adjunctively or as an alternative in selected cases. Vitrectomy is reserved for non-clearing vitreous haemorrhage or tractional detachment, and glycaemic control alone is insufficient at this stage."
+    },
+    {
+      "id": "B35",
+      "subject": "ENT",
+      "topic": "Nose and paranasal sinuses",
+      "question": "An adolescent boy presents with recurrent profuse epistaxis and progressive unilateral nasal obstruction. Imaging shows a highly vascular mass in the nasopharynx with widening of the sphenopalatine foramen. Which of the following is contraindicated in the diagnostic workup?",
+      "options": {
+        "A": "Contrast-enhanced computed tomography",
+        "B": "Incisional biopsy of the mass",
+        "C": "Digital subtraction angiography",
+        "D": "Magnetic resonance imaging"
+      },
+      "correct": "B",
+      "explanation": "This is juvenile nasopharyngeal angiofibroma, a benign but highly vascular and locally aggressive tumour occurring almost exclusively in adolescent males. Biopsy is contraindicated because it can provoke torrential, life-threatening haemorrhage; the diagnosis is made radiologically. Contrast CT and MRI define extent, and angiography both confirms the vascular supply, usually from the internal maxillary artery, and permits preoperative embolisation before surgical excision."
+    },
+    {
+      "id": "B36",
+      "subject": "Dermatology",
+      "topic": "Leprosy",
+      "question": "A patient has multiple hypopigmented anaesthetic patches with thickened peripheral nerves, and slit skin smears are strongly positive for acid-fast bacilli. Which type of leprosy does this represent?",
+      "options": {
+        "A": "Indeterminate leprosy",
+        "B": "Borderline tuberculoid leprosy",
+        "C": "Lepromatous leprosy",
+        "D": "Tuberculoid leprosy"
+      },
+      "correct": "C",
+      "explanation": "A high bacillary load on slit skin smear with numerous widespread lesions indicates lepromatous leprosy, which occurs in patients with poor cell-mediated immunity and a negative lepromin test, and is the multibacillary, highly infectious pole. Tuberculoid leprosy features few well-defined lesions with strong cell-mediated immunity and smears that are negative for bacilli. Multibacillary disease is treated under NLEP with 12 months of rifampicin, clofazimine and dapsone."
+    }
+  ]
+}

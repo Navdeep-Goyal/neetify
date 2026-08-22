@@ -99,12 +99,12 @@ begin
     'exp', extract(epoch from (now() + interval '24 hours'))::bigint
   )::text;
 
-  header_b64 := rtrim(translate(encode(convert_to(header, 'utf8'), 'base64'), '+/', '-_'), '=');
-  payload_b64 := rtrim(translate(encode(convert_to(payload, 'utf8'), 'base64'), '+/', '-_'), '=');
+  header_b64 := rtrim(translate(regexp_replace(encode(convert_to(header, 'utf8'), 'base64'), '\s', '', 'g'), '+/', '-_'), '=');
+  payload_b64 := rtrim(translate(regexp_replace(encode(convert_to(payload, 'utf8'), 'base64'), '\s', '', 'g'), '+/', '-_'), '=');
   signing_input := header_b64 || '.' || payload_b64;
 
   sig := extensions.hmac(signing_input::bytea, public.app_jwt_secret()::bytea, 'sha256');
-  sig_b64 := rtrim(translate(encode(sig, 'base64'), '+/', '-_'), '=');
+  sig_b64 := rtrim(translate(regexp_replace(encode(sig, 'base64'), '\s', '', 'g'), '+/', '-_'), '=');
 
   return signing_input || '.' || sig_b64;
 end;
@@ -144,12 +144,13 @@ begin
   signing_input := header_b64 || '.' || payload_b64;
 
   expected_sig := extensions.hmac(signing_input::bytea, public.app_jwt_secret()::bytea, 'sha256');
-  expected_sig_b64 := rtrim(translate(encode(expected_sig, 'base64'), '+/', '-_'), '=');
+  expected_sig_b64 := rtrim(translate(regexp_replace(encode(expected_sig, 'base64'), '\s', '', 'g'), '+/', '-_'), '=');
 
   if expected_sig_b64 != sig_b64 then
     return; -- bad signature -- reject
   end if;
 
+  payload_b64 := regexp_replace(payload_b64, '\s', '', 'g'); -- defensive: strip any stray whitespace before padding math
   padded := payload_b64 || repeat('=', (4 - length(payload_b64) % 4) % 4);
   payload_json := convert_from(decode(translate(padded, '-_', '+/'), 'base64'), 'utf8')::json;
 
