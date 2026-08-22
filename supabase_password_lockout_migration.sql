@@ -41,14 +41,14 @@ begin
 
   if v_row.pin_hash = crypt(p_pin, v_row.pin_hash) then
     -- correct credentials -- clear any failure tracking
-    update public.users set failed_attempts = 0, locked_until = null where id = v_row.id;
+    update public.users u set failed_attempts = 0, locked_until = null where u.id = v_row.id;
     return query select v_row.id, v_row.name, v_row.user_type, public.mint_session_token(v_row.id, v_row.user_type);
   else
     -- wrong credentials -- count it, and lock out once the threshold is hit
-    update public.users
-      set failed_attempts = case when failed_attempts + 1 >= 10 then 0 else failed_attempts + 1 end,
-          locked_until = case when failed_attempts + 1 >= 10 then now() + interval '15 minutes' else locked_until end
-      where id = v_row.id;
+    update public.users u
+      set failed_attempts = case when u.failed_attempts + 1 >= 10 then 0 else u.failed_attempts + 1 end,
+          locked_until = case when u.failed_attempts + 1 >= 10 then now() + interval '15 minutes' else u.locked_until end
+      where u.id = v_row.id;
     return; -- zero rows, same as before (doesn't reveal whether lockout just triggered)
   end if;
 end;
