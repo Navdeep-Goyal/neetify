@@ -398,6 +398,23 @@ a:focus-visible {
   border-radius: 4px;
   font-size: 15px;
 }
+.password-rules {
+  list-style: none;
+  margin: 6px 0 4px;
+  padding: 0;
+  font-size: 12px;
+}
+.password-rules li {
+  padding: 2px 0;
+  color: #999;
+}
+.password-rules li.rule-passed {
+  color: #2c8244;
+  font-weight: bold;
+}
+.password-rules li.rule-pending {
+  color: #888;
+}
 .login-error {
   color: var(--red-not-answered);
   font-size: 13px;

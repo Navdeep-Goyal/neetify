@@ -216,7 +216,7 @@ function profileFromRpcRow(row) {
 async function registerUser(name, pin) {
   const trimmedName = normalizeProfileName(name);
   if (!trimmedName) return { ok: false, message: "Enter your name." };
-  if (!pin || pin.length < 4) return { ok: false, message: "PIN must be at least 4 characters." };
+  if (!pin || !passwordMeetsAllRules(pin)) return { ok: false, message: "Password doesn't meet all the requirements above." };
   if (!initSupabaseClient()) return { ok: false, message: "Can't reach the server right now -- check your internet connection." };
 
   const { data, error } = await supabaseClient.rpc("register_user", { p_name: trimmedName, p_pin: pin });
@@ -234,12 +234,19 @@ async function registerUser(name, pin) {
 async function loginUser(name, pin) {
   const trimmedName = normalizeProfileName(name);
   if (!trimmedName) return { ok: false, message: "Enter your name." };
-  if (!pin) return { ok: false, message: "Enter your PIN." };
+  if (!pin) return { ok: false, message: "Enter your password." };
   if (!initSupabaseClient()) return { ok: false, message: "Can't reach the server right now -- check your internet connection." };
 
   const { data, error } = await supabaseClient.rpc("login_user", { p_name: trimmedName, p_pin: pin });
-  if (error) return { ok: false, message: error.message };
-  if (!data || data.length === 0) return { ok: false, message: "Incorrect name or PIN." };
+  if (error) {
+    if (error.message && error.message.startsWith("ACCOUNT_LOCKED:")) {
+      const seconds = parseInt(error.message.split(":")[1], 10) || 0;
+      const mins = Math.max(1, Math.ceil(seconds / 60));
+      return { ok: false, message: `Too many failed attempts. Try again in ${mins} minute${mins === 1 ? "" : "s"}.` };
+    }
+    return { ok: false, message: error.message };
+  }
+  if (!data || data.length === 0) return { ok: false, message: "Incorrect name or password." };
   rememberNameLocally(trimmedName);
   return { ok: true, profile: profileFromRpcRow(data[0]) };
 }
@@ -689,6 +696,8 @@ function initInstructions() {
 // exit from fullscreen or the tab/window (visibilitychange), log it as a violation with
 // a visible warning, and auto-submit the exam once MAX_VIOLATIONS is reached.
 let lockdownActive = false;
+let blurDebounceTimer = null;
+let lastViolationAt = 0;
 
 function enterLockdown() {
   if (lockdownActive) return;
@@ -699,6 +708,8 @@ function enterLockdown() {
   document.addEventListener("fullscreenchange", handleFullscreenChange);
   document.addEventListener("contextmenu", blockContextMenu);
   window.addEventListener("beforeunload", handleBeforeUnload);
+  window.addEventListener("blur", handleWindowBlur);
+  window.addEventListener("focus", handleWindowFocus);
 }
 
 function exitLockdown() {
@@ -709,6 +720,9 @@ function exitLockdown() {
   document.removeEventListener("fullscreenchange", handleFullscreenChange);
   document.removeEventListener("contextmenu", blockContextMenu);
   window.removeEventListener("beforeunload", handleBeforeUnload);
+  window.removeEventListener("blur", handleWindowBlur);
+  window.removeEventListener("focus", handleWindowFocus);
+  if (blurDebounceTimer) { clearTimeout(blurDebounceTimer); blurDebounceTimer = null; }
   if (document.fullscreenElement) {
     document.exitFullscreen().catch(() => {}); // no-op if browser refuses; not critical
   }
@@ -753,8 +767,33 @@ function handleFullscreenChange() {
   if (!document.fullscreenElement) recordViolation("Exited fullscreen mode");
 }
 
+// Catches switching to a different APPLICATION while this tab stays open in the
+// background -- visibilitychange alone doesn't reliably catch this, since a page can
+// remain "visible" per the Page Visibility spec even when the window itself has lost
+// OS-level focus (e.g. Alt+Tab/Cmd+Tab to another app without minimizing the browser).
+// Debounced by 400ms so brief internal focus flickers (nothing to do with switching
+// apps) don't get counted -- a genuine app switch lasts much longer than that.
+function handleWindowBlur() {
+  if (!lockdownActive || state.submitted) return;
+  if (blurDebounceTimer) clearTimeout(blurDebounceTimer);
+  blurDebounceTimer = setTimeout(() => {
+    if (!document.hasFocus()) recordViolation("Switched to another app (window lost focus)");
+  }, 400);
+}
+
+function handleWindowFocus() {
+  if (blurDebounceTimer) { clearTimeout(blurDebounceTimer); blurDebounceTimer = null; }
+}
+
 function recordViolation(reason) {
   if (!state || state.submitted) return;
+  // Some real switch-away events fire BOTH visibilitychange and blur nearly
+  // simultaneously (e.g. minimizing the whole browser) -- treat anything within a
+  // second of the last recorded violation as the same event, not two separate ones.
+  const now = nowTs();
+  if (now - lastViolationAt < 1000) return;
+  lastViolationAt = now;
+
   state.violations += 1;
   state.breachLog.push({ reason, at: nowTs() });
   saveProgress();
@@ -1294,10 +1333,34 @@ async function startAppForCurrentProfile() {
   show("#screen-landing");
 }
 
+// ---------------- Password rules (live checklist as the user types) ----------------
+const PASSWORD_RULES = [
+  { key: "length", label: "At least 8 characters", test: (pw) => pw.length >= 8 },
+  { key: "uppercase", label: "At least one uppercase letter", test: (pw) => /[A-Z]/.test(pw) },
+  { key: "lowercase", label: "At least one lowercase letter", test: (pw) => /[a-z]/.test(pw) },
+  { key: "number", label: "At least one number", test: (pw) => /[0-9]/.test(pw) },
+  { key: "special", label: "At least one special character (e.g. ! @ # $ %)", test: (pw) => /[^A-Za-z0-9]/.test(pw) },
+];
+
+function passwordMeetsAllRules(pw) {
+  return PASSWORD_RULES.every(rule => rule.test(pw));
+}
+
+function renderPasswordRulesChecklist(pw) {
+  const list = $("#password-rules");
+  if (!list) return;
+  list.innerHTML = PASSWORD_RULES.map(rule => {
+    const passed = rule.test(pw);
+    return `<li class="${passed ? "rule-passed" : "rule-pending"}">${passed ? "&#10003;" : "&#9675;"} ${rule.label}</li>`;
+  }).join("");
+}
+
 function wireLoginScreen() {
   renderKnownProfilesRow();
+  renderPasswordRulesChecklist("");
   $("#btn-register").onclick = () => handleAuthSubmit("register");
   $("#btn-login").onclick = () => handleAuthSubmit("login");
+  $("#login-pin-input").addEventListener("input", (e) => renderPasswordRulesChecklist(e.target.value));
   $("#login-pin-input").addEventListener("keydown", (e) => { if (e.key === "Enter") handleAuthSubmit("login"); });
   $("#login-name-input").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#login-pin-input").focus(); });
 }
@@ -1307,6 +1370,12 @@ async function handleAuthSubmit(mode) {
   const pin = $("#login-pin-input").value;
   const errorEl = $("#login-error");
   errorEl.classList.add("hidden");
+
+  if (mode === "register" && !passwordMeetsAllRules(pin)) {
+    errorEl.textContent = "Please meet all the password requirements above before registering.";
+    errorEl.classList.remove("hidden");
+    return;
+  }
 
   $("#btn-register").disabled = true;
   $("#btn-login").disabled = true;
@@ -1321,6 +1390,7 @@ async function handleAuthSubmit(mode) {
   }
   $("#login-name-input").value = "";
   $("#login-pin-input").value = "";
+  renderPasswordRulesChecklist("");
   await establishSessionAsProfile(result.profile);
 }
 

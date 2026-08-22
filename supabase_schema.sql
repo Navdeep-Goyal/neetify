@@ -46,6 +46,8 @@ create table public.users (
   name_key text not null unique,   -- normalized (trim + lowercase) name; enforces one account per name
   pin_hash text not null,
   user_type text not null default 'NORMAL' check (user_type in ('NORMAL', 'ADMIN')),
+  failed_attempts int not null default 0,
+  locked_until timestamptz,        -- set after too many failed logins; login rejected until this passes
   created_at timestamptz default now()
 );
 
@@ -163,6 +165,9 @@ grant execute on function public.verify_session(text) to anon, authenticated;
 
 
 -- ---------------- Register / login (now return a session token too) ----------------
+-- Registration requires a strong password (8+ chars, upper/lower/number/special) --
+-- enforced here server-side so a bypassed client can't skip the rules by calling the
+-- RPC directly. Existing accounts made before this rule was added are unaffected.
 create or replace function public.register_user(p_name text, p_pin text)
 returns table(id uuid, name text, user_type text, token text)
 language plpgsql
@@ -176,8 +181,20 @@ begin
   if v_key = '' then
     raise exception 'Name required';
   end if;
-  if length(p_pin) < 4 then
-    raise exception 'PIN must be at least 4 characters';
+  if length(p_pin) < 8 then
+    raise exception 'Password must be at least 8 characters';
+  end if;
+  if p_pin !~ '[A-Z]' then
+    raise exception 'Password must contain at least one uppercase letter';
+  end if;
+  if p_pin !~ '[a-z]' then
+    raise exception 'Password must contain at least one lowercase letter';
+  end if;
+  if p_pin !~ '[0-9]' then
+    raise exception 'Password must contain at least one number';
+  end if;
+  if p_pin !~ '[^A-Za-z0-9]' then
+    raise exception 'Password must contain at least one special character';
   end if;
   if exists (select 1 from public.users where name_key = v_key) then
     raise exception 'NAME_TAKEN';
@@ -192,6 +209,9 @@ end;
 $$;
 grant execute on function public.register_user(text, text) to anon, authenticated;
 
+-- Locks an account for 15 minutes after 10 consecutive failed attempts (even the
+-- correct password is rejected during that window). A successful login clears the
+-- counter. Caps brute-forcing at ~1000 guesses/day regardless of request speed.
 create or replace function public.login_user(p_name text, p_pin text)
 returns table(id uuid, name text, user_type text, token text)
 language plpgsql
@@ -201,17 +221,29 @@ as $$
 declare
   v_key text := lower(trim(p_name));
   v_row record;
+  v_seconds_remaining int;
 begin
-  select u.id, u.name, u.user_type into v_row
-  from public.users u
-  where u.name_key = v_key
-    and u.pin_hash = crypt(p_pin, u.pin_hash);
+  select * into v_row from public.users where name_key = v_key;
 
   if v_row.id is null then
-    return; -- zero rows -- wrong name/PIN
+    return; -- no such account -- zero rows
   end if;
 
-  return query select v_row.id, v_row.name, v_row.user_type, public.mint_session_token(v_row.id, v_row.user_type);
+  if v_row.locked_until is not null and v_row.locked_until > now() then
+    v_seconds_remaining := ceil(extract(epoch from (v_row.locked_until - now())));
+    raise exception 'ACCOUNT_LOCKED:%', v_seconds_remaining;
+  end if;
+
+  if v_row.pin_hash = crypt(p_pin, v_row.pin_hash) then
+    update public.users set failed_attempts = 0, locked_until = null where id = v_row.id;
+    return query select v_row.id, v_row.name, v_row.user_type, public.mint_session_token(v_row.id, v_row.user_type);
+  else
+    update public.users
+      set failed_attempts = case when failed_attempts + 1 >= 10 then 0 else failed_attempts + 1 end,
+          locked_until = case when failed_attempts + 1 >= 10 then now() + interval '15 minutes' else locked_until end
+      where id = v_row.id;
+    return; -- zero rows
+  end if;
 end;
 $$;
 grant execute on function public.login_user(text, text) to anon, authenticated;
@@ -383,8 +415,9 @@ $$;
 grant execute on function public.set_week_override(text, text, boolean) to anon, authenticated;
 
 
--- ---------------- The one admin account: name "alpha", PIN "1010" ----------------
--- Change the PIN below to something less guessable before running, if you like --
--- this is the only credential in this whole file, so it's fine to edit in place.
-select public.register_user('alpha', '1010');
+-- ---------------- The one admin account: name "alpha" ----------------
+-- The old PIN '1010' would now be REJECTED by register_user's password rules (8+ chars,
+-- upper/lower/number/special) -- pick your own real password meeting those rules and
+-- substitute it below before running. This is the only credential in this whole file.
+select public.register_user('alpha', 'PASTE_YOUR_OWN_STRONG_PASSWORD_HERE_Aa1!');
 update public.users set user_type = 'ADMIN' where name_key = 'alpha';
