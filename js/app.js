@@ -226,6 +226,13 @@ async function registerUser(name, pin) {
     }
     return { ok: false, message: error.message };
   }
+  if (!data[0].token) {
+    // The server accepted the registration but couldn't mint a session token -- almost
+    // always means app_secrets.jwt_secret is missing/empty in the database. Surfacing
+    // this immediately (rather than silently proceeding) is what catches it here
+    // instead of it only showing up later as broken admin features.
+    return { ok: false, message: "Registered, but the server couldn't create a secure session (missing signing secret). Contact the site admin." };
+  }
   rememberNameLocally(trimmedName);
   return { ok: true, profile: profileFromRpcRow(data[0]) };
 }
@@ -247,6 +254,9 @@ async function loginUser(name, pin) {
     return { ok: false, message: error.message };
   }
   if (!data || data.length === 0) return { ok: false, message: "Incorrect name or password." };
+  if (!data[0].token) {
+    return { ok: false, message: "Logged in, but the server couldn't create a secure session (missing signing secret). Contact the site admin." };
+  }
   rememberNameLocally(trimmedName);
   return { ok: true, profile: profileFromRpcRow(data[0]) };
 }
