@@ -192,7 +192,7 @@ function loadRememberedNames() {
 }
 
 function profileFromRpcRow(row) {
-  return { id: row.id, name: row.name, userType: row.user_type };
+  return { id: row.id, name: row.name, userType: row.user_type, token: row.token };
 }
 
 // Returns { ok: true, profile } or { ok: false, message }
@@ -225,6 +225,29 @@ async function loginUser(name, pin) {
   if (!data || data.length === 0) return { ok: false, message: "Incorrect name or PIN." };
   rememberNameLocally(trimmedName);
   return { ok: true, profile: profileFromRpcRow(data[0]) };
+}
+
+// Re-checks a remembered session against the server. The server always derives the
+// REAL id/name/user_type from the token's verified signature -- a locally-edited
+// localStorage value (e.g. someone setting userType to "ADMIN" in dev tools) has no
+// effect the moment this runs, since we discard the local copy's fields in favor of
+// what the server returns. Returns:
+//   { status: "ok", profile }      -- verified; profile reflects the real DB values
+//   { status: "invalid" }          -- token missing/bad signature/expired -- must re-login
+//   { status: "offline" }          -- couldn't reach the server right now (not a rejection;
+//                                     lets offline exam-taking keep working from cached data)
+async function verifySessionToken(token) {
+  if (!token) return { status: "invalid" };
+  if (!initSupabaseClient()) return { status: "offline" };
+  try {
+    const { data, error } = await supabaseClient.rpc("verify_session", { p_token: token });
+    if (error) return { status: "offline" };
+    if (!data || data.length === 0) return { status: "invalid" };
+    const row = data[0];
+    return { status: "ok", profile: { id: row.user_id, name: row.name, userType: row.user_type, token } };
+  } catch (e) {
+    return { status: "offline" };
+  }
 }
 
 function saveRememberedProfile(profile) {
@@ -272,6 +295,7 @@ function isAdmin() { return !!currentProfile && currentProfile.userType === "ADM
 
 // ---------------- Progress & history (namespaced per active profile) ----------------
 function progressKey(weekId) { return `neetpg_inprogress_${currentProfile.id}_${weekId}`; }
+
 
 function saveProgress() {
   localStorage.setItem(progressKey(currentWeek.id), JSON.stringify(state));
@@ -1206,13 +1230,27 @@ async function boot() {
   wireLoginScreen();
   const remembered = loadRememberedProfile();
   if (remembered) {
-    currentProfile = remembered;
-    updateCandidateNameDisplays();
-    if (initSupabaseClient()) {
+    const result = await verifySessionToken(remembered.token);
+    if (result.status === "ok") {
+      currentProfile = result.profile;
+      saveRememberedProfile(result.profile); // refresh local copy with server-confirmed values
+      updateCandidateNameDisplays();
       await loadWeekOverrides();
       await syncHistoryWithCloud();
+      await startAppForCurrentProfile();
+    } else if (result.status === "offline") {
+      // Can't reach the server right now -- proceed from cache so offline exam-taking
+      // still works. Real verification resumes the next time this runs while online.
+      currentProfile = remembered;
+      updateCandidateNameDisplays();
+      await startAppForCurrentProfile();
+    } else {
+      // Genuinely rejected: missing, bad signature, expired, or tampered with -- require
+      // a fresh login rather than trusting anything already in localStorage.
+      clearRememberedProfile();
+      renderKnownProfilesRow();
+      show("#screen-login");
     }
-    await startAppForCurrentProfile();
   } else {
     renderKnownProfilesRow();
     show("#screen-login");
