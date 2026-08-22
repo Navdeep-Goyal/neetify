@@ -38,6 +38,41 @@ function fmtTime(totalSeconds) {
 }
 function nowTs() { return Date.now(); }
 
+// ---------------- Custom modal (replaces native confirm/alert) ----------------
+// Native confirm()/alert() are OS-rendered and can interact unpredictably with the
+// Fullscreen API on some browsers (notably iPadOS Safari briefly drops fullscreen when
+// one appears). A plain in-page HTML modal has no such side effect, since there's no
+// native browser chrome involved at all.
+function customAlert(message) {
+  return new Promise(resolve => {
+    showCustomModal(message, false, () => resolve());
+  });
+}
+
+function customConfirm(message) {
+  return new Promise(resolve => {
+    showCustomModal(message, true, (result) => resolve(result));
+  });
+}
+
+function showCustomModal(message, isConfirm, callback) {
+  const overlay = $("#custom-modal-overlay");
+  const msgEl = $("#custom-modal-message");
+  const okBtn = $("#custom-modal-ok");
+  const cancelBtn = $("#custom-modal-cancel");
+  msgEl.textContent = message;
+  cancelBtn.classList.toggle("hidden", !isConfirm);
+  overlay.classList.remove("hidden");
+
+  function cleanup() {
+    overlay.classList.add("hidden");
+    okBtn.onclick = null;
+    cancelBtn.onclick = null;
+  }
+  okBtn.onclick = () => { cleanup(); callback(true); };
+  cancelBtn.onclick = () => { cleanup(); callback(false); };
+}
+
 // ---------------- Weeks manifest & unlock gating ----------------
 async function loadWeeksManifest() {
   const res = await fetch(WEEKS_FILE);
@@ -286,7 +321,7 @@ async function setWeekOverride(weekId, forceUnlocked) {
   if (!supabaseClient) return;
   const { error } = await supabaseClient.from("week_overrides")
     .upsert({ week_id: weekId, force_unlocked: forceUnlocked, updated_at: new Date().toISOString() });
-  if (error) { alert("Couldn't update that week's lock: " + error.message); return; }
+  if (error) { customAlert("Couldn't update that week's lock: " + error.message); return; }
   weekOverrides[weekId] = forceUnlocked;
   renderWeekList();
   if (!$("#screen-admin").classList.contains("hidden")) renderAdminWeekControls();
@@ -473,7 +508,7 @@ async function loadAndRenderUserAttempts(user, container) {
 
 async function viewResultAsAdmin(entry) {
   const week = (weeksManifest || []).find(w => w.id === entry.weekId);
-  if (!week) { alert("Couldn't find that week's question file."); return; }
+  if (!week) { customAlert("Couldn't find that week's question file."); return; }
   currentWeek = week;
   await loadExamData();
   resultBackTarget = "admin";
@@ -610,22 +645,6 @@ function initInstructions() {
 // exit from fullscreen or the tab/window (visibilitychange), log it as a violation with
 // a visible warning, and auto-submit the exam once MAX_VIOLATIONS is reached.
 let lockdownActive = false;
-// Native confirm()/alert() dialogs can cause some browsers (notably iPadOS Safari) to
-// briefly drop out of fullscreen, or momentarily report the page as hidden, purely as a
-// side effect of rendering the dialog -- not because the person actually left the exam.
-// This window suppresses violations for a moment after any such dialog closes.
-let suppressViolationsUntil = 0;
-function withViolationSuppression(fn) {
-  return function (...args) {
-    suppressViolationsUntil = Date.now() + 3000; // covers a drop while the dialog is open
-    const result = fn.apply(this, args);
-    suppressViolationsUntil = Date.now() + 1500; // and a short grace period after it closes
-    requestExamFullscreen();
-    return result;
-  };
-}
-const safeConfirm = withViolationSuppression(confirm);
-const safeAlert = withViolationSuppression(alert);
 
 function enterLockdown() {
   if (lockdownActive) return;
@@ -682,16 +701,11 @@ function handleBeforeUnload(e) {
 
 function handleVisibilityChange() {
   if (!lockdownActive || state.submitted) return;
-  if (Date.now() < suppressViolationsUntil) return;
   if (document.hidden) recordViolation("Left the exam tab/window (switched app or tab)");
 }
 
 function handleFullscreenChange() {
   if (!lockdownActive || state.submitted) return;
-  if (Date.now() < suppressViolationsUntil) {
-    requestExamFullscreen(); // try to silently restore it rather than counting a violation
-    return;
-  }
   if (!document.fullscreenElement) recordViolation("Exited fullscreen mode");
 }
 
@@ -930,7 +944,7 @@ function renderPalette() {
   $("#summary-marked").textContent = marked + answeredMarked;
 }
 
-function submitCurrentSection(auto) {
+async function submitCurrentSection(auto) {
   const secState = currentSectionState();
   if (secState.submitted) return;
   secState.submitted = true;
@@ -942,7 +956,7 @@ function submitCurrentSection(auto) {
     finishExam();
   } else {
     if (auto) {
-      safeAlert(`Time up for ${currentSection().name}. Moving to the next section.`);
+      await customAlert(`Time up for ${currentSection().name}. Moving to the next section.`);
     }
     state.currentSectionIdx += 1;
     state.currentQIdxInSection = 0;
@@ -955,18 +969,20 @@ function submitCurrentSection(auto) {
   }
 }
 
-function confirmSubmitSection() {
+async function confirmSubmitSection() {
   const secState = currentSectionState();
   const ids = currentSection().questionIds;
   const unanswered = ids.filter(id => !state.responses[id].selected).length;
   const msg = unanswered > 0
     ? `You have ${unanswered} unanswered question(s) in ${currentSection().name}. Submit this section anyway?`
     : `Submit ${currentSection().name} and move on? You cannot return to this section.`;
-  if (safeConfirm(msg)) submitCurrentSection(false);
+  const ok = await customConfirm(msg);
+  if (ok) submitCurrentSection(false);
 }
 
-function confirmSubmitExam() {
-  if (safeConfirm("Submit the entire exam now? This cannot be undone.")) {
+async function confirmSubmitExam() {
+  const ok = await customConfirm("Submit the entire exam now? This cannot be undone.");
+  if (ok) {
     // submit all remaining (non-submitted) sections as-is
     for (let i = state.currentSectionIdx; i < examData.sections.length; i++) {
       state.sectionState[i].submitted = true;
@@ -1175,9 +1191,9 @@ function importHistory(e) {
       const merged = existing.concat(imported);
       localStorage.setItem(historyStorageKey(), JSON.stringify(merged));
       renderHistory();
-      alert("Results imported successfully.");
+      customAlert("Results imported successfully.");
     } catch (err) {
-      alert("Could not read that file. Make sure it's a results JSON exported from this site.");
+      customAlert("Could not read that file. Make sure it's a results JSON exported from this site.");
     }
   };
   reader.readAsText(file);
