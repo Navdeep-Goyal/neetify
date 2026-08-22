@@ -23,15 +23,16 @@
 <!-- ============ LOGIN SCREEN ============ -->
 <div id="screen-login" class="screen-root screen hidden">
   <h1>Who's taking this exam?</h1>
-  <p>New here? Enter a name and PIN and tap <b>Register</b>. Used this before? Enter the same name and PIN and tap <b>Login</b> -- works on any device.</p>
+  <p>New here? Enter a name and password and tap <b>Register</b>. Used this before? Enter the same name and password and tap <b>Login</b> -- works on any device.</p>
 
   <div id="known-profiles-row" class="known-profiles-row"></div>
 
   <div class="login-form">
     <label for="login-name-input">Name</label>
     <input id="login-name-input" type="text" placeholder="Your name" autocomplete="name">
-    <label for="login-pin-input">PIN (4+ digits)</label>
-    <input id="login-pin-input" type="password" inputmode="numeric" placeholder="e.g. 1234" autocomplete="off">
+    <label for="login-pin-input">Password</label>
+    <input id="login-pin-input" type="password" placeholder="e.g. Str0ng!Pass" autocomplete="off">
+    <ul id="password-rules" class="password-rules"></ul>
     <p id="login-error" class="login-error hidden"></p>
     <div class="login-buttons-row">
       <button id="btn-register" class="btn btn-mark" style="margin-left:0;">Register (new)</button>
