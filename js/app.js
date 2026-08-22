@@ -4,8 +4,8 @@
 // ============================================================
 
 const STORAGE_KEY_HISTORY_PREFIX = "neetpg_history_";
-const STORAGE_KEY_PROFILES = "neetpg_profiles";
 const STORAGE_KEY_CURRENT_PROFILE = "neetpg_current_profile";
+const STORAGE_KEY_KNOWN_NAMES = "neetpg_known_names";
 const WEEKS_FILE = "data/weeks.json";
 
 // Once an exam is in progress, leaving fullscreen or switching tabs/apps counts
@@ -18,7 +18,8 @@ const MAX_VIOLATIONS = 3;
 // closing out the study week), regardless of what timezone the browser is in.
 const UNLOCK_HOUR_IST = 13; // 1 PM
 
-let currentProfile = null; // { id, name } -- whose progress/history is currently active
+let currentProfile = null; // { id, name, userType } -- the logged-in account (id is the DB row's uuid)
+let weekOverrides = {};    // weekId -> boolean, admin-controlled, applies to everyone
 let weeksManifest = null;  // loaded JSON from weeks.json, with unlockTimestamp added
 let currentWeek = null;    // the manifest entry for the week currently being attempted/viewed
 let examData = null;       // loaded JSON for currentWeek.questionFile
@@ -60,7 +61,7 @@ function computeUnlockTimestamp(weekEndDateStr) {
 
 function isWeekUnlocked(week) {
   if (new URLSearchParams(location.search).has("unlockall")) return true; // testing/QA override
-  if (isAdminUser) return true; // signed-in admin can start any week early
+  if (weekOverrides[week.id]) return true; // admin has force-unlocked this week for everyone
   return nowTs() >= week.unlockTimestamp;
 }
 
@@ -120,69 +121,103 @@ function freshState() {
   };
 }
 
-// ---------------- Local user profiles (name + PIN) ----------------
-// Lightweight, device-local separation so multiple people sharing this site/device
-// each see only their own progress and results -- NOT a real security boundary (the
-// PIN is just a switch-guard, not encryption), and separate from the Supabase sign-in
-// above (which is about cross-device cloud sync of one person's own results).
-function loadProfiles() {
-  const raw = localStorage.getItem(STORAGE_KEY_PROFILES);
+// ---------------- User login (custom name + PIN accounts) ----------------
+// No Supabase Auth involved at all -- name+PIN is checked against our own `users`
+// table (PIN hashed with pgcrypto) via the register_user/login_user SQL functions.
+// This is deliberately low-security by design (a small personal-use project): the
+// `users` table itself is locked down so pin hashes can't be fetched directly, but
+// exam_history and week_overrides are left fully open, as requested.
+let supabaseClient = null;
+
+function isSyncConfigured() {
+  return typeof SUPABASE_URL === "string" &&
+    typeof SUPABASE_ANON_KEY === "string" &&
+    !SUPABASE_ANON_KEY.includes("PASTE_YOUR");
+}
+
+function initSupabaseClient() {
+  if (!isSyncConfigured() || typeof window.supabase === "undefined") return false;
+  if (!supabaseClient) supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return true;
+}
+
+function normalizeProfileName(name) { return name.trim(); }
+
+function rememberNameLocally(name) {
+  const raw = localStorage.getItem(STORAGE_KEY_KNOWN_NAMES);
+  let names = [];
+  try { names = raw ? JSON.parse(raw) : []; } catch (e) { names = []; }
+  if (!names.includes(name)) names.push(name);
+  localStorage.setItem(STORAGE_KEY_KNOWN_NAMES, JSON.stringify(names));
+}
+function loadRememberedNames() {
+  const raw = localStorage.getItem(STORAGE_KEY_KNOWN_NAMES);
   if (!raw) return [];
   try { return JSON.parse(raw); } catch (e) { return []; }
 }
-function saveProfiles(profiles) {
-  localStorage.setItem(STORAGE_KEY_PROFILES, JSON.stringify(profiles));
-}
-function normalizeProfileName(name) { return name.trim(); }
-function profileKeyFromName(name) { return normalizeProfileName(name).toLowerCase(); }
 
-async function hashPin(pin) {
-  const data = new TextEncoder().encode("neetpg-pin-salt::" + pin);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
-
-function findProfile(name) {
-  const key = profileKeyFromName(name);
-  return loadProfiles().find(p => p.id === key) || null;
+function profileFromRpcRow(row) {
+  return { id: row.id, name: row.name, userType: row.user_type };
 }
 
 // Returns { ok: true, profile } or { ok: false, message }
-async function attemptLogin(name, pin) {
+async function registerUser(name, pin) {
   const trimmedName = normalizeProfileName(name);
   if (!trimmedName) return { ok: false, message: "Enter your name." };
-  if (!pin || pin.length < 4) return { ok: false, message: "PIN must be at least 4 digits." };
+  if (!pin || pin.length < 4) return { ok: false, message: "PIN must be at least 4 characters." };
+  if (!initSupabaseClient()) return { ok: false, message: "Can't reach the server right now -- check your internet connection." };
 
-  const profiles = loadProfiles();
-  const key = profileKeyFromName(trimmedName);
-  const existing = profiles.find(p => p.id === key);
-  const pinHash = await hashPin(pin);
-
-  if (existing) {
-    if (existing.pinHash !== pinHash) {
-      return { ok: false, message: "Incorrect PIN for that name." };
+  const { data, error } = await supabaseClient.rpc("register_user", { p_name: trimmedName, p_pin: pin });
+  if (error) {
+    if (error.message && error.message.includes("NAME_TAKEN")) {
+      return { ok: false, message: "That name is already registered -- use Login instead." };
     }
-    return { ok: true, profile: existing };
+    return { ok: false, message: error.message };
   }
-
-  const newProfile = { id: key, name: trimmedName, pinHash };
-  profiles.push(newProfile);
-  saveProfiles(profiles);
-  return { ok: true, profile: newProfile };
+  rememberNameLocally(trimmedName);
+  return { ok: true, profile: profileFromRpcRow(data[0]) };
 }
 
-function setActiveProfile(profile) {
-  currentProfile = { id: profile.id, name: profile.name };
-  localStorage.setItem(STORAGE_KEY_CURRENT_PROFILE, JSON.stringify(currentProfile));
+// Returns { ok: true, profile } or { ok: false, message }
+async function loginUser(name, pin) {
+  const trimmedName = normalizeProfileName(name);
+  if (!trimmedName) return { ok: false, message: "Enter your name." };
+  if (!pin) return { ok: false, message: "Enter your PIN." };
+  if (!initSupabaseClient()) return { ok: false, message: "Can't reach the server right now -- check your internet connection." };
+
+  const { data, error } = await supabaseClient.rpc("login_user", { p_name: trimmedName, p_pin: pin });
+  if (error) return { ok: false, message: error.message };
+  if (!data || data.length === 0) return { ok: false, message: "Incorrect name or PIN." };
+  rememberNameLocally(trimmedName);
+  return { ok: true, profile: profileFromRpcRow(data[0]) };
 }
 
+function saveRememberedProfile(profile) {
+  localStorage.setItem(STORAGE_KEY_CURRENT_PROFILE, JSON.stringify(profile));
+}
 function loadRememberedProfile() {
   const raw = localStorage.getItem(STORAGE_KEY_CURRENT_PROFILE);
   if (!raw) return null;
-  try {
-    const remembered = JSON.parse(raw);
-    return findProfile(remembered.name) ? remembered : null;
-  } catch (e) { return null; }
+  try { return JSON.parse(raw); } catch (e) { return null; }
+}
+function clearRememberedProfile() {
+  localStorage.removeItem(STORAGE_KEY_CURRENT_PROFILE);
+}
+
+async function establishSessionAsProfile(profile) {
+  currentProfile = profile;
+  saveRememberedProfile(profile);
+  updateCandidateNameDisplays();
+  if (initSupabaseClient()) {
+    await loadWeekOverrides();
+    await syncHistoryWithCloud();
+  }
+  await startAppForCurrentProfile();
+}
+
+function logoutCurrentProfile() {
+  clearRememberedProfile();
+  currentProfile = null;
 }
 
 function historyStorageKey() { return STORAGE_KEY_HISTORY_PREFIX + currentProfile.id; }
@@ -191,7 +226,14 @@ function updateCandidateNameDisplays() {
   document.querySelectorAll(".candidate-name-display").forEach(el => { el.textContent = currentProfile.name; });
   const avatar = $("#candidate-avatar");
   if (avatar) avatar.textContent = currentProfile.name.charAt(0).toUpperCase();
+  const adminBtn = $("#btn-open-admin");
+  if (adminBtn) {
+    adminBtn.classList.toggle("hidden", !isAdmin());
+    adminBtn.onclick = openAdminPanel;
+  }
 }
+
+function isAdmin() { return !!currentProfile && currentProfile.userType === "ADMIN"; }
 
 // ---------------- Progress & history (namespaced per active profile) ----------------
 function progressKey(weekId) { return `neetpg_inprogress_${currentProfile.id}_${weekId}`; }
@@ -228,80 +270,34 @@ function saveHistoryEntry(entry) {
   const hist = getHistory();
   hist.unshift(entry);
   localStorage.setItem(historyStorageKey(), JSON.stringify(hist));
-  pushHistoryEntryToCloud(entry); // no-op if not signed in / not configured
+  pushHistoryEntryToCloud(entry); // no-op if not configured
 }
 
-// ---------------- Cross-device sync (Supabase) ----------------
-// Entirely optional and additive: if SUPABASE_ANON_KEY hasn't been filled in, or the
-// Supabase SDK didn't load, every function below silently no-ops and the site behaves
-// exactly as it did with localStorage only. Nothing here can break offline/local use.
-let supabaseClient = null;
-let syncUser = null;   // current signed-in Supabase user, or null
-let isAdminUser = false; // whether the signed-in user is confirmed admin (via is_admin() RPC)
-
-function isSyncConfigured() {
-  return typeof SUPABASE_URL === "string" &&
-    typeof SUPABASE_ANON_KEY === "string" &&
-    !SUPABASE_ANON_KEY.includes("PASTE_YOUR");
-}
-
-async function initSync() {
-  if (!isSyncConfigured() || typeof window.supabase === "undefined") {
-    renderSyncStatus();
-    return;
-  }
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  supabaseClient.auth.onAuthStateChange((_event, session) => {
-    syncUser = session ? session.user : null;
-    isAdminUser = false;
-    renderSyncStatus();
-    if (syncUser) { syncHistoryWithCloud(); checkAdminStatus(); }
-  });
-
-  const { data } = await supabaseClient.auth.getSession();
-  syncUser = data.session ? data.session.user : null;
-  renderSyncStatus();
-  if (syncUser) { syncHistoryWithCloud(); await checkAdminStatus(); }
-}
-
-async function checkAdminStatus() {
-  if (!supabaseClient || !syncUser) { isAdminUser = false; return; }
-  const { data, error } = await supabaseClient.rpc("is_admin");
-  isAdminUser = !error && data === true;
-  renderSyncStatus();
-  if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
-}
-
-async function requestMagicLink(email) {
+// ---------------- Week unlock overrides (admin-controlled, applies to everyone) ----------------
+async function loadWeekOverrides() {
   if (!supabaseClient) return;
-  const { error } = await supabaseClient.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: window.location.href },
-  });
-  const msgEl = $("#sync-status-message");
-  if (error) {
-    if (msgEl) { msgEl.textContent = "Couldn't send link: " + error.message; msgEl.classList.remove("hidden"); }
-  } else if (msgEl) {
-    msgEl.textContent = `Check ${email} for a sign-in link, then open it on this device.`;
-    msgEl.classList.remove("hidden");
-  }
+  const { data, error } = await supabaseClient.from("week_overrides").select("*");
+  if (error) { console.error("couldn't load week overrides:", error); return; }
+  weekOverrides = {};
+  (data || []).forEach(row => { weekOverrides[row.week_id] = row.force_unlocked; });
 }
 
-async function signOutSync() {
+async function setWeekOverride(weekId, forceUnlocked) {
   if (!supabaseClient) return;
-  await supabaseClient.auth.signOut();
-  syncUser = null;
-  isAdminUser = false;
-  renderSyncStatus();
+  const { error } = await supabaseClient.from("week_overrides")
+    .upsert({ week_id: weekId, force_unlocked: forceUnlocked, updated_at: new Date().toISOString() });
+  if (error) { alert("Couldn't update that week's lock: " + error.message); return; }
+  weekOverrides[weekId] = forceUnlocked;
   renderWeekList();
+  if (!$("#screen-admin").classList.contains("hidden")) renderAdminWeekControls();
 }
 
-function historyEntryToRow(h, userId) {
+// ---------------- Exam history sync (fully open table, per project scope) ----------------
+function historyEntryToRow(h) {
   return {
     id: h.id,
-    user_id: userId,
-    user_email: syncUser ? syncUser.email : null,
+    user_id: currentProfile.id,
+    user_name: currentProfile.name,
     week_id: h.weekId,
     exam_title: h.examTitle,
     score: h.score,
@@ -334,83 +330,20 @@ function rowToHistoryEntry(r) {
     sectionBreakdown: r.section_breakdown,
     perQuestion: r.per_question,
     date: new Date(r.attempt_date).getTime(),
-    userEmail: r.user_email,
+    userName: r.user_name,
   };
 }
 
-// ---------------- Admin panel ----------------
-let resultBackTarget = "landing"; // "landing" or "admin" -- where the result screen's Back button goes
-
-async function openAdminPanel() {
-  show("#screen-admin");
-  await loadAndRenderAdminResults();
-}
-
-async function loadAndRenderAdminResults() {
-  const content = $("#admin-content");
-  if (!supabaseClient || !isAdminUser) { content.innerHTML = "<p>Not authorized.</p>"; return; }
-  content.innerHTML = "<p>Loading...</p>";
-
-  const { data, error } = await supabaseClient
-    .from("exam_history").select("*").order("attempt_date", { ascending: false });
-  if (error) { content.innerHTML = `<p>Couldn't load results: ${error.message}</p>`; return; }
-
-  if (!data || data.length === 0) {
-    content.innerHTML = "<p>No synced results yet from any user.</p>";
-    return;
-  }
-
-  const rows = data.map(rowToHistoryEntry);
-  const weekLabelById = {};
-  (weeksManifest || []).forEach(w => { weekLabelById[w.id] = w.label; });
-
-  const table = document.createElement("table");
-  table.className = "section-breakdown admin-results-table";
-  table.innerHTML = `
-    <thead><tr><th>User</th><th>Week</th><th>Score</th><th>%</th><th>Violations</th><th>Date</th><th></th></tr></thead>
-    <tbody></tbody>
-  `;
-  const tbody = table.querySelector("tbody");
-  rows.forEach(entry => {
-    const tr = document.createElement("tr");
-    const dateLabel = new Date(entry.date).toLocaleString();
-    tr.innerHTML = `
-      <td>${entry.userEmail || "(unknown)"}</td>
-      <td>${weekLabelById[entry.weekId] || entry.weekId}</td>
-      <td>${entry.score}/${entry.totalMarks}</td>
-      <td>${entry.percentage}%</td>
-      <td>${entry.violations || 0}</td>
-      <td>${dateLabel}</td>
-      <td><button class="btn btn-clear admin-view-btn">View</button></td>
-    `;
-    tr.querySelector(".admin-view-btn").onclick = () => viewResultAsAdmin(entry);
-    tbody.appendChild(tr);
-  });
-
-  content.innerHTML = "";
-  content.appendChild(table);
-}
-
-async function viewResultAsAdmin(entry) {
-  const week = (weeksManifest || []).find(w => w.id === entry.weekId);
-  if (!week) { alert("Couldn't find that week's question file."); return; }
-  currentWeek = week;
-  await loadExamData();
-  resultBackTarget = "admin";
-  renderResult(entry);
-  show("#screen-result");
-}
-
 function pushHistoryEntryToCloud(entry) {
-  if (!supabaseClient || !syncUser) return;
-  supabaseClient.from("exam_history").insert([historyEntryToRow(entry, syncUser.id)])
+  if (!supabaseClient || !currentProfile) return;
+  supabaseClient.from("exam_history").insert([historyEntryToRow(entry)])
     .then(({ error }) => { if (error) console.error("cloud sync (push) failed:", error); });
 }
 
 async function syncHistoryWithCloud() {
-  if (!supabaseClient || !syncUser) return;
+  if (!supabaseClient || !currentProfile) return;
   const { data: remoteRows, error } = await supabaseClient
-    .from("exam_history").select("*").eq("user_id", syncUser.id);
+    .from("exam_history").select("*").eq("user_id", currentProfile.id);
   if (error) { console.error("cloud sync (pull) failed:", error); return; }
 
   const localHistory = getHistory();
@@ -425,50 +358,131 @@ async function syncHistoryWithCloud() {
 
   const localOnly = localHistory.filter(h => !remoteIds.has(h.id));
   if (localOnly.length) {
-    const rows = localOnly.map(h => historyEntryToRow(h, syncUser.id));
+    const rows = localOnly.map(h => historyEntryToRow(h));
     const { error: insertError } = await supabaseClient.from("exam_history").insert(rows);
     if (insertError) console.error("cloud sync (initial push) failed:", insertError);
   }
-
-  initLanding();
-  if (!$("#screen-history").classList.contains("hidden")) renderHistory();
 }
 
-function renderSyncStatus() {
-  const box = $("#sync-status-box");
-  if (!box) return;
+// ---------------- Admin panel ----------------
+let resultBackTarget = "landing"; // "landing" or "admin" -- where the result screen's Back button goes
+let adminUsersCache = [];
 
-  if (!isSyncConfigured() || typeof window.supabase === "undefined") {
-    box.classList.add("hidden");
+async function openAdminPanel() {
+  show("#screen-admin");
+  renderAdminWeekControls();
+  await loadAndRenderAdminUsers();
+}
+
+function renderAdminWeekControls() {
+  const wrap = $("#admin-week-controls");
+  if (!wrap || !weeksManifest) return;
+  wrap.innerHTML = "";
+  weeksManifest.forEach(week => {
+    const forced = !!weekOverrides[week.id];
+    const row = document.createElement("div");
+    row.className = "admin-week-row";
+    row.innerHTML = `
+      <span class="admin-week-label">${week.label} <span class="admin-week-dates">${week.dateRangeLabel}</span></span>
+      <button class="btn ${forced ? "btn-submit" : "btn-clear"} admin-toggle-btn">${forced ? "Unlocked early (click to reset to schedule)" : "Force unlock now"}</button>
+    `;
+    row.querySelector(".admin-toggle-btn").onclick = () => setWeekOverride(week.id, !forced);
+    wrap.appendChild(row);
+  });
+}
+
+async function loadAndRenderAdminUsers() {
+  const content = $("#admin-content");
+  if (!supabaseClient || !isAdmin()) { content.innerHTML = "<p>Not authorized.</p>"; return; }
+  content.innerHTML = "<p>Loading...</p>";
+
+  const { data: users, error } = await supabaseClient
+    .from("users_public").select("*").order("created_at", { ascending: true });
+  if (error) { content.innerHTML = `<p>Couldn't load users: ${error.message}</p>`; return; }
+
+  adminUsersCache = users || [];
+  if (adminUsersCache.length === 0) {
+    content.innerHTML = "<p>No users registered yet.</p>";
     return;
   }
-  box.classList.remove("hidden");
 
-  if (syncUser) {
-    const adminBadge = isAdminUser
-      ? ` <span class="admin-badge">Admin</span> <button id="btn-open-admin" class="btn btn-mark" style="margin-left:0;">Admin Panel</button>`
-      : "";
-    box.innerHTML = `
-      <span>Syncing as <b>${syncUser.email}</b>${adminBadge}</span>
-      <button id="btn-sync-signout" class="btn btn-clear" style="margin-left:0;">Sign out</button>
+  content.innerHTML = "";
+  const list = document.createElement("div");
+  list.className = "admin-users-list";
+  adminUsersCache.forEach(u => {
+    const row = document.createElement("div");
+    row.className = "admin-user-row";
+    row.innerHTML = `
+      <div class="admin-user-header">
+        <span>${u.name}${u.user_type === "ADMIN" ? ' <span class="admin-badge">Admin</span>' : ""}</span>
+        <button class="btn btn-clear admin-expand-btn">Show Attempts</button>
+      </div>
+      <div class="admin-user-attempts hidden"></div>
     `;
-    $("#btn-sync-signout").onclick = signOutSync;
-    const adminBtn = $("#btn-open-admin");
-    if (adminBtn) adminBtn.onclick = openAdminPanel;
-  } else {
-    box.innerHTML = `
-      <span>Sync results across devices:</span>
-      <input id="sync-email-input" type="email" placeholder="you@example.com" />
-      <button id="btn-sync-signin" class="btn btn-mark" style="margin-left:0;">Email me a sign-in link</button>
-      <div id="sync-status-message" class="hidden"></div>
-    `;
-    $("#btn-sync-signin").onclick = () => {
-      const email = $("#sync-email-input").value.trim();
-      if (email) requestMagicLink(email);
+    const expandBtn = row.querySelector(".admin-expand-btn");
+    const attemptsWrap = row.querySelector(".admin-user-attempts");
+    expandBtn.onclick = async () => {
+      const isHidden = attemptsWrap.classList.contains("hidden");
+      if (isHidden) {
+        attemptsWrap.classList.remove("hidden");
+        expandBtn.textContent = "Hide Attempts";
+        await loadAndRenderUserAttempts(u, attemptsWrap);
+      } else {
+        attemptsWrap.classList.add("hidden");
+        expandBtn.textContent = "Show Attempts";
+      }
     };
-  }
+    list.appendChild(row);
+  });
+  content.appendChild(list);
 }
+
+async function loadAndRenderUserAttempts(user, container) {
+  container.innerHTML = "<p>Loading...</p>";
+  const { data, error } = await supabaseClient
+    .from("exam_history").select("*").eq("user_id", user.id).order("attempt_date", { ascending: false });
+  if (error) { container.innerHTML = `<p>Couldn't load attempts: ${error.message}</p>`; return; }
+  if (!data || data.length === 0) { container.innerHTML = "<p>No attempts yet.</p>"; return; }
+
+  const weekLabelById = {};
+  (weeksManifest || []).forEach(w => { weekLabelById[w.id] = w.label; });
+
+  const table = document.createElement("table");
+  table.className = "section-breakdown admin-results-table";
+  table.innerHTML = `
+    <thead><tr><th>Week</th><th>Score</th><th>%</th><th>Violations</th><th>Date</th><th></th></tr></thead>
+    <tbody></tbody>
+  `;
+  const tbody = table.querySelector("tbody");
+  data.map(rowToHistoryEntry).forEach(entry => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${weekLabelById[entry.weekId] || entry.weekId}</td>
+      <td>${entry.score}/${entry.totalMarks}</td>
+      <td>${entry.percentage}%</td>
+      <td>${entry.violations || 0}</td>
+      <td>${new Date(entry.date).toLocaleString()}</td>
+      <td><button class="btn btn-clear admin-view-btn">View</button></td>
+    `;
+    tr.querySelector(".admin-view-btn").onclick = () => viewResultAsAdmin(entry);
+    tbody.appendChild(tr);
+  });
+  container.innerHTML = "";
+  container.appendChild(table);
+}
+
+async function viewResultAsAdmin(entry) {
+  const week = (weeksManifest || []).find(w => w.id === entry.weekId);
+  if (!week) { alert("Couldn't find that week's question file."); return; }
+  currentWeek = week;
+  await loadExamData();
+  resultBackTarget = "admin";
+  renderResult(entry);
+  show("#screen-result");
+}
+
 function initLanding() {
+
   renderWeekList();
   renderLandingHistoryPreview();
   $("#btn-view-history").onclick = () => { renderHistory(); show("#screen-history"); };
@@ -482,7 +496,7 @@ function renderWeekList() {
   weeksManifest.forEach(week => {
     const unlocked = isWeekUnlocked(week);
     const scheduledUnlocked = nowTs() >= week.unlockTimestamp;
-    const adminOverride = unlocked && !scheduledUnlocked && isAdminUser;
+    const adminOverride = unlocked && !scheduledUnlocked && weekOverrides[week.id];
     const savedProgress = unlocked ? loadProgressFor(week.id) : null;
     const inProgress = !!(savedProgress && !savedProgress.submitted);
     const weekHistory = getHistoryForWeek(week.id);
@@ -493,7 +507,7 @@ function renderWeekList() {
 
     let statusHtml, actionsHtml;
     const adminNote = adminOverride
-      ? `<div class="admin-override-note">Unlocked early (admin) &mdash; normally unlocks ${formatUnlockLabel(week.unlockTimestamp)}</div>`
+      ? `<div class="admin-override-note">Unlocked early by admin &mdash; normally unlocks ${formatUnlockLabel(week.unlockTimestamp)}</div>`
       : "";
 
     if (!unlocked) {
@@ -1107,13 +1121,14 @@ function wireStaticButtons() {
   const dismissTip = $("#btn-dismiss-guided-access-tip");
   if (dismissTip) dismissTip.onclick = () => $("#guided-access-tip").classList.add("hidden");
   $("#btn-switch-user").onclick = () => {
+    logoutCurrentProfile();
     renderKnownProfilesRow();
     $("#login-name-input").value = "";
     $("#login-pin-input").value = "";
     $("#login-error").classList.add("hidden");
     show("#screen-login");
   };
-  $("#btn-refresh-admin").onclick = loadAndRenderAdminResults;
+  $("#btn-refresh-admin").onclick = () => { renderAdminWeekControls(); loadAndRenderAdminUsers(); };
   $("#btn-back-to-landing-from-admin").onclick = () => { initLanding(); show("#screen-landing"); };
 }
 
@@ -1155,6 +1170,11 @@ async function boot() {
   const remembered = loadRememberedProfile();
   if (remembered) {
     currentProfile = remembered;
+    updateCandidateNameDisplays();
+    if (initSupabaseClient()) {
+      await loadWeekOverrides();
+      await syncHistoryWithCloud();
+    }
     await startAppForCurrentProfile();
   } else {
     renderKnownProfilesRow();
@@ -1169,7 +1189,6 @@ async function startAppForCurrentProfile() {
     await loadWeeksManifest();
     wireStaticButtons();
     initInstructions();
-    initSync();
     // Keep the "Unlocks in Xd Xh Xm" countdown live while the landing screen is visible.
     setInterval(() => {
       if (!$("#screen-landing").classList.contains("hidden")) renderWeekList();
@@ -1181,48 +1200,53 @@ async function startAppForCurrentProfile() {
 
 function wireLoginScreen() {
   renderKnownProfilesRow();
-  $("#btn-login-continue").onclick = handleLoginSubmit;
-  $("#login-pin-input").addEventListener("keydown", (e) => { if (e.key === "Enter") handleLoginSubmit(); });
+  $("#btn-register").onclick = () => handleAuthSubmit("register");
+  $("#btn-login").onclick = () => handleAuthSubmit("login");
+  $("#login-pin-input").addEventListener("keydown", (e) => { if (e.key === "Enter") handleAuthSubmit("login"); });
   $("#login-name-input").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#login-pin-input").focus(); });
 }
 
-async function handleLoginSubmit() {
+async function handleAuthSubmit(mode) {
   const name = $("#login-name-input").value;
   const pin = $("#login-pin-input").value;
   const errorEl = $("#login-error");
   errorEl.classList.add("hidden");
 
-  const result = await attemptLogin(name, pin);
+  $("#btn-register").disabled = true;
+  $("#btn-login").disabled = true;
+  const result = mode === "register" ? await registerUser(name, pin) : await loginUser(name, pin);
+  $("#btn-register").disabled = false;
+  $("#btn-login").disabled = false;
+
   if (!result.ok) {
     errorEl.textContent = result.message;
     errorEl.classList.remove("hidden");
     return;
   }
-  setActiveProfile(result.profile);
   $("#login-name-input").value = "";
   $("#login-pin-input").value = "";
-  await startAppForCurrentProfile();
+  await establishSessionAsProfile(result.profile);
 }
 
 function renderKnownProfilesRow() {
   const row = $("#known-profiles-row");
   if (!row) return;
-  const profiles = loadProfiles();
+  const names = loadRememberedNames();
   row.innerHTML = "";
-  if (profiles.length === 0) return;
+  if (names.length === 0) return;
 
   const label = document.createElement("div");
   label.className = "known-profiles-label";
-  label.textContent = "Known on this device:";
+  label.textContent = "Used on this device before:";
   row.appendChild(label);
 
-  profiles.forEach(p => {
+  names.forEach(name => {
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = "profile-chip";
-    chip.textContent = p.name;
+    chip.textContent = name;
     chip.onclick = () => {
-      $("#login-name-input").value = p.name;
+      $("#login-name-input").value = name;
       $("#login-pin-input").value = "";
       $("#login-pin-input").focus();
     };
